@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locket Gold — Cài đặt Profile & Quản lý NextDNS</title>
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --card: #1f2833;
+      --gold: #f5b301;
+      --text: #e0e6ed;
+      --sub: #9aa0a6;
+      --green: #2ecc71;
+      --btn-grad: linear-gradient(135deg, #f5b301 0%, #e09200 100%);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); display: flex; justify-content: center; padding: 24px 16px; min-height: 100vh; }
+    .container { max-width: 500px; width: 100%; display: flex; flex-direction: column; gap: 20px; }
+    .header { text-align: center; margin-top: 10px; }
+    .badge { display: inline-block; background: rgba(245, 179, 1, 0.15); color: var(--gold); padding: 4px 12px; border-radius: 999px; font-weight: 600; font-size: 13px; margin-bottom: 10px; border: 1px solid rgba(245, 179, 1, 0.3); }
+    h1 { font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    p.desc { font-size: 14px; color: var(--sub); line-height: 1.5; }
+    .card { background: var(--card); border-radius: 16px; padding: 20px; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); }
+    label { font-size: 13px; font-weight: 600; color: var(--sub); display: block; margin-bottom: 8px; }
+    input { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.15); background: #121820; color: #fff; font-size: 15px; outline: none; margin-bottom: 14px; }
+    input:focus { border-color: var(--gold); }
+    .btn { display: block; width: 100%; padding: 14px; text-align: center; background: var(--btn-grad); color: #000; font-weight: 700; font-size: 15px; border-radius: 12px; text-decoration: none; border: none; cursor: pointer; transition: opacity 0.2s, transform 0.1s; }
+    .btn:active { transform: scale(0.98); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-secondary { background: #2b3542; color: #fff; margin-top: 8px; }
+    .steps { display: flex; flex-direction: column; gap: 14px; }
+    .step-item { display: flex; gap: 12px; align-items: flex-start; }
+    .step-num { width: 26px; height: 26px; border-radius: 50%; background: var(--gold); color: #000; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex-shrink: 0; }
+    .step-content { font-size: 13px; line-height: 1.5; }
+    .step-content strong { color: #fff; }
+    .result-box { background: #121820; border-radius: 10px; padding: 14px; margin-top: 14px; border: 1px solid rgba(245, 179, 1, 0.3); font-size: 13px; line-height: 1.6; }
+    .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--green); margin-right: 6px; }
+    .progress-bar-bg { background: #2b3542; border-radius: 999px; height: 8px; overflow: hidden; margin: 8px 0; }
+    .progress-bar-fill { background: var(--btn-grad); height: 100%; border-radius: 999px; transition: width 0.3s; }
+    .footer { text-align: center; font-size: 12px; color: var(--sub); margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="badge">LOCKET XVIP DNS PLATFORM</div>
+      <h1>Kích Hoạt Locket Gold 💛</h1>
+      <p class="desc">30 Giây Video Real • 4K HD • AI Filters<br>Mỗi người 1 tài khoản NextDNS độc lập (300.000 truy vấn/tháng)</p>
+    </div>
+
+    <!-- Section 1: Tạo tài khoản NextDNS riêng -->
+    <div class="card">
+      <h3 style="font-size: 16px; margin-bottom: 8px; color: #fff;">1. Cấp Tài Khoản & Cấu Hình Riêng</h3>
+      <p style="font-size: 13px; color: var(--sub); margin-bottom: 16px;">Tự động tạo tài khoản NextDNS mới và cấu hình sẵn chuyển hướng sang máy chủ Proxy Fly.io.</p>
+      
+      <button id="btnCreate" class="btn" onclick="createAndDownload()">⚡ Tạo Tài Khoản &amp; Tải Cấu Hình (Khuyên Dùng)</button>
+      
+      <div id="createResult" class="result-box" style="display: none;"></div>
+    </div>
+
+    <!-- Section 2: Hoặc tải theo Profile ID có sẵn -->
+    <div class="card">
+      <h3 style="font-size: 15px; margin-bottom: 12px; color: #fff;">2. Hoặc Dùng Profile ID Đã Có</h3>
+      <label for="dnsId">Nhập NextDNS Profile ID</label>
+      <input type="text" id="dnsId" placeholder="Ví dụ: a1b2c3">
+      <button class="btn btn-secondary" onclick="downloadManual()">Tải Cấu Hình Cho Profile Này</button>
+    </div>
+
+    <!-- Section 3: Kiểm tra lượt truy vấn & Live Status -->
+    <div class="card">
+      <h3 style="font-size: 15px; margin-bottom: 12px; color: var(--gold);">3. Kiểm Tra Lượt Truy Vấn NextDNS</h3>
+      <label for="checkEmail">Email NextDNS</label>
+      <input type="email" id="checkEmail" placeholder="email@domain.com">
+      
+      <label for="checkPassword">Mật khẩu NextDNS</label>
+      <input type="text" id="checkPassword" placeholder="Mật khẩu của tài khoản">
+
+      <button id="btnCheck" class="btn btn-secondary" onclick="checkUsage()">📊 Kiểm Tra Lượt Truy Vấn &amp; Trạng Thái</button>
+
+      <div id="checkResult" class="result-box" style="display: none;"></div>
+    </div>
+
+    <!-- Section 4: Hướng dẫn cài đặt -->
+    <div class="card">
+      <h3 style="font-size: 15px; margin-bottom: 14px; color: var(--gold);">3 Bước Cài Đặt Trên iPhone:</h3>
+      <div class="steps">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            Bấm tải cấu hình bằng Safari, chọn <strong>Cho phép</strong> khi hiện thông báo tải hồ sơ.
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            Mở <strong>Cài đặt (Settings)</strong> &gt; chọn <strong>Đã tải về hồ sơ</strong> &gt; bấm <strong>Cài đặt</strong>.
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            Vào <strong>Cài đặt chung</strong> &gt; <strong>Giới thiệu</strong> &gt; <strong>Cài đặt tin cậy chứng nhận</strong> &gt; gạt BẬT cho <strong>Locket XVIP Root CA</strong>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      Locket DNS-MITM Platform ✨ Fly.io &amp; NextDNS Engine
+    </div>
+  </div>
+
+  <script>
+    async function createAndDownload() {
+      const btn = document.getElementById('btnCreate');
+      const box = document.getElementById('createResult');
+      btn.disabled = true;
+      btn.innerText = "⏳ Đang tạo tài khoản NextDNS & thiết lập rewrite...";
+      box.style.display = 'none';
+
+      try {
+        const res = await fetch('/api/create-account');
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error || 'Tạo tài khoản thất bại');
+
+        box.style.display = 'block';
+        box.innerHTML = `
+          <div style="color: var(--green); font-weight: 700; margin-bottom: 8px;">✅ Đã tạo tài khoản NextDNS riêng thành công!</div>
+          <div><strong>Profile ID:</strong> <code style="color:var(--gold);">${data.profile_id}</code></div>
+          <div><strong>Email:</strong> ${data.email}</div>
+          <div><strong>Password:</strong> ${data.password}</div>
+          <div style="margin-top: 8px; font-size: 12px; color: var(--sub);">Lưu lại thông tin trên để kiểm tra số lượt truy vấn.</div>
+          <div style="margin-top: 12px;">
+            <a href="${data.profile_download_url}" class="btn" style="padding: 10px; font-size: 14px;">📲 Bấm vào đây để tải Profile (.mobileconfig)</a>
+          </div>
+        `;
+
+        document.getElementById('checkEmail').value = data.email;
+        document.getElementById('checkPassword').value = data.password;
+
+        // Tự động tải file
+        window.location.href = data.profile_download_url;
+      } catch (err) {
+        alert("Lỗi: " + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerText = "⚡ Tạo Tài Khoản & Tải Cấu Hình (Khuyên Dùng)";
+      }
+    }
+
+    function downloadManual() {
+      const id = document.getElementById('dnsId').value.trim();
+      if (!id) return alert('Vui lòng nhập Profile ID');
+      window.location.href = `/api/generate-profile?id=${encodeURIComponent(id)}`;
+    }
+
+    async function checkUsage() {
+      const email = document.getElementById('checkEmail').value.trim();
+      const password = document.getElementById('checkPassword').value.trim();
+      if (!email || !password) return alert('Vui lòng nhập đầy đủ email và mật khẩu');
+
+      const btn = document.getElementById('btnCheck');
+      const box = document.getElementById('checkResult');
+      btn.disabled = true;
+      btn.innerText = "⏳ Đang kiểm tra NextDNS...";
+      box.style.display = 'none';
+
+      try {
+        const res = await fetch(`/api/check-usage?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`);
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error || 'Không kiểm tra được');
+
+        box.style.display = 'block';
+        const activeText = data.is_active 
+          ? `<span style="color: var(--green);"><span class="status-dot"></span>Đang hoạt động (có truy vấn cách đây ${data.last_query_ago_minutes || 0} phút)</span>` 
+          : `<span style="color: #e74c3c;">Chưa có truy vấn gần đây (kiểm tra lại cài đặt DoH trên iPhone)</span>`;
+
+        box.innerHTML = `
+          <div style="font-weight: 700; margin-bottom: 8px;">📊 Thống kê hạn ngạch tháng này:</div>
+          <div>Đã dùng: <strong>${data.queries.toLocaleString()}</strong> / ${data.limit.toLocaleString()} lượt (${data.percent}%)</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" style="width: ${data.percent}%;"></div>
+          </div>
+          <div style="margin-top: 10px;"><strong>Trạng thái thiết bị:</strong> ${activeText}</div>
+          ${data.last_query_at ? `<div style="font-size: 11px; color: var(--sub); margin-top: 4px;">Lần truy vấn gần nhất: ${new Date(data.last_query_at).toLocaleString('vi-VN')}</div>` : ''}
+        `;
+      } catch (err) {
+        alert("Lỗi: " + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerText = "📊 Kiểm Tra Lượt Truy Vấn & Trạng Thái";
+      }
+    }
+  </script>
+</body>
+</html>

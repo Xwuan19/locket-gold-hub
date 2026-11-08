@@ -1,0 +1,27 @@
+name: Locket-XVIP (Super VIP Pro Max 30s)
+desc: Kích hoạt Locket Gold trọn đời (RevenueCat) + 30s Video Real + AI Filters + Vô hạn bạn bè. By Xwuan
+
+http:
+  mitm:
+    - "api.revenuecat.com"
+    - "firebaseremoteconfig.googleapis.com"
+  script:
+    - match: ^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers)
+      name: locket_rc_request
+      type: request
+      timeout: 60
+      script-path: https://raw.githubusercontent.com/Xwuan19/Locket-XVIP/main/js/locket_revenuecat_request.js
+    - match: ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$)
+      name: locket_rc_response
+      type: response
+      require-body: true
+      max-size: -1
+      timeout: 60
+      script-path: https://raw.githubusercontent.com/Xwuan19/Locket-XVIP/main/js/locket_revenuecat_response.js
+    - match: ^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+
+      name: locket_firebase_response
+      type: response
+      require-body: true
+      max-size: -1
+      timeout: 60
+      script-path: https://raw.githubusercontent.com/Xwuan19/Locket-XVIP/main/js/locket_firebase_response.js

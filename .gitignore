@@ -1,0 +1,16 @@
+# Ignore local secret keys
+ca/*.key
+proxy/ca/*.key
+*.key
+
+# Fly & Vercel temp artifacts
+.vercel
+.fly
+
+# System & IDE files
+.DS_Store
+Thumbs.db
+node_modules/
+dist/
+build/
+*.exe

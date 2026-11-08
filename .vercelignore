@@ -1,0 +1,4 @@
+proxy
+Dockerfile
+fly.toml
+ca/*.key

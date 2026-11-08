@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/api/generate-profile",
+      "headers": [
+        { "key": "Content-Type", "value": "application/x-apple-aspen-config" }
+      ]
+    }
+  ]
+}
