@@ -20,17 +20,17 @@ var SELECTED_FRAME = "lowg";
 var FRAME_CATALOG = {
     lowg: {
         uid: "frame_lowg_l2k_2026",
-        url: "https://raw.githubusercontent.com/Xwuan19/Locket-XVIP/main/assets/frames/frame_lowg_l2k.png",
+        url: "https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/assets/frames/frame_lowg_l2k.png",
         placement: "above"
     },
     kitty_shin: {
         uid: "frame_kitty_shin_2026",
-        url: "https://raw.githubusercontent.com/Xwuan19/Locket-XVIP/main/assets/frames/frame_kitty_shinchan.png",
+        url: "https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/assets/frames/frame_kitty_shinchan.png",
         placement: "above"
     },
     citopia: {
         uid: "frame_citopia_y2k_2026",
-        url: "https://raw.githubusercontent.com/Xwuan19/Locket-XVIP/main/assets/frames/frame_citopia_y2k.png",
+        url: "https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/assets/frames/frame_citopia_y2k.png",
         placement: "above"
     },
     halloween: {
@@ -149,7 +149,7 @@ if (!ua || ua.toLowerCase().includes("locket") || ua.includes("Firebase") || ua.
                 {
                     title: "LocketXwuan ✨",
                     body: "30s Video Real • 4K HD • AI Filters",
-                    imageURL: "https://raw.githubusercontent.com/Xwuan19/Locket-XVIP/main/assets/locket_gold.jpg"
+                    imageURL: "https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/assets/locket_gold.jpg"
                 }
             ],
             primary_button_title: "Bắt Đầu",
@@ -237,58 +237,222 @@ if (!ua || ua.toLowerCase().includes("locket") || ua.includes("Firebase") || ua.
             catch_up: true,
             widget_looping_mode: "never"
         }),
-        camera_filter_config: JSON.stringify({
-            allows_custom_filters: true,
-            allowsCustomFilters: true,
-            show_filter_button: true,
-            showFilterButton: true,
-            sheet_enabled: true,
-            sheetEnabled: true,
-            open_sheet_immediately: true,
-            openSheetImmediately: true,
-            reference_image_attachment_enabled: true,
-            referenceImageAttachmentEnabled: true,
-            sheet_filters: [
-                { title: { en: "Photobooth 4 Ô" }, filter_ids: ["frame_berry_days", "frame_happy_snap", "frame_sky_diary", "photobooth_4cut", "photobooth_cute", "pb_holo_4cut", "pb_scrapbook_ripped_4cut", "pb_ripped_paper_4cut", "pb_denim_ripped_2x2", "frame_classic_pb"] },
-                { title: { en: "Goofy" }, filter_ids: ["okay_wig", "influencer", "looks_maxxing", "toothless", "bye_brows"] },
-                { title: { en: "Looks" }, filter_ids: ["bowling_ball", "blonde_bleached", "beard", "bob_cut", "buns", "tatted", "mohawk", "braces", "bye_brows"] },
-                { title: { en: "Celebrate" }, filter_ids: ["slimed", "princess", "disco_lights", "cash_money", "happy_birthday"] },
-                { title: { en: "Cute" }, filter_ids: ["cutesy", "sticker_face", "flower_crown", "love_bug"] },
-                { title: { en: "Costumes" }, filter_ids: ["wedding", "cowboy_cowgirl", "giraffe", "clown"] },
-                { title: { en: "Holidays" }, filter_ids: ["easter_bunney_cutout", "easter_chick_cutout", "bearded", "leprechaun", "lucky_face", "sweet_hearts", "elf_cutout", "santa_cutout", "frosty"] }
-            ],
-            sheetFilters: [
-                { title: { en: "Photobooth 4 Ô" }, filter_ids: ["frame_berry_days", "frame_happy_snap", "frame_sky_diary", "photobooth_4cut", "photobooth_cute", "pb_holo_4cut", "pb_scrapbook_ripped_4cut", "pb_ripped_paper_4cut", "pb_denim_ripped_2x2", "frame_classic_pb"] },
-                { title: { en: "Goofy" }, filter_ids: ["okay_wig", "influencer", "looks_maxxing", "toothless", "bye_brows"] },
-                { title: { en: "Looks" }, filter_ids: ["bowling_ball", "blonde_bleached", "beard", "bob_cut", "buns", "tatted", "mohawk", "braces", "bye_brows"] },
-                { title: { en: "Celebrate" }, filter_ids: ["slimed", "princess", "disco_lights", "cash_money", "happy_birthday"] },
-                { title: { en: "Cute" }, filter_ids: ["cutesy", "sticker_face", "flower_crown", "love_bug"] },
-                { title: { en: "Costumes" }, filter_ids: ["wedding", "cowboy_cowgirl", "giraffe", "clown"] },
-                { title: { en: "Holidays" }, filter_ids: ["easter_bunney_cutout", "easter_chick_cutout", "bearded", "leprechaun", "lucky_face", "sweet_hearts", "elf_cutout", "santa_cutout", "frosty"] }
-            ],
-            picker_filters: [
-                "frame_berry_days", "frame_happy_snap", "frame_sky_diary", "photobooth_4cut", "photobooth_cute",
-                "pb_holo_4cut", "pb_scrapbook_ripped_4cut", "pb_ripped_paper_4cut", "pb_denim_ripped_2x2", "frame_classic_pb",
-                "okay_wig", "influencer", "looks_maxxing", "toothless", "bye_brows",
-                "bowling_ball", "blonde_bleached", "beard", "bob_cut", "buns",
-                "tatted", "mohawk", "braces", "slimed", "princess",
-                "disco_lights", "cash_money", "happy_birthday", "cutesy", "sticker_face",
-                "flower_crown", "love_bug", "wedding", "cowboy_cowgirl", "giraffe",
-                "clown", "easter_bunney_cutout", "easter_chick_cutout", "bearded", "leprechaun",
-                "lucky_face", "sweet_hearts", "elf_cutout", "santa_cutout", "frosty"
-            ],
-            pickerFilters: [
-                "frame_berry_days", "frame_happy_snap", "frame_sky_diary", "photobooth_4cut", "photobooth_cute",
-                "pb_holo_4cut", "pb_scrapbook_ripped_4cut", "pb_ripped_paper_4cut", "pb_denim_ripped_2x2", "frame_classic_pb",
-                "okay_wig", "influencer", "looks_maxxing", "toothless", "bye_brows",
-                "bowling_ball", "blonde_bleached", "beard", "bob_cut", "buns",
-                "tatted", "mohawk", "braces", "slimed", "princess",
-                "disco_lights", "cash_money", "happy_birthday", "cutesy", "sticker_face",
-                "flower_crown", "love_bug", "wedding", "cowboy_cowgirl", "giraffe",
-                "clown", "easter_bunney_cutout", "easter_chick_cutout", "bearded", "leprechaun",
-                "lucky_face", "sweet_hearts", "elf_cutout", "santa_cutout", "frosty"
-            ]
-        }),
+        sheet_filters_selectable: "true",
+        camera_filter_config: (function () {
+            var workerAsset = "https://locket-vip.mhiep20077.workers.dev/assets";
+
+            function buildFilter(id, name, colors, icon, category, overlayUrl) {
+                var imgUrl = overlayUrl || (icon && icon.url) || "";
+                return {
+                    uid: id,
+                    id: id,
+                    name: name,
+                    category: category || "Filter",
+                    prompt: id,
+                    style: "cutout",
+                    type: "normal",
+                    filterType: "cutout",
+                    overlay: true,
+                    imageUrl: imgUrl,
+                    iconUrl: imgUrl,
+                    overlayImageUrl: imgUrl,
+                    overlayImageURL: imgUrl,
+                    tintColor: colors[0],
+                    colors: colors,
+                    captureButtonColors: colors,
+                    icon: {
+                        url: imgUrl,
+                        iconUrl: imgUrl,
+                        remoteImage: imgUrl,
+                        sfSymbol: (icon && icon.sfSymbol) || "camera.filters",
+                        symbol: (icon && icon.sfSymbol) || "camera.filters",
+                        emoji: (icon && icon.emoji) || ""
+                    },
+                    outputUrl: null,
+                    productUrl: null,
+                    textColor: "#FFFFFF",
+                    referenceImages: [],
+                    requires_gold: false,
+                    requiresGold: false,
+                    is_gold: false,
+                    isGold: false,
+                    unlocked: true,
+                    is_unlocked: true,
+                    isUnlocked: true,
+                    free: true,
+                    allowsTryFilter: true,
+                    allows_try_filter: true,
+                    tryButtonEnabled: true,
+                    try_button_enabled: true
+                };
+            }
+
+            var customFilterGroups = [
+                {
+                    id: "group_lucky_gift",
+                    title: { en: "🎁 Hộp Quà May Mắn", vi: "🎁 Hộp Quà May Mắn" },
+                    filter_ids: ["hop_qua_may_man"]
+                },
+                {
+                    id: "group_photobooth_2cut",
+                    title: { en: "🎞️ Photobooth 2 Ảnh", vi: "🎞️ Photobooth 2 Ảnh" },
+                    filter_ids: [
+                        "pb_2cut_noel", "pb_2cut_classic", "pb_2cut_cute",
+                        "pb_single_y2k_silver_holo", "pb_single_denim_ripped", "pb_single_film_nostalgia"
+                    ]
+                },
+                {
+                    id: "group_photobooth_4cut",
+                    title: { en: "📸 Photobooth 4 Ảnh", vi: "📸 Photobooth 4 Ảnh" },
+                    filter_ids: [
+                        "pb_4cut_stone", "pb_4cut_chiikawa", "pb_4cut_gold", "pb_4cut_vip",
+                        "khung_hello_kitty_h_ng_pastel", "pb_4cut_cat_ears", "photobooth_4cut",
+                        "photobooth_cute", "frame_berry_days", "frame_happy_snap", "frame_sky_diary",
+                        "pb_holo_4cut", "pb_scrapbook_ripped_4cut", "pb_ripped_paper_4cut", "pb_denim_ripped_2x2"
+                    ]
+                },
+                {
+                    id: "group_birthday",
+                    title: { en: "🎂 Sinh Nhật", vi: "🎂 Sinh Nhật" },
+                    filter_ids: ["pb_2cut_birthday", "stk_dio_happy_birthday", "sinh_nh_t_hello_kitty_ho_i_c"]
+                },
+                {
+                    id: "group_stickers_frames",
+                    title: { en: "🔥 Sticker & Khung Ảnh (free không cần lượt)", vi: "🔥 Sticker & Khung Ảnh (free không cần lượt)" },
+                    filter_ids: [
+                        "cmt_locket", "sticker_b_nh_lu_n_minh_tu", "khung_hello_kitty_pastel_ng_t_ng_o",
+                        "khung_nh_n_pastel_vi_n_ren", "khung_nh_hoa_pastel_vi_n_xanh_m_nh", "khung_nh_shin_chan_vi_n_m_nh",
+                        "pb_single_y2k_silver_holo", "stk_rose_flower", "stk_spooky_ghost", "stk_superhero_cape",
+                        "stk_rain_storm", "stk_golden_hour", "stk_fireworks", "stk_new_year_2026",
+                        "stk_harry_potter", "stk_minecraft", "stk_fire_flame", "stk_ocean_underwater",
+                        "khung_nh_vu_ng_m_ng_nh_n_b_c", "khung_kh_ng_gian_xanh_pastel", "khung_vu_ng_ng_i_sao_h_ng_pastel",
+                        "khung_nh_pastel_vi_n_s_h_i_c_u", "khung_anh_o_kitty_v_sao", "khung_xanh_v_tay_sao_v_ng"
+                    ]
+                },
+                {
+                    id: "group_goofy",
+                    title: { en: "Goofy", vi: "Hài hước" },
+                    filter_ids: ["okay_wig", "influencer", "looks_maxxing", "toothless", "bye_brows"]
+                },
+                {
+                    id: "group_looks",
+                    title: { en: "Looks", vi: "Biến hình" },
+                    filter_ids: ["bowling_ball", "blonde_bleached", "beard", "bob_cut", "buns", "tatted", "mohawk", "braces"]
+                },
+                {
+                    id: "group_celebrate",
+                    title: { en: "Celebrate", vi: "Tiệc tùng" },
+                    filter_ids: ["slimed", "princess", "disco_lights", "cash_money", "happy_birthday"]
+                },
+                {
+                    id: "group_cute",
+                    title: { en: "Cute", vi: "Dễ thương" },
+                    filter_ids: ["cutesy", "sticker_face", "flower_crown", "love_bug"]
+                }
+            ];
+
+            var customPhotoboothFilters = [
+                // 1. Hộp Quà May Mắn
+                buildFilter("hop_qua_may_man", "Hộp Quà May Mắn", ["#FF416C", "#FF4B2B"], { url: workerAsset + "/stickers/stk_dio_lucky_face.png", sfSymbol: "gift.fill", emoji: "🎁" }, "Hộp Quà", workerAsset + "/stickers/stk_dio_lucky_face.png"),
+
+                // 2. Photobooth 2 Ảnh
+                buildFilter("pb_2cut_noel", "noel", ["#C0392B", "#27AE60"], { sfSymbol: "gift.fill", emoji: "🎄" }, "Photobooth 2 Ảnh"),
+                buildFilter("pb_2cut_classic", "Photobooth", ["#2C3E50", "#4CA1AF"], { sfSymbol: "film", emoji: "🎞️" }, "Photobooth 2 Ảnh"),
+                buildFilter("pb_2cut_cute", "Photo cute", ["#FF9A9E", "#FECFEF"], { sfSymbol: "sparkles", emoji: "🌸" }, "Photobooth 2 Ảnh"),
+                buildFilter("pb_single_y2k_silver_holo", "Y2K Silver Holo", ["#BDC3C7", "#2C3E50"], { url: workerAsset + "/frames/pb_single_y2k_silver_holo.png", sfSymbol: "sparkles" }, "Photobooth 2 Ảnh", workerAsset + "/frames/pb_single_y2k_silver_holo.png"),
+                buildFilter("pb_single_denim_ripped", "Denim Cá Tính", ["#4B79A1", "#283E51"], { url: workerAsset + "/frames/pb_single_denim_ripped.png", sfSymbol: "scissors" }, "Photobooth 2 Ảnh", workerAsset + "/frames/pb_single_denim_ripped.png"),
+                buildFilter("pb_single_film_nostalgia", "Film Hoài Cổ", ["#8E0E00", "#1F1C18"], { url: workerAsset + "/frames/pb_single_film_nostalgia.png", sfSymbol: "film.stack" }, "Photobooth 2 Ảnh", workerAsset + "/frames/pb_single_film_nostalgia.png"),
+
+                // 3. Photobooth 4 Ảnh
+                buildFilter("pb_4cut_stone", "photobooth đá", ["#708090", "#2F4F4F"], { sfSymbol: "square.grid.2x2", emoji: "🪨" }, "Photobooth 4 Ảnh"),
+                buildFilter("pb_4cut_chiikawa", "chiikawa", ["#FFE4E1", "#FFB6C1"], { sfSymbol: "pawprint.fill", emoji: "🐹" }, "Photobooth 4 Ảnh"),
+                buildFilter("pb_4cut_gold", "Locket Gold", ["#FFD700", "#FFA500"], { sfSymbol: "star.fill", emoji: "💛" }, "Photobooth 4 Ảnh"),
+                buildFilter("pb_4cut_vip", "Locket VIP", ["#1C1C1C", "#FFD700"], { sfSymbol: "crown.fill", emoji: "👑" }, "Photobooth 4 Ảnh"),
+                buildFilter("khung_hello_kitty_h_ng_pastel", "hello kitty", ["#FF758C", "#FF7EB3"], { url: workerAsset + "/frames/khung_hello_kitty_h_ng_pastel.png", sfSymbol: "heart.fill", emoji: "🐱" }, "Photobooth 4 Ảnh", workerAsset + "/frames/khung_hello_kitty_h_ng_pastel.png"),
+                buildFilter("pb_4cut_cat_ears", "khung tai mèo", ["#FFA07A", "#FF6347"], { sfSymbol: "cat", emoji: "🐱" }, "Photobooth 4 Ảnh"),
+                buildFilter("photobooth_4cut", "Photobooth 4 ô", ["#FFD6E0", "#FFE4EC"], { url: workerAsset + "/frames/photobooth_4cut.png", sfSymbol: "square.grid.2x2" }, "Photobooth 4 Ảnh", workerAsset + "/frames/photobooth_4cut.png"),
+                buildFilter("photobooth_cute", "Photobooth Cute", ["#FFD6E0", "#FFE4EC"], { url: workerAsset + "/frames/photobooth_cute.png", sfSymbol: "square.grid.2x2" }, "Photobooth 4 Ảnh", workerAsset + "/frames/photobooth_cute.png"),
+                buildFilter("frame_berry_days", "Berry Days", ["#FF6B8B", "#FF8E53"], { sfSymbol: "square.grid.2x2", emoji: "🍓" }, "Photobooth 4 Ảnh"),
+                buildFilter("frame_happy_snap", "Happy Snap", ["#F9D423", "#FF4E50"], { sfSymbol: "square.grid.2x2", emoji: "📸" }, "Photobooth 4 Ảnh"),
+                buildFilter("frame_sky_diary", "Sky Diary", ["#89F7FE", "#66A6FF"], { sfSymbol: "square.grid.2x2", emoji: "☁️" }, "Photobooth 4 Ảnh"),
+                buildFilter("pb_holo_4cut", "Y2K Holo 4 Ô", ["#A18CD1", "#FBC2EB"], { sfSymbol: "sparkles", emoji: "💿" }, "Photobooth 4 Ảnh"),
+                buildFilter("pb_scrapbook_ripped_4cut", "Scrapbook", ["#D4A373", "#CCD5AE"], { sfSymbol: "square.grid.2x2", emoji: "📖" }, "Photobooth 4 Ảnh"),
+                buildFilter("pb_ripped_paper_4cut", "Ripped Paper", ["#E9D8A6", "#EE9B00"], { sfSymbol: "square.grid.2x2", emoji: "📜" }, "Photobooth 4 Ảnh"),
+                buildFilter("pb_denim_ripped_2x2", "Denim 4 Ô", ["#4B79A1", "#283E51"], { sfSymbol: "square.grid.2x2", emoji: "👖" }, "Photobooth 4 Ảnh"),
+
+                // 4. Sinh Nhật
+                buildFilter("pb_2cut_birthday", "sinh nhật 2 ảnh", ["#FF69B4", "#BA55D3"], { sfSymbol: "birthday.cake.fill", emoji: "🎂" }, "Sinh Nhật"),
+                buildFilter("stk_dio_happy_birthday", "sinh nhật", ["#FF1493", "#FFD700"], { url: workerAsset + "/stickers/stk_dio_happy_birthday.png", sfSymbol: "balloon.2.fill", emoji: "🎉" }, "Sinh Nhật", workerAsset + "/stickers/stk_dio_happy_birthday.png"),
+                buildFilter("sinh_nh_t_hello_kitty_ho_i_c", "Sinh Nhật Hello Kitty", ["#FF758C", "#FF7EB3"], { url: workerAsset + "/frames/sinh_nh_t_hello_kitty_ho_i_c.png", sfSymbol: "heart.fill", emoji: "🎀" }, "Sinh Nhật", workerAsset + "/frames/sinh_nh_t_hello_kitty_ho_i_c.png"),
+
+                // 5. Sticker & Khung Ảnh (free không cần lượt)
+                buildFilter("cmt_locket", "Locket Việt Nam", ["#FF758C", "#FF7EB3"], { url: workerAsset + "/frames/cmt_locket.png", sfSymbol: "heart.fill" }, "Stickers & Khung", workerAsset + "/frames/cmt_locket.png"),
+                buildFilter("sticker_b_nh_lu_n_minh_tu", "Trend Tíc Tóc", ["#111111", "#FE2C55"], { url: workerAsset + "/frames/sticker_b_nh_lu_n_minh_tu.png", sfSymbol: "play.rectangle.fill" }, "Stickers & Khung", workerAsset + "/frames/sticker_b_nh_lu_n_minh_tu.png"),
+                buildFilter("khung_hello_kitty_pastel_ng_t_ng_o", "Hello Kitty Ngọt Ngào", ["#FFB6C1", "#FF69B4"], { url: workerAsset + "/frames/khung_hello_kitty_pastel_ng_t_ng_o.png", sfSymbol: "heart.fill" }, "Stickers & Khung", workerAsset + "/frames/khung_hello_kitty_pastel_ng_t_ng_o.png"),
+                buildFilter("khung_nh_n_pastel_vi_n_ren", "Nơ Pastel Viền Ren", ["#FAD0C4", "#FFD1FF"], { url: workerAsset + "/frames/khung_nh_n_pastel_vi_n_ren.png", sfSymbol: "sparkles" }, "Stickers & Khung", workerAsset + "/frames/khung_nh_n_pastel_vi_n_ren.png"),
+                buildFilter("khung_nh_hoa_pastel_vi_n_xanh_m_nh", "Hoa Xinh Pastel", ["#A8EDEA", "#FED6E3"], { url: workerAsset + "/frames/khung_nh_hoa_pastel_vi_n_xanh_m_nh.png", sfSymbol: "camera.macro" }, "Stickers & Khung", workerAsset + "/frames/khung_nh_hoa_pastel_vi_n_xanh_m_nh.png"),
+                buildFilter("khung_nh_shin_chan_vi_n_m_nh", "Shin-Chan Viền Mảnh", ["#FFD200", "#F7971E"], { url: workerAsset + "/frames/khung_nh_shin_chan_vi_n_m_nh.png", sfSymbol: "face.smiling" }, "Stickers & Khung", workerAsset + "/frames/khung_nh_shin_chan_vi_n_m_nh.png"),
+                buildFilter("stk_rose_flower", "Ngậm Hoa Hồng", ["#E11D48", "#FB7185"], { url: workerAsset + "/stickers/stk_rose_flower.png", sfSymbol: "camera.macro" }, "Stickers & Khung", workerAsset + "/stickers/stk_rose_flower.png"),
+                buildFilter("stk_spooky_ghost", "Bóng Ma Nhỏ", ["#64748B", "#94A3B8"], { url: workerAsset + "/stickers/stk_spooky_ghost.png", sfSymbol: "moon.fill" }, "Stickers & Khung", workerAsset + "/stickers/stk_spooky_ghost.png"),
+                buildFilter("stk_superhero_cape", "Siêu Anh Hùng", ["#DC2626", "#EF4444"], { url: workerAsset + "/stickers/stk_superhero_cape.png", sfSymbol: "bolt.fill" }, "Stickers & Khung", workerAsset + "/stickers/stk_superhero_cape.png"),
+                buildFilter("stk_rain_storm", "Mưa Bão Sấm Sét", ["#0284C7", "#38BDF8"], { url: workerAsset + "/stickers/stk_rain_storm.png", sfSymbol: "cloud.bolt.rain.fill" }, "Stickers & Khung", workerAsset + "/stickers/stk_rain_storm.png"),
+                buildFilter("stk_golden_hour", "Nắng Hoàng Hôn", ["#D97706", "#F59E0B"], { url: workerAsset + "/stickers/stk_golden_hour.png", sfSymbol: "sun.max.fill" }, "Stickers & Khung", workerAsset + "/stickers/stk_golden_hour.png"),
+                buildFilter("stk_fireworks", "Pháo Hoa Rực Rỡ", ["#7C3AED", "#A855F7"], { url: workerAsset + "/stickers/stk_fireworks.png", sfSymbol: "sparkles" }, "Stickers & Khung", workerAsset + "/stickers/stk_fireworks.png"),
+                buildFilter("stk_new_year_2026", "Năm Mới 2026", ["#DC2626", "#F59E0B"], { url: workerAsset + "/stickers/stk_new_year_2026.png", sfSymbol: "star.fill" }, "Stickers & Khung", workerAsset + "/stickers/stk_new_year_2026.png"),
+                buildFilter("stk_harry_potter", "Phù Thủy Hogwarts", ["#854D0E", "#CA8A04"], { url: workerAsset + "/stickers/stk_harry_potter.png", sfSymbol: "wand.and.stars" }, "Stickers & Khung", workerAsset + "/stickers/stk_harry_potter.png"),
+                buildFilter("stk_minecraft", "Minecraft 3D", ["#16A34A", "#22C55E"], { url: workerAsset + "/stickers/stk_minecraft.png", sfSymbol: "cube.fill" }, "Stickers & Khung", workerAsset + "/stickers/stk_minecraft.png"),
+                buildFilter("stk_fire_flame", "Ngọn Lửa Rực Cháy", ["#EA580C", "#F97316"], { url: workerAsset + "/stickers/stk_fire_flame.png", sfSymbol: "flame.fill" }, "Stickers & Khung", workerAsset + "/stickers/stk_fire_flame.png"),
+                buildFilter("stk_ocean_underwater", "Thủy Cung", ["#0D9488", "#14B8A6"], { url: workerAsset + "/stickers/stk_ocean_underwater.png", sfSymbol: "fish.fill" }, "Stickers & Khung", workerAsset + "/stickers/stk_ocean_underwater.png"),
+                buildFilter("khung_nh_vu_ng_m_ng_nh_n_b_c", "Nhện Đỏ", ["#E53935", "#B71C1C"], { url: workerAsset + "/frames/khung_nh_vu_ng_m_ng_nh_n_b_c.png", sfSymbol: "circle.grid.cross" }, "Stickers & Khung", workerAsset + "/frames/khung_nh_vu_ng_m_ng_nh_n_b_c.png"),
+                buildFilter("khung_kh_ng_gian_xanh_pastel", "Không Gian Xanh", ["#81C784", "#4CAF50"], { url: workerAsset + "/frames/khung_kh_ng_gian_xanh_pastel.png", sfSymbol: "leaf.fill" }, "Stickers & Khung", workerAsset + "/frames/khung_kh_ng_gian_xanh_pastel.png"),
+                buildFilter("khung_vu_ng_ng_i_sao_h_ng_pastel", "Ngôi Sao Hồng", ["#F48FB1", "#EC407A"], { url: workerAsset + "/frames/khung_vu_ng_ng_i_sao_h_ng_pastel.png", sfSymbol: "star.fill" }, "Stickers & Khung", workerAsset + "/frames/khung_vu_ng_ng_i_sao_h_ng_pastel.png"),
+                buildFilter("khung_nh_pastel_vi_n_s_h_i_c_u", "Sò Hải Cẩu", ["#90CAF9", "#42A5F5"], { url: workerAsset + "/frames/khung_nh_pastel_vi_n_s_h_i_c_u.png", sfSymbol: "water.waves" }, "Stickers & Khung", workerAsset + "/frames/khung_nh_pastel_vi_n_s_h_i_c_u.png"),
+                buildFilter("khung_anh_o_kitty_v_sao", "Hello Kitty & Sao", ["#FF80AB", "#FF4081"], { url: workerAsset + "/frames/khung_anh_o_kitty_v_sao.png", sfSymbol: "star.bubble" }, "Stickers & Khung", workerAsset + "/frames/khung_anh_o_kitty_v_sao.png"),
+                buildFilter("khung_xanh_v_tay_sao_v_ng", "Sao Vàng Xanh", ["#4DD0E1", "#00ACC1"], { url: workerAsset + "/frames/khung_xanh_v_tay_sao_v_ng.png", sfSymbol: "star.fill" }, "Stickers & Khung", workerAsset + "/frames/khung_xanh_v_tay_sao_v_ng.png")
+            ];
+
+            var allFilterIds = [];
+            for (var gi = 0; gi < customFilterGroups.length; gi++) {
+                var g = customFilterGroups[gi];
+                g.filterIds = g.filter_ids;
+                g.requires_gold = false;
+                g.requiresGold = false;
+                g.is_gold = false;
+                g.isGold = false;
+                g.unlocked = true;
+                g.is_unlocked = true;
+                g.isUnlocked = true;
+                g.free = true;
+                for (var fi = 0; fi < g.filter_ids.length; fi++) {
+                    var fId = g.filter_ids[fi];
+                    if (allFilterIds.indexOf(fId) === -1) {
+                        allFilterIds.push(fId);
+                    }
+                }
+            }
+
+            return JSON.stringify({
+                allows_custom_filters: true,
+                allowsCustomFilters: true,
+                show_filter_button: true,
+                showFilterButton: true,
+                sheet_enabled: true,
+                sheetEnabled: true,
+                open_sheet_immediately: false,
+                openSheetImmediately: false,
+                reference_image_attachment_enabled: true,
+                referenceImageAttachmentEnabled: true,
+                picker_filters: allFilterIds,
+                pickerFilters: allFilterIds,
+                filter_groups: customFilterGroups,
+                filterGroups: customFilterGroups,
+                sheet_filters: customFilterGroups,
+                sheetFilters: customFilterGroups,
+                remote_filters: customPhotoboothFilters,
+                remoteFilters: customPhotoboothFilters,
+                filters: customPhotoboothFilters
+            });
+        })(),
         camera_roll_preview_enabled: "true",
         camera_roll_video_enabled: "true",
         camera_roll_video_upload_enabled: "true",

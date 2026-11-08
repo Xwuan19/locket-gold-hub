@@ -16,13 +16,13 @@ Bạn có 2 lựa chọn module tùy theo nhu cầu:
 #### Lựa chọn A: Bản Super VIP Pro Max (Gold + 30s Video + AI Filters + Vô Hạn Bạn Bè)
 - Dán URL sau vào mục **Mô-đun (Modules)** trong Shadowrocket:
 ```text
-https://raw.githubusercontent.com/Xwuan19/Locket-XVIP/main/modules/Locket_XVIP.module
+https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/modules/Locket_XVIP.module
 ```
 
 #### Lựa chọn B: Bản Gold Thuần Siêu Ổn Định (Pure Gold 30s)
 - Nhẹ nhàng, ổn định 100%, chuyên mở khóa Locket Gold qua RevenueCat & Remote Config:
 ```text
-https://raw.githubusercontent.com/Xwuan19/Locket-XVIP/main/modules/Locket_Gold.module
+https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/modules/Locket_Gold.module
 ```
 
 > [!IMPORTANT]
@@ -34,28 +34,28 @@ https://raw.githubusercontent.com/Xwuan19/Locket-XVIP/main/modules/Locket_Gold.m
 - Mở **Surge** > tab **Modules** > **Install New Module**.
 - Dán URL:
 ```text
-https://raw.githubusercontent.com/Xwuan19/Locket-XVIP/main/modules/Locket_RemoteConfig.sgmodule
+https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/modules/Locket_RemoteConfig.sgmodule
 ```
 
 ### 3. Loon
 - Mở **Loon** > tab **Plugin** > bấm dấu `+`.
 - Dán URL:
 ```text
-https://raw.githubusercontent.com/Xwuan19/Locket-XVIP/main/modules/Locket_RemoteConfig.plugin
+https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/modules/Locket_RemoteConfig.plugin
 ```
 
 ### 4. Quantumult X
 - Mở **Quantumult X** > mục **Rewrite** > chọn **Snippet**.
 - Thêm snippet từ URL:
 ```text
-https://raw.githubusercontent.com/Xwuan19/Locket-XVIP/main/modules/Locket_RemoteConfig.snippet
+https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/modules/Locket_RemoteConfig.snippet
 ```
 
 ### 5. Stash
 - Mở **Stash** > mục **Overrides** > bấm dấu `+`.
 - Dán URL:
 ```text
-https://raw.githubusercontent.com/Xwuan19/Locket-XVIP/main/modules/Locket_RemoteConfig.stoverride
+https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/modules/Locket_RemoteConfig.stoverride
 ```
 
 ---

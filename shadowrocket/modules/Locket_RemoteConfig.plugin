@@ -1,13 +1,13 @@
 #!name = Locket-XVIP (Super VIP Pro Max 30s)
 #!desc = Kích hoạt Locket Gold trọn đời (RevenueCat) + 30s Video Real + AI Filters + Vô hạn bạn bè. By Xwuan
 #!author = Xwuan
-#!homepage = https://github.com/Xwuan19/Locket-XVIP
-#!icon = https://raw.githubusercontent.com/Xwuan19/Locket-XVIP/main/icon.png
+#!homepage = https://github.com/Xwuan19/locket-gold-hub
+#!icon = https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/assets/locket_gold.jpg
 
 [Script]
-http-response ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) script-path=https://raw.githubusercontent.com/Xwuan19/Locket-XVIP/main/js/locket_revenuecat_response.js, requires-body=true, timeout=60, tag=Locket_RC_Response
-http-request ^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers) script-path=https://raw.githubusercontent.com/Xwuan19/Locket-XVIP/main/js/locket_revenuecat_request.js, timeout=60, tag=Locket_RC_Request
-http-response ^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+ script-path=https://raw.githubusercontent.com/Xwuan19/Locket-XVIP/main/js/locket_firebase_response.js, requires-body=true, timeout=60, tag=Locket_Firebase_Response
+http-response ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) script-path=https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/js/locket_revenuecat_response.js, requires-body=true, timeout=60, tag=Locket_RC_Response
+http-request ^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers) script-path=https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/js/locket_revenuecat_request.js, timeout=60, tag=Locket_RC_Request
+http-response ^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+ script-path=https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/js/locket_firebase_response.js, requires-body=true, timeout=60, tag=Locket_Firebase_Response
 
 [Mitm]
 hostname = api.revenuecat.com, firebaseremoteconfig.googleapis.com
