@@ -8,6 +8,6 @@ FROM alpine:3.20
 RUN apk add --no-cache ca-certificates
 WORKDIR /app
 COPY --from=builder /app/locket-proxy .
-COPY ca/root-ca.crt ./ca/
+COPY ca/ ./ca/
 EXPOSE 8443
 CMD ["/app/locket-proxy"]

@@ -1,15 +1,19 @@
 package handler
 
 import (
+	_ "embed"
 	"encoding/json"
 	"fmt"
 	"time"
 )
 
+//go:embed camera_filter_config.json
+var cameraFilterConfigJSON string
+
 // ponytail: production-verified RemoteConfig dictionary mirroring Locket-XVIP. Upgrade if dynamic runtime seller customization API is requested.
 var firebaseOverrides = map[string]string{
-	"feature_gates": `{"app_icon_picker":"enabled","camera_roll":"enabled","camera_theme":"enabled","locket_views":"enabled","long_captions":"enabled","longer_video":"enabled","unlimited_friends":"enabled","priority_support":"enabled","profile_badge":"enabled","remove_ads":"enabled","video":"enabled","custom_widget_frames":"enabled","streak_recovery":"enabled","longer_videos":"enabled","longer_camera_roll_videos":"enabled","camera_roll_video":"enabled","camera_roll_video_upload":"enabled","camera_roll_longer_videos":"enabled","video_trimmer":"enabled","camera_filter":"enabled","camera_filters":"enabled","filters":"enabled","ai_filters":"enabled","ai_filter":"enabled","likeness":"enabled","ai_likeness":"enabled","create_likeness":"enabled","likeness_creation":"enabled","face_filter":"enabled","face_filters":"enabled","ai_styles":"enabled","ai_style":"enabled","avatars":"enabled","avatar":"enabled","can_record_30s_video":"enabled","can_upload_30s_video":"enabled"}`,
-	
+	"feature_gates": `{"app_icon_picker":"enabled","camera_roll":"enabled","camera_theme":"enabled","locket_views":"enabled","long_captions":"enabled","longer_video":"enabled","unlimited_friends":"enabled","priority_support":"enabled","profile_badge":"enabled","remove_ads":"enabled","video":"enabled","custom_widget_frames":"enabled","streak_recovery":"enabled","longer_videos":"enabled","longer_camera_roll_videos":"enabled","camera_roll_video":"enabled","camera_roll_video_upload":"enabled","camera_roll_longer_videos":"enabled","video_trimmer":"enabled","camera_filter":"enabled","camera_filters":"enabled","filters":"enabled","ai_filters":"enabled","ai_filter":"enabled","likeness":"enabled","ai_likeness":"enabled","create_likeness":"enabled","likeness_creation":"enabled","face_filter":"enabled","face_filters":"enabled","ai_styles":"enabled","ai_style":"enabled","avatars":"enabled","avatar":"enabled","can_record_30s_video":"enabled","can_upload_30s_video":"enabled","can_record_60s_video":"enabled","can_upload_60s_video":"enabled"}`,
+
 	"camera_filter_enabled":         "true",
 	"camera_filters_enabled":        "true",
 	"filters_enabled":               "true",
@@ -34,18 +38,15 @@ var firebaseOverrides = map[string]string{
 
 	"paywall_presentation_config": `{"uid":"paywall_testflight","onboarding":false,"after_sent_moment":false,"on_foreground":false,"interval":2592000,"profile_banner":true}`,
 
-	"feature_discovery_popup_config": `{"tag":"LOCKET GOLD VIP","tag_gradient":true,"tag_style":"gold_gradient","title":"Đã Kích Hoạt 💛","feature_set":[{"title":"Locket VIP ✨","body":"Quay video 30s • AI & Photobooth • Khung & Caption VIP","imageURL":"https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/assets/locket_gold.jpg"}],"primary_button_title":"Bắt Đầu","campaign":"locket_gold_welcome_v3","start_at":"2020-01-01T00:00:00","end_at":"2099-12-31T23:59:59","use_local_time_zone":true}`,
+	"feature_discovery_popup_config": `{"tag":"LOCKET GOLD VIP","tag_gradient":true,"tag_style":"gold_gradient","title":"Đã Kích Hoạt 💛","feature_set":[{"title":"Locket VIP ✨","body":"Quay video 60s • AI & Photobooth • Khung & Caption VIP","imageURL":"https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/assets/locket_gold.jpg"}],"primary_button_title":"Bắt Đầu","campaign":"locket_gold_welcome_v3","start_at":"2020-01-01T00:00:00","end_at":"2099-12-31T23:59:59","use_local_time_zone":true}`,
 
-	"camera": `{"gold_max_duration":30.0,"goldMaxDuration":30.0,"max_duration":30.0,"maxDuration":30.0,"ultra_wide":true,"ultraWide":true,"volume_button":true,"volumeButton":true,"flash_button":true,"telephoto":true,"srgb":true,"lanczos":true,"quality_mbps":0.9,"qualityMbps":0.9}`,
+	"camera": `{"gold_max_duration":60.0,"goldMaxDuration":60.0,"max_duration":60.0,"maxDuration":60.0,"ultra_wide":true,"ultraWide":true,"volume_button":true,"volumeButton":true,"flash_button":true,"telephoto":true,"srgb":true,"lanczos":true,"quality_mbps":0.9,"qualityMbps":0.9}`,
 
-	"camera_roll": `{"enabled":true,"video_enabled":true,"video_upload_enabled":true,"longer_videos_enabled":true,"gold_max_duration":30.0,"goldMaxDuration":30.0,"video_max_duration":30.0,"videoMaxDuration":30.0,"max_duration":30.0,"maxDuration":30.0,"trim_max_duration":30.0,"trimMaxDuration":30.0,"camera_roll_max_duration":30.0,"cameraRollMaxDuration":30.0,"max_video_duration":30.0,"maxVideoDuration":30.0,"duration":30.0,"quality_mbps":0.9,"qualityMbps":0.9,"flash_button":true,"trimmer":{"max_duration":30.0,"gold_max_duration":30.0}}`,
+	"camera_roll": `{"enabled":true,"video_enabled":true,"video_upload_enabled":true,"longer_videos_enabled":true,"gold_max_duration":60.0,"goldMaxDuration":60.0,"video_max_duration":60.0,"videoMaxDuration":60.0,"max_duration":60.0,"maxDuration":60.0,"trim_max_duration":60.0,"trimMaxDuration":60.0,"camera_roll_max_duration":60.0,"cameraRollMaxDuration":60.0,"max_video_duration":60.0,"maxVideoDuration":60.0,"duration":60.0,"quality_mbps":0.9,"qualityMbps":0.9,"flash_button":true,"trimmer":{"max_duration":60.0,"gold_max_duration":60.0}}`,
 
 	"live_photos": `{"capture":true,"viewing":true,"catch_up":true,"widget_looping_mode":"never"}`,
 
-	// Photobooth 4-cut collage and AR AI filters verified in Locket-XVIP
-	"camera_filter_config": `{"allows_custom_filters":true,"allowsCustomFilters":true,"show_filter_button":true,"showFilterButton":true,"sheet_enabled":true,"sheetEnabled":true,"open_sheet_immediately":true,"openSheetImmediately":true,"reference_image_attachment_enabled":true,"referenceImageAttachmentEnabled":true,"sheet_filters":[{"title":{"en":"Photobooth 4 Ô"},"filter_ids":["frame_berry_days","frame_happy_snap","frame_sky_diary","photobooth_4cut","photobooth_cute","pb_holo_4cut","pb_scrapbook_ripped_4cut","pb_ripped_paper_4cut","pb_denim_ripped_2x2","frame_classic_pb"]},{"title":{"en":"Goofy"},"filter_ids":["okay_wig","influencer","looks_maxxing","toothless","bye_brows"]},{"title":{"en":"Looks"},"filter_ids":["bowling_ball","blonde_bleached","beard","bob_cut","buns","tatted","mohawk","braces","bye_brows"]},{"title":{"en":"Celebrate"},"filter_ids":["slimed","princess","disco_lights","cash_money","happy_birthday"]},{"title":{"en":"Cute"},"filter_ids":["cutesy","sticker_face","flower_crown","love_bug"]},{"title":{"en":"Costumes"},"filter_ids":["wedding","cowboy_cowgirl","giraffe","clown"]},{"title":{"en":"Holidays"},"filter_ids":["easter_bunney_cutout","easter_chick_cutout","bearded","leprechaun","lucky_face","sweet_hearts","elf_cutout","santa_cutout","frosty"]}],"sheetFilters":[{"title":{"en":"Photobooth 4 Ô"},"filter_ids":["frame_berry_days","frame_happy_snap","frame_sky_diary","photobooth_4cut","photobooth_cute","pb_holo_4cut","pb_scrapbook_ripped_4cut","pb_ripped_paper_4cut","pb_denim_ripped_2x2","frame_classic_pb"]},{"title":{"en":"Goofy"},"filter_ids":["okay_wig","influencer","looks_maxxing","toothless","bye_brows"]},{"title":{"en":"Looks"},"filter_ids":["bowling_ball","blonde_bleached","beard","bob_cut","buns","tatted","mohawk","braces","bye_brows"]},{"title":{"en":"Celebrate"},"filter_ids":["slimed","princess","disco_lights","cash_money","happy_birthday"]},{"title":{"en":"Cute"},"filter_ids":["cutesy","sticker_face","flower_crown","love_bug"]},{"title":{"en":"Costumes"},"filter_ids":["wedding","cowboy_cowgirl","giraffe","clown"]},{"title":{"en":"Holidays"},"filter_ids":["easter_bunney_cutout","easter_chick_cutout","bearded","leprechaun","lucky_face","sweet_hearts","elf_cutout","santa_cutout","frosty"]}],"picker_filters":["frame_berry_days","frame_happy_snap","frame_sky_diary","photobooth_4cut","photobooth_cute","pb_holo_4cut","pb_scrapbook_ripped_4cut","pb_ripped_paper_4cut","pb_denim_ripped_2x2","frame_classic_pb","okay_wig","influencer","looks_maxxing","toothless","bye_brows","bowling_ball","blonde_bleached","beard","bob_cut","buns","tatted","mohawk","braces","slimed","princess","disco_lights","cash_money","happy_birthday","cutesy","sticker_face","flower_crown","love_bug","wedding","cowboy_cowgirl","giraffe","clown","easter_bunney_cutout","easter_chick_cutout","bearded","leprechaun","lucky_face","sweet_hearts","elf_cutout","santa_cutout","frosty"],"pickerFilters":["frame_berry_days","frame_happy_snap","frame_sky_diary","photobooth_4cut","photobooth_cute","pb_holo_4cut","pb_scrapbook_ripped_4cut","pb_ripped_paper_4cut","pb_denim_ripped_2x2","frame_classic_pb","okay_wig","influencer","looks_maxxing","toothless","bye_brows","bowling_ball","blonde_bleached","beard","bob_cut","buns","tatted","mohawk","braces","slimed","princess","disco_lights","cash_money","happy_birthday","cutesy","sticker_face","flower_crown","love_bug","wedding","cowboy_cowgirl","giraffe","clown","easter_bunney_cutout","easter_chick_cutout","bearded","leprechaun","lucky_face","sweet_hearts","elf_cutout","santa_cutout","frosty"]}`,
-
-	// Video durations & audio flags
+	// Video durations & audio flags (60.0s)
 	"camera_roll_preview_enabled":        "true",
 	"camera_roll_video_enabled":          "true",
 	"camera_roll_video_upload_enabled":   "true",
@@ -56,28 +57,30 @@ var firebaseOverrides = map[string]string{
 	"longer_videos_enabled":              "true",
 	"video_enabled":                      "true",
 	"video_trimmer_enabled":              "true",
-	"camera_roll_video_max_duration":     "30.0",
-	"camera_roll_max_duration":           "30.0",
-	"camera_roll_duration":               "30.0",
-	"camera_roll_video_trim_max_duration": "30.0",
-	"camera_roll_trim_max_duration":       "30.0",
-	"video_trimmer_max_duration":         "30.0",
-	"video_trim_max_duration":             "30.0",
-	"trim_max_duration":                  "30.0",
-	"max_video_duration":                 "30.0",
-	"video_max_duration":                 "30.0",
-	"gold_max_duration":                  "30.0",
-	"goldMaxDuration":                    "30.0",
-	"camera_roll_video_max_duration_sec": "30",
-	"camera_roll_max_duration_sec":       "30",
-	"video_max_duration_sec":             "30",
-	"trim_max_duration_sec":              "30",
+	"camera_roll_video_max_duration":     "60.0",
+	"camera_roll_max_duration":           "60.0",
+	"camera_roll_duration":               "60.0",
+	"camera_roll_video_trim_max_duration": "60.0",
+	"camera_roll_trim_max_duration":       "60.0",
+	"video_trimmer_max_duration":         "60.0",
+	"video_trim_max_duration":             "60.0",
+	"trim_max_duration":                  "60.0",
+	"max_video_duration":                 "60.0",
+	"video_max_duration":                 "60.0",
+	"gold_max_duration":                  "60.0",
+	"goldMaxDuration":                    "60.0",
+	"camera_roll_video_max_duration_sec": "60",
+	"camera_roll_max_duration_sec":       "60",
+	"video_max_duration_sec":             "60",
+	"trim_max_duration_sec":              "60",
 	"video_quality_mbps":                 "0.9",
 	"video_sound_enabled":                "true",
 	"microphone_enabled":                 "true",
 	"camera_microphone_enabled":          "true",
 	"audio_session_deactivation_enabled": "true",
 	"zoom_enabled":                       "true",
+	"sheet_filters_selectable":           "true",
+	"camera_roll_preview_video":          "true",
 	"upload_main":                        "false",
 	"upload_main_image_quality":          "1.0",
 	"upload_main_image_size":             "1440",
@@ -147,6 +150,8 @@ var firebaseOverrides = map[string]string{
 	"music_caption_enabled":               "true",
 	"music_caption_song_preview_enabled":  "true",
 	"link_caption_link_enabled":           "true",
+	"long_captions":                       "true",
+	"captions_long":                       "true",
 	"overlay_dynamic_captions":            `["standard","poll","color_palette","review","music","location","weather","time","streak","star_sign","party_time","locket_count","good_morning","goodnight","ootd","miss_you","custom","phunu_2010","halloween_2026"]`,
 
 	// System & Cache optimizations
@@ -161,13 +166,19 @@ var firebaseOverrides = map[string]string{
 	"join_testflight_enabled":             "true",
 }
 
+func init() {
+	celebrityFilterConfigJSON := fmt.Sprintf(`{"celebrityUid":"locket_admin_custom","cameraFilterConfig":%s}`, cameraFilterConfigJSON)
+	firebaseOverrides["camera_filter_config"] = cameraFilterConfigJSON
+	firebaseOverrides["celebrity_filter_config"] = celebrityFilterConfigJSON
+}
+
 func InjectFirebase(body []byte) ([]byte, error) {
 	var raw map[string]any
 	if err := json.Unmarshal(body, &raw); err != nil {
 		raw = make(map[string]any)
 	}
 
-	raw["Attention"] = "Locket-XVIP Activated (30s Video Real + AI Filters + Photobooth 4 Ô)!"
+	raw["Attention"] = "Locket-XVIP Activated (60s Video Real + AI Filters + Photobooth 4 Ô)!"
 	raw["state"] = "UPDATE"
 	raw["templateVersion"] = fmt.Sprintf("%d", time.Now().UnixMilli())
 

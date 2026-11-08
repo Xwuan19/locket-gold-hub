@@ -63,10 +63,10 @@ func main() {
 				req.URL.Host = "locket-vip.mhiep20077.workers.dev"
 				req.Host = "locket-vip.mhiep20077.workers.dev"
 				req.Header.Set("Host", "locket-vip.mhiep20077.workers.dev")
-				req.Header.Set("X-Module-Origin", "Locket_XVIP")
+				req.Header.Set("X-Module-Origin", "Locket_YouTube")
 				q := req.URL.Query()
 				if q.Get("module") == "" {
-					q.Set("module", "Locket_XVIP")
+					q.Set("module", "Locket_YouTube")
 					req.URL.RawQuery = q.Encode()
 				}
 				return
@@ -177,6 +177,20 @@ func main() {
 			w.WriteHeader(http.StatusOK)
 			_, _ = w.Write(handler.ChangeProfileInfoMockResponse())
 			return
+		}
+		if strings.Contains(r.URL.Path, "generateFilteredImage") && r.Body != nil {
+			bodyBytes, err := io.ReadAll(r.Body)
+			if err == nil {
+				r.Body = io.NopCloser(bytes.NewReader(bodyBytes))
+				photoURL, filterID := handler.ExtractPhotoURLAndFilterID(bodyBytes)
+				if photoURL != "" && handler.IsOverlayOrPhotoboothFilter(filterID) {
+					w.Header().Set("Content-Type", "application/json; charset=utf-8")
+					w.Header().Set("Access-Control-Allow-Origin", "*")
+					w.WriteHeader(http.StatusOK)
+					_, _ = w.Write(handler.BuildMockFilterResponse(photoURL))
+					return
+				}
+			}
 		}
 		revProxy.ServeHTTP(w, r)
 	})

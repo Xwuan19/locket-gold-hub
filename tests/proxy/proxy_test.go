@@ -70,8 +70,23 @@ func TestHandler_InjectFirebase(t *testing.T) {
 	if err := json.Unmarshal([]byte(entries["camera"].(string)), &camera); err != nil {
 		t.Fatalf("unmarshal camera config failed: %v", err)
 	}
-	if camera["gold_max_duration"] != 30.0 {
-		t.Errorf("expected gold_max_duration 30.0, got %v", camera["gold_max_duration"])
+	if camera["gold_max_duration"] != 60.0 {
+		t.Errorf("expected gold_max_duration 60.0, got %v", camera["gold_max_duration"])
+	}
+
+	cfgStr, ok := entries["camera_filter_config"].(string)
+	if !ok || cfgStr == "" {
+		t.Fatalf("expected non-empty camera_filter_config")
+	}
+	for _, expectedID := range []string{"khung_nh_shin_chan_vi_n_m_nh", "khung_hello_kitty_pastel_ng_t_ng_o", "photobooth_4cut", "looks_maxxing", "stk_dio_looksmaxing", "stk_rose_flower"} {
+		if !strings.Contains(cfgStr, expectedID) {
+			t.Errorf("expected camera_filter_config to contain %s", expectedID)
+		}
+	}
+
+	celebStr, ok := entries["celebrity_filter_config"].(string)
+	if !ok || !strings.Contains(celebStr, "celebrityUid") {
+		t.Errorf("expected celebrity_filter_config with celebrityUid, got %v", celebStr)
 	}
 }
 
@@ -161,5 +176,39 @@ func TestHandler_LocketAPI(t *testing.T) {
 	}
 	if userData["blurred_url"] != "https://example.com/clear.jpg" {
 		t.Errorf("expected blurred_url replaced with unblurred_url, got %v", userData["blurred_url"])
+	}
+}
+
+func TestHandler_PhotoboothAndOverlayFrames(t *testing.T) {
+	reqJSON := []byte(`{"data":{"imageUrl":"https://firebasestorage.googleapis.com/v0/b/locket/pic.jpg","filterId":"khung_nh_shin_chan_vi_n_m_nh"}}`)
+	photoURL, filterID := handler.ExtractPhotoURLAndFilterID(reqJSON)
+	if photoURL != "https://firebasestorage.googleapis.com/v0/b/locket/pic.jpg" {
+		t.Errorf("expected photoURL to be parsed, got %s", photoURL)
+	}
+	if filterID != "khung_nh_shin_chan_vi_n_m_nh" {
+		t.Errorf("expected filterID to be khung_nh_shin_chan_vi_n_m_nh, got %s", filterID)
+	}
+
+	if !handler.IsOverlayOrPhotoboothFilter(filterID) {
+		t.Errorf("expected khung_nh_shin_chan_vi_n_m_nh to be overlay frame")
+	}
+	if !handler.IsOverlayOrPhotoboothFilter("photobooth_4cut") {
+		t.Errorf("expected photobooth_4cut to be overlay frame")
+	}
+	if !handler.IsOverlayOrPhotoboothFilter("khung_hello_kitty_pastel_ng_t_ng_o") {
+		t.Errorf("expected Hello Kitty to be overlay frame")
+	}
+	if handler.IsOverlayOrPhotoboothFilter("looks_maxxing") {
+		t.Errorf("looks_maxxing should not be overlay frame")
+	}
+
+	mockResp := handler.BuildMockFilterResponse(photoURL)
+	var parsed map[string]any
+	if err := json.Unmarshal(mockResp, &parsed); err != nil {
+		t.Fatalf("unmarshal mock filter response failed: %v", err)
+	}
+	res, ok := parsed["result"].(map[string]any)
+	if !ok || res["outputUrl"] != photoURL {
+		t.Errorf("expected outputUrl to match photoURL, got %v", res["outputUrl"])
 	}
 }
