@@ -95,18 +95,16 @@ try {
     obj = {};
 }
 
-// Allow Locket, Firebase SDK, Darwin, CFNetwork or missing UA
-if (!ua || ua.toLowerCase().includes("locket") || ua.includes("Firebase") || ua.includes("CFNetwork") || ua.includes("Darwin")) {
-    obj.state = "UPDATE";
-    obj.templateVersion = String(Date.now());
-    obj.Attention = "Locket VIP Activated (Video 30s + AI Filters + Photobooth)!";
-    obj.entries = obj.entries || {};
-    obj.entries.cache_ttl_seconds = "0";
-    obj.entries.client_cache_ttl_sec = "0";
+obj.state = "UPDATE";
+obj.templateVersion = String(Date.now());
+obj.Attention = "Locket VIP Activated (Video 30s + AI Filters + Photobooth)!";
+obj.entries = obj.entries || {};
+obj.entries.cache_ttl_seconds = "0";
+obj.entries.client_cache_ttl_sec = "0";
 
-    // ============================================================
-    // 1. CẤU HÌNH GOLD, FEATURE GATES & PAYWALL
-    // ============================================================
+// ============================================================
+// 1. CẤU HÌNH GOLD, FEATURE GATES & PAYWALL
+// ============================================================
     Object.assign(obj.entries, {
         feature_gates: JSON.stringify({
             app_icon_picker: "enabled",
@@ -457,6 +455,8 @@ if (!ua || ua.toLowerCase().includes("locket") || ua.includes("Firebase") || ua.
     Object.assign(obj.entries, {
         widget_frame_event_max_images: "5",
         android_widget_frame_event_enabled: "true",
+        ios_widget_frame_event_enabled: "true",
+        widget_frame_event_enabled: "true",
         widget_badge_enabled: "true",
         widget_badge_v2: "true",
         widget_stale_state_enabled: "false",
@@ -470,6 +470,8 @@ if (!ua || ua.toLowerCase().includes("locket") || ua.includes("Firebase") || ua.
             start_at: "2020-01-01T00:00:00",
             end_at: "2099-12-31T23:59:59"
         }),
+        custom_widget_frames: "enabled",
+        custom_widget_frames_enabled: "true",
         live_activity_onboarding: "true",
         live_activity_onboarding_variant: "friending",
         register_live_activity_push_to_start_token: "true",
@@ -818,6 +820,5 @@ if (!ua || ua.toLowerCase().includes("locket") || ua.includes("Firebase") || ua.
             }
         ])
     });
-}
 
 $done({ body: JSON.stringify(obj) });
