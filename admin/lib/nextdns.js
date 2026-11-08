@@ -9,7 +9,7 @@ const DOMAINS_TO_REWRITE = [
 ];
 
 function genNextDnsPassword() {
-  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!@#$%';
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!@#';
   let pwd = 'Xw@';
   for (let i = 0; i < 9; i++) {
     pwd += chars[crypto.randomInt(0, chars.length)];
