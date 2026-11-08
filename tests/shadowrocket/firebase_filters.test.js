@@ -62,8 +62,8 @@ assert.strictEqual(parsed.entries.microphone_enabled, "true", "Expected micropho
 assert.strictEqual(parsed.entries.camera_microphone_enabled, "true", "Expected camera_microphone_enabled");
 assert.strictEqual(parsed.entries.camera_roll_video_sound_enabled, "true", "Expected camera_roll_video_sound_enabled");
 assert.strictEqual(parsed.entries.upload_main, "true", "Expected upload_main to be true");
-assert.strictEqual(parsed.entries.video_max_duration, "30.0", "Expected video_max_duration to be 30.0");
-assert.strictEqual(parsed.entries.camera_roll_video_max_duration, "30.0", "Expected camera_roll_video_max_duration to be 30.0");
+assert.strictEqual(parsed.entries.video_max_duration, "60.0", "Expected video_max_duration to be 60.0");
+assert.strictEqual(parsed.entries.camera_roll_video_max_duration, "60.0", "Expected camera_roll_video_max_duration to be 60.0");
 
 // Test Captions
 assert(parsed.entries.overlay_items, "Expected overlay_items");
