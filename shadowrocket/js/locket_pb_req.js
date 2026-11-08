@@ -1,6 +1,6 @@
 // ========= Locket Photobooth 4-Shot Engine & AI Filter Modifier ========= //
-// Phân Phối: Nightmarketserver
-// Tác giả: MinhHiep08 (@minhhiep07)
+// Phân Phối: Hakaiz
+// Tác giả: dinhtuan07
 // Tính năng:
 // 1. Luồng 4 ảnh Photobooth liên hoàn:
 //    - Chụp ảnh 1 -> Hiển thị "ĐÃ NHẬN ẢNH! Hãy ấn dấu X để chụp ảnh tiếp theo" (pb_step1.jpg)
@@ -299,31 +299,56 @@
     }
 
     // =========================================================================
-    // 1. CHIỀU REQUEST: ĐIỀU HƯỚNG BẢO MẬT QUA WORKER (GIẤU 100% GỐC RENDER & CHẶN LÊN LOCKET)
+    // 1. CHIỀU REQUEST: XỬ LÝ GENERATE FILTERED IMAGE (MOCK 200 OK NGAY TẠI REQUEST)
     // =========================================================================
     if (typeof $response === "undefined") {
         try {
             if (!$request) return $done({});
 
-            // Chuyển hướng đích đến trực tiếp sang Worker bảo mật (giấu kín tuyệt đối 100% domain Render)
-            // Tuyệt đối không để kết nối gốc rò rỉ lên máy chủ Locket chính chủ tránh lỗi "Không thể áp dụng bộ lọc"
-            const targetUrl = "https://locket-vip.mhiep20077.workers.dev/generateFilteredImage?module=Locket_YouTube";
-            let headers = Object.assign({}, ($request && $request.headers) || {});
-            headers["Host"] = "locket-vip.mhiep20077.workers.dev";
-            headers["host"] = "locket-vip.mhiep20077.workers.dev";
-            headers["X-Module-Origin"] = "Locket_YouTube";
+            let reqBody = {};
+            if ($request.body) {
+                try {
+                    reqBody = JSON.parse($request.body);
+                } catch (e) {
+                    reqBody = {};
+                }
+            }
 
-            return $done({
-                url: targetUrl,
-                headers: headers
-            });
+            // Trích xuất photoUrl từ body
+            let photoUrl = reqBody.imageUrl || reqBody.image_url || reqBody.inputUrl || reqBody.input_url || reqBody.url || reqBody.downloadUrl || reqBody.download_url || "";
+            if (!photoUrl && reqBody.data && typeof reqBody.data === "object") {
+                photoUrl = reqBody.data.imageUrl || reqBody.data.image_url || reqBody.data.url || reqBody.data.inputUrl || "";
+            }
+            if (!photoUrl && $request.body && typeof $request.body === "string") {
+                let m = $request.body.match(/https?:\/\/[^"'\s\\]+\.(jpg|jpeg|png|webp)[^"'\s\\]*/i) ||
+                        $request.body.match(/https?:\/\/firebasestorage\.googleapis\.com\/[^"'\s\\]+/i) ||
+                        $request.body.match(/https?:\/\/[^"'\s\\]*locket[^"'\s\\]*/i);
+                if (m) photoUrl = m[0].replace(/\\u0026/g, "&").replace(/\\/g, "");
+            }
+
+            // Xử lý Photobooth & Khung & Filter AI:
+            // Mock phản hồi HTTP 200 OK ngay tại request, trả về trực tiếp photoUrl của người dùng
+            // Điều này giải quyết triệt để lỗi "Không thể áp dụng bộ lọc", Locket sẽ nhận diện ảnh hợp lệ 100%
+            // và áp dụng lớp viền Photobooth/Sticker trực tiếp trên máy người dùng mà không cần phụ thuộc server
+            if (photoUrl) {
+                return $done(buildMock200Response(photoUrl));
+            }
+
+            // Nếu không tìm thấy photoUrl trong body, xóa sạch cache header để request không bị 304
+            let headers = Object.assign({}, ($request && $request.headers) || {});
+            for (let k of Object.keys(headers)) {
+                if (['if-none-match', 'if-modified-since', 'x-revenuecat-etag'].includes(k.toLowerCase())) {
+                    delete headers[k];
+                }
+            }
+            return $done({ headers: headers });
         } catch (e) {
             return $done({});
         }
     }
 
     // =========================================================================
-    // 2. CHIỀU RESPONSE: DỰ PHÒNG XÓA LỖI NẾU REQUEST ĐI QUA UPSTREAM
+    // 2. CHIỀU RESPONSE: DỰ PHÒNG XÓA LỖI & ĐẢM BẢO RESPONSE LUÔN THÀNH CÔNG
     // =========================================================================
     try {
         if (typeof $response !== "undefined" && $response.body) {
@@ -339,14 +364,44 @@
             if (resObj.result) {
                 delete resObj.result.error;
                 delete resObj.result.errors;
+                resObj.result.is_locked = false;
+                resObj.result.requires_gold = false;
+                resObj.result.unlocked = true;
+                resObj.result.status = 200;
+            } else {
+                resObj.result = {
+                    status: 200,
+                    is_gold: true,
+                    unlocked: true,
+                    is_locked: false,
+                    requires_gold: false
+                };
             }
+
+            // Đảm bảo outputUrl không bao giờ rỗng
+            if (!resObj.result.outputUrl && typeof $request !== "undefined" && $request && $request.body) {
+                let m = $request.body.match(/https?:\/\/[^"'\s\\]+\.(jpg|jpeg|png|webp)[^"'\s\\]*/i) ||
+                        $request.body.match(/https?:\/\/firebasestorage\.googleapis\.com\/[^"'\s\\]+/i) ||
+                        $request.body.match(/https?:\/\/[^"'\s\\]*locket[^"'\s\\]*/i);
+                if (m) {
+                    let fallback = m[0].replace(/\\u0026/g, "&").replace(/\\/g, "");
+                    setAllUrls(resObj, fallback);
+                }
+            }
+
+            let respHeaders = Object.assign({}, ($response && $response.headers) || {});
+            delete respHeaders["Content-Encoding"];
+            delete respHeaders["content-encoding"];
+            delete respHeaders["Content-Length"];
+            delete respHeaders["content-length"];
+            delete respHeaders["Transfer-Encoding"];
+            delete respHeaders["transfer-encoding"];
+            respHeaders["Content-Type"] = "application/json; charset=utf-8";
+            respHeaders["Access-Control-Allow-Origin"] = "*";
 
             return $done({
                 status: 200,
-                headers: {
-                    "Content-Type": "application/json; charset=utf-8",
-                    "Access-Control-Allow-Origin": "*"
-                },
+                headers: respHeaders,
                 body: JSON.stringify(resObj)
             });
         }

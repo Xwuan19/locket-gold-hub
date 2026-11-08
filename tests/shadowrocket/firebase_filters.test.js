@@ -47,14 +47,18 @@ assert.strictEqual(widgetFrameEvent.uid, "midautumn_2026", "Expected widget fram
 assert.strictEqual(widgetFrameEvent.placement, "below", "Expected widget frame placement to be below");
 assert(widgetFrameEvent.url, "Expected widget frame url to be present");
 
-// Test Photobooth & AI Filter Configuration (RealTrueHieu baseline)
+// Test Photobooth & AI Filter Configuration (RealTrueHieu & Hakaiz V2 baseline)
 assert(parsed.entries.camera_filter_config, "Expected camera_filter_config");
 assert(parsed.entries.celebrity_filter_config, "Expected celebrity_filter_config");
 const cfg = JSON.parse(parsed.entries.camera_filter_config);
 assert(cfg.sheet_filters.some(f => f.id === "group_hot_ai_3d" || (f.title && f.title.vi && f.title.vi.includes("AI 3D"))), "Expected AI 3D filter group");
 assert(cfg.sheet_filters.some(f => f.id === "group_photobooth" || (f.title && f.title.vi && f.title.vi.includes("Photobooth"))), "Expected Photobooth filter group");
+assert(cfg.sheet_filters.some(f => f.id === "group_frames" || (f.title && f.title.vi && f.title.vi.includes("Khung Viền"))), "Expected Khung Viền filter group");
 assert(cfg.remote_filters && cfg.remote_filters.length > 0, "Expected remote photobooth filters");
 assert(cfg.picker_filters.length > 0, "Expected picker filters");
+assert(cfg.picker_filters.includes("khung_nh_shin_chan_vi_n_m_nh"), "Expected Shin-chan frame in picker filters");
+assert(cfg.picker_filters.includes("khung_hello_kitty_pastel_ng_t_ng_o"), "Expected Hello Kitty frame in picker filters");
+assert(cfg.picker_filters.includes("photobooth_4cut"), "Expected photobooth_4cut in picker filters");
 
 // Test 30s Recording & Video Upload with Audio
 assert.strictEqual(parsed.entries.video_sound_enabled, "true", "Expected video_sound_enabled");
