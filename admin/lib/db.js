@@ -15,12 +15,66 @@ async function saveNextDnsAccount(account) {
       },
       body: JSON.stringify({
         profile_id: account.profile_id,
+        profile_name: account.profile_name || '',
+        notes: account.notes || '',
         email: account.email,
         password: account.password,
         dns_url: account.dns_url,
         fly_ip: account.fly_ip,
         rewrites: account.rewrites
       })
+    });
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
+
+async function listNextDnsAccounts() {
+  if (!SUPABASE_KEY) return [];
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/nextdns_accounts?select=*&order=created_at.desc`, {
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Accept': 'application/json'
+      }
+    });
+    if (!res.ok) return [];
+    return await res.json();
+  } catch {
+    return [];
+  }
+}
+
+async function updateNextDnsAccount(id, fields = {}) {
+  if (!SUPABASE_KEY || !id) return false;
+  try {
+    const body = { ...fields, updated_at: new Date().toISOString() };
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/nextdns_accounts?id=eq.${encodeURIComponent(id)}`, {
+      method: 'PATCH',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
+
+async function deleteNextDnsAccount(id) {
+  if (!SUPABASE_KEY || !id) return false;
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/nextdns_accounts?id=eq.${encodeURIComponent(id)}`, {
+      method: 'DELETE',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`
+      }
     });
     return res.ok;
   } catch {
@@ -49,4 +103,11 @@ async function updateQueryUsage(profileId, queryCount) {
   }
 }
 
-module.exports = { saveNextDnsAccount, updateQueryUsage, SUPABASE_URL };
+module.exports = {
+  saveNextDnsAccount,
+  listNextDnsAccounts,
+  updateNextDnsAccount,
+  deleteNextDnsAccount,
+  updateQueryUsage,
+  SUPABASE_URL
+};

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locket Gold — Quản Trị Hệ Thống NextDNS</title>
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --card: #161e27;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --gold: #f5b301;
+      --gold-dark: #d49500;
+      --text: #e0e6ed;
+      --sub: #9aa0a6;
+      --green: #2ecc71;
+      --red: #e74c3c;
+      --blue: #3498db;
+      --btn-grad: linear-gradient(135deg, #f5b301 0%, #e09200 100%);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); min-height: 100vh; padding: 24px 16px; display: flex; justify-content: center; }
+    .wrap { max-width: 1080px; width: 100%; display: flex; flex-direction: column; gap: 20px; }
+    
+    /* Login Modal / Card */
+    #loginCard { max-width: 420px; margin: 80px auto; width: 100%; background: var(--card); border-radius: 16px; padding: 28px; border: 1px solid var(--card-border); box-shadow: 0 10px 30px rgba(0,0,0,0.4); text-align: center; }
+    .badge { display: inline-block; background: rgba(245, 179, 1, 0.15); color: var(--gold); padding: 4px 12px; border-radius: 999px; font-weight: 600; font-size: 13px; margin-bottom: 12px; border: 1px solid rgba(245, 179, 1, 0.3); }
+    h1 { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    p.desc { font-size: 13px; color: var(--sub); line-height: 1.5; margin-bottom: 20px; }
+    
+    input[type="password"], input[type="text"] {
+      width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.15); background: #0e141a; color: #fff; font-size: 14px; outline: none; margin-bottom: 14px;
+    }
+    input:focus { border-color: var(--gold); }
+    
+    .remember-row { display: flex; align-items: center; justify-content: flex-start; gap: 8px; margin-bottom: 18px; font-size: 13px; color: var(--sub); cursor: pointer; user-select: none; }
+    .remember-row input { margin-bottom: 0; width: 16px; height: 16px; accent-color: var(--gold); }
+    
+    .btn { display: inline-block; width: 100%; padding: 12px 16px; text-align: center; background: var(--btn-grad); color: #000; font-weight: 700; font-size: 14px; border-radius: 10px; text-decoration: none; border: none; cursor: pointer; transition: opacity 0.2s, transform 0.1s; }
+    .btn:active { transform: scale(0.98); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-sm { padding: 6px 10px; font-size: 12px; border-radius: 6px; width: auto; font-weight: 600; }
+    .btn-danger { background: rgba(231, 76, 60, 0.2); color: var(--red); border: 1px solid rgba(231, 76, 60, 0.4); }
+    .btn-danger:hover { background: var(--red); color: #fff; }
+    .btn-secondary { background: #25313d; color: var(--text); }
+    .btn-secondary:hover { background: #324252; }
+    
+    /* Dashboard Header */
+    .dash-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; background: var(--card); padding: 16px 20px; border-radius: 14px; border: 1px solid var(--card-border); }
+    .dash-title { display: flex; align-items: center; gap: 10px; }
+    .dash-actions { display: flex; gap: 8px; align-items: center; }
+    
+    /* Stats Bar */
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+    .stat-card { background: var(--card); border-radius: 12px; padding: 16px; border: 1px solid var(--card-border); }
+    .stat-num { font-size: 24px; font-weight: 800; color: var(--gold); margin-top: 4px; }
+    .stat-label { font-size: 12px; color: var(--sub); font-weight: 600; text-transform: uppercase; }
+    
+    /* Search & Filter Bar */
+    .search-bar { display: flex; gap: 10px; flex-wrap: wrap; }
+    .search-bar input { flex: 1; min-width: 220px; margin-bottom: 0; }
+    
+    /* Table & Cards */
+    .table-container { background: var(--card); border-radius: 14px; border: 1px solid var(--card-border); overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; }
+    th { background: #11171f; padding: 12px 16px; font-weight: 700; color: var(--sub); text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; border-bottom: 1px solid var(--card-border); }
+    td { padding: 14px 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); vertical-align: middle; }
+    tr:hover td { background: rgba(255, 255, 255, 0.02); }
+    
+    .profile-pill { display: inline-flex; align-items: center; gap: 6px; background: #0c1218; padding: 4px 8px; border-radius: 6px; font-family: monospace; font-size: 12px; color: var(--gold); border: 1px solid rgba(245, 179, 1, 0.2); }
+    .progress-wrap { background: #232d38; border-radius: 999px; height: 6px; width: 100%; min-width: 90px; overflow: hidden; margin-top: 6px; }
+    .progress-bar { height: 100%; border-radius: 999px; background: var(--btn-grad); }
+    .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 4px; }
+    .tag-green { background: rgba(46, 204, 113, 0.15); color: var(--green); }
+    .tag-red { background: rgba(231, 76, 60, 0.15); color: var(--red); }
+    
+    .msg-box { padding: 12px; border-radius: 8px; font-size: 13px; margin-bottom: 14px; display: none; }
+    .msg-error { background: rgba(231, 76, 60, 0.15); color: var(--red); border: 1px solid rgba(231, 76, 60, 0.3); }
+    .msg-ok { background: rgba(46, 204, 113, 0.15); color: var(--green); border: 1px solid rgba(46, 204, 113, 0.3); }
+  </style>
+</head>
+<body>
+
+<div class="wrap">
+  <!-- LOGIN VIEW -->
+  <div id="loginCard">
+    <div class="badge">ADMIN PORTAL</div>
+    <h1>Đăng Nhập Quản Trị</h1>
+    <p class="desc">Hệ thống quản lý tài khoản NextDNS & DNS Rewrite Proxy Locket Gold</p>
+    
+    <div id="loginMsg" class="msg-box msg-error"></div>
+
+    <form onsubmit="handleLogin(event)">
+      <input type="password" id="adminPwd" placeholder="Nhập mật khẩu quản trị..." required autocomplete="current-password">
+      
+      <label class="remember-row">
+        <input type="checkbox" id="rememberMe" checked>
+        <span>Ghi nhớ thiết bị đăng nhập (30 ngày)</span>
+      </label>
+      
+      <button type="submit" id="btnLogin" class="btn">Đăng Nhập ⚡</button>
+    </form>
+  </div>
+
+  <!-- DASHBOARD VIEW -->
+  <div id="dashView" style="display: none; display: flex; flex-direction: column; gap: 20px;">
+    <div class="dash-header">
+      <div class="dash-title">
+        <div class="badge" style="margin-bottom: 0;">LOCKET GOLD</div>
+        <h2 style="font-size: 18px; font-weight: 800;">Quản Lý Tài Khoản DNS</h2>
+      </div>
+      <div class="dash-actions">
+        <button class="btn btn-sm btn-secondary" onclick="loadAccounts()">🔄 Làm Mới</button>
+        <button class="btn btn-sm btn-secondary" onclick="handleLogout()">🚪 Đăng Xuất</button>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Tổng Tài Khoản DNS</div>
+        <div class="stat-num" id="totalAccounts">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Tổng Queries Tháng</div>
+        <div class="stat-num" id="totalQueries">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Proxy Interception IP</div>
+        <div class="stat-num" style="font-size: 18px; color: var(--text); margin-top: 8px;">66.241.124.216</div>
+      </div>
+    </div>
+
+    <!-- Search & Actions -->
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="🔍 Tìm theo Profile ID, Tên người dùng hoặc Email..." oninput="filterAccounts()">
+      <button class="btn btn-sm" style="width: auto; padding: 10px 16px;" onclick="window.open('/', '_blank')">➕ Cấp DNS Mới</button>
+    </div>
+
+    <div id="dashMsg" class="msg-box"></div>
+
+    <!-- Accounts Table -->
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Profile ID</th>
+            <th>Tên / Ghi Chú</th>
+            <th>Tài Khoản NextDNS</th>
+            <th>Lượt Truy Vấn (300k/tháng)</th>
+            <th>Thời Gian Tạo</th>
+            <th>Thao Tác</th>
+          </tr>
+        </thead>
+        <tbody id="accountsTableBody">
+          <tr>
+            <td colspan="6" style="text-align: center; color: var(--sub); padding: 30px;">Đang tải danh sách tài khoản...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  const TOKEN_KEY = 'locket_admin_token';
+  let allAccounts = [];
+
+  function getToken() {
+    return localStorage.getItem(TOKEN_KEY) || sessionStorage.getItem(TOKEN_KEY) || '';
+  }
+
+  function setToken(token, remember) {
+    if (remember) {
+      localStorage.setItem(TOKEN_KEY, token);
+      sessionStorage.removeItem(TOKEN_KEY);
+    } else {
+      sessionStorage.setItem(TOKEN_KEY, token);
+      localStorage.removeItem(TOKEN_KEY);
+    }
+  }
+
+  function clearToken() {
+    localStorage.removeItem(TOKEN_KEY);
+    sessionStorage.removeItem(TOKEN_KEY);
+  }
+
+  window.addEventListener('DOMContentLoaded', async () => {
+    const token = getToken();
+    if (token) {
+      const ok = await verifyToken(token);
+      if (ok) {
+        showDashboard();
+        return;
+      }
+    }
+    showLogin();
+  });
+
+  async function verifyToken(token) {
+    try {
+      const res = await fetch('/api/admin/auth', {
+        headers: { 'Authorization': 'Bearer ' + token }
+      });
+      return res.ok;
+    } catch {
+      return false;
+    }
+  }
+
+  function showLogin() {
+    document.getElementById('loginCard').style.display = 'block';
+    document.getElementById('dashView').style.display = 'none';
+  }
+
+  function showDashboard() {
+    document.getElementById('loginCard').style.display = 'none';
+    document.getElementById('dashView').style.display = 'flex';
+    loadAccounts();
+  }
+
+  async function handleLogin(e) {
+    e.preventDefault();
+    const btn = document.getElementById('btnLogin');
+    const msg = document.getElementById('loginMsg');
+    const pwd = document.getElementById('adminPwd').value.trim();
+    const remember = document.getElementById('rememberMe').checked;
+
+    btn.disabled = true;
+    btn.innerText = 'Đang xác thực...';
+    msg.style.display = 'none';
+
+    try {
+      const res = await fetch('/api/admin/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: pwd, remember })
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.error || 'Mật khẩu không đúng');
+
+      setToken(data.token, remember);
+      showDashboard();
+    } catch (err) {
+      msg.className = 'msg-box msg-error';
+      msg.innerText = err.message;
+      msg.style.display = 'block';
+    } finally {
+      btn.disabled = false;
+      btn.innerText = 'Đăng Nhập ⚡';
+    }
+  }
+
+  function handleLogout() {
+    clearToken();
+    showLogin();
+  }
+
+  async function loadAccounts() {
+    const tbody = document.getElementById('accountsTableBody');
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--sub); padding: 30px;">⏳ Đang tải dữ liệu từ Supabase...</td></tr>';
+
+    try {
+      const res = await fetch('/api/admin/accounts', {
+        headers: { 'Authorization': 'Bearer ' + getToken() }
+      });
+      if (res.status === 401) {
+        handleLogout();
+        return;
+      }
+      const data = await res.json();
+      allAccounts = data.accounts || [];
+      renderAccounts(allAccounts);
+      updateStats(allAccounts);
+    } catch (err) {
+      tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--red); padding: 20px;">Lỗi tải dữ liệu: ${err.message}</td></tr>`;
+    }
+  }
+
+  function updateStats(accounts) {
+    document.getElementById('totalAccounts').innerText = accounts.length;
+    const totalQ = accounts.reduce((acc, cur) => acc + (cur.query_count || 0), 0);
+    document.getElementById('totalQueries').innerText = totalQ.toLocaleString('vi-VN');
+  }
+
+  function filterAccounts() {
+    const q = document.getElementById('searchInput').value.toLowerCase().trim();
+    if (!q) {
+      renderAccounts(allAccounts);
+      return;
+    }
+    const filtered = allAccounts.filter(a => 
+      (a.profile_id && a.profile_id.toLowerCase().includes(q)) ||
+      (a.profile_name && a.profile_name.toLowerCase().includes(q)) ||
+      (a.email && a.email.toLowerCase().includes(q)) ||
+      (a.notes && a.notes.toLowerCase().includes(q))
+    );
+    renderAccounts(filtered);
+  }
+
+  function renderAccounts(accounts) {
+    const tbody = document.getElementById('accountsTableBody');
+    if (!accounts.length) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--sub); padding: 30px;">Không có tài khoản nào.</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = accounts.map(a => {
+      const count = a.query_count || 0;
+      const pct = Math.min(100, Math.round((count / 300000) * 100));
+      const dateStr = a.created_at ? new Date(a.created_at).toLocaleString('vi-VN') : '—';
+      const displayName = a.profile_name ? escapeHtml(a.profile_name) : '<span style="color:var(--sub);font-style:italic;">Chưa đặt tên</span>';
+
+      return `
+        <tr id="row-${a.id}">
+          <td>
+            <div class="profile-pill">${escapeHtml(a.profile_id)}</div>
+            <div style="font-size: 11px; margin-top: 4px;">
+              <a href="/api/generate-profile?id=${a.profile_id}" target="_blank" style="color: var(--gold); text-decoration: none;">📥 Tải profile</a>
+            </div>
+          </td>
+          <td>
+            <div id="name-box-${a.id}" style="display: flex; align-items: center; gap: 6px;">
+              <span id="name-txt-${a.id}" style="font-weight: 600; color: #fff;">${displayName}</span>
+              <button class="btn btn-sm btn-secondary" style="padding: 2px 6px; font-size: 11px;" onclick="promptRename('${a.id}', '${a.profile_id}', '${escapeHtml(a.profile_name || '')}', '${escapeHtml(a.email)}', '${escapeHtml(a.password)}')">✏️</button>
+            </div>
+          </td>
+          <td>
+            <div style="color: var(--text);">${escapeHtml(a.email)}</div>
+            <div style="font-size: 11px; color: var(--sub); font-family: monospace;">Pass: ${escapeHtml(a.password)}</div>
+          </td>
+          <td>
+            <div style="display: flex; justify-content: space-between; font-size: 12px;">
+              <span id="q-txt-${a.id}"><strong>${count.toLocaleString('vi-VN')}</strong> / 300.000</span>
+              <span style="color: var(--sub);">${pct}%</span>
+            </div>
+            <div class="progress-wrap">
+              <div id="q-bar-${a.id}" class="progress-bar" style="width: ${pct}%;"></div>
+            </div>
+          </td>
+          <td style="font-size: 12px; color: var(--sub);">${dateStr}</td>
+          <td>
+            <div style="display: flex; gap: 6px; align-items: center;">
+              <button class="btn btn-sm btn-secondary" onclick="checkUsageRow('${a.id}', '${a.profile_id}', '${escapeHtml(a.email)}', '${escapeHtml(a.password)}')">📊 Kiểm tra</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteAccountRow('${a.id}', '${a.profile_id}', '${escapeHtml(a.email)}', '${escapeHtml(a.password)}')">🗑️ Xóa</button>
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  async function promptRename(id, profileId, currentName, email, password) {
+    const newName = prompt('Nhập tên hiển thị mới cho cấu hình:', currentName);
+    if (newName === null) return;
+
+    try {
+      const res = await fetch('/api/admin/accounts', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + getToken()
+        },
+        body: JSON.stringify({ id, profile_id: profileId, profile_name: newName, email, password })
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.error || 'Đổi tên thất bại');
+
+      // Update in memory and UI
+      const target = allAccounts.find(a => a.id === id);
+      if (target) target.profile_name = newName;
+      document.getElementById('name-txt-' + id).innerText = newName || 'Chưa đặt tên';
+    } catch (err) {
+      alert('Lỗi: ' + err.message);
+    }
+  }
+
+  async function checkUsageRow(id, profileId, email, password) {
+    const btn = event.target;
+    btn.disabled = true;
+    btn.innerText = '⏳ Đang đo...';
+
+    try {
+      const res = await fetch('/api/admin/check-usage', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + getToken()
+        },
+        body: JSON.stringify({ profile_id: profileId, email, password })
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.error || 'Lỗi kiểm tra NextDNS');
+
+      const queries = data.queries || 0;
+      const pct = Math.min(100, Math.round((queries / 300000) * 100));
+      document.getElementById('q-txt-' + id).innerHTML = `<strong>${queries.toLocaleString('vi-VN')}</strong> / 300.000`;
+      document.getElementById('q-bar-' + id).style.width = pct + '%';
+
+      // Update in memory
+      const target = allAccounts.find(a => a.id === id);
+      if (target) target.query_count = queries;
+      updateStats(allAccounts);
+    } catch (err) {
+      alert('Lỗi: ' + err.message);
+    } finally {
+      btn.disabled = false;
+      btn.innerText = '📊 Kiểm tra';
+    }
+  }
+
+  async function deleteAccountRow(id, profileId, email, password) {
+    if (!confirm(`Bạn có chắc muốn xóa tài khoản DNS [${profileId}] này? Cấu hình trên NextDNS và Supabase sẽ bị gỡ bỏ.`)) {
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/admin/accounts', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + getToken()
+        },
+        body: JSON.stringify({ id, profile_id: profileId, email, password })
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.error || 'Xóa thất bại');
+
+      allAccounts = allAccounts.filter(a => a.id !== id);
+      const row = document.getElementById('row-' + id);
+      if (row) row.remove();
+      updateStats(allAccounts);
+    } catch (err) {
+      alert('Lỗi: ' + err.message);
+    }
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+</script>
+</body>
+</html>

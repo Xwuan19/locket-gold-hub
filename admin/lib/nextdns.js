@@ -304,10 +304,50 @@ async function checkNextDnsQueryUsage({ email, password, profileId = null } = {}
   };
 }
 
+async function renameNextDnsProfile({ email, password, profileId, name }) {
+  const login = await loginNextDnsHelper({ email, password });
+  if (!login.ok) return { ok: false, error: login.error };
+  try {
+    const res = await fetch(`https://api.nextdns.io/profiles/${encodeURIComponent(profileId)}`, {
+      method: 'PATCH',
+      headers: {
+        'Cookie': login.sid,
+        'Content-Type': 'application/json',
+        'Origin': 'https://my.nextdns.io',
+        'User-Agent': 'Mozilla/5.0'
+      },
+      body: JSON.stringify({ name })
+    });
+    return { ok: res.ok };
+  } catch (err) {
+    return { ok: false, error: err.message };
+  }
+}
+
+async function deleteNextDnsProfile({ email, password, profileId }) {
+  const login = await loginNextDnsHelper({ email, password });
+  if (!login.ok) return { ok: false, error: login.error };
+  try {
+    const res = await fetch(`https://api.nextdns.io/profiles/${encodeURIComponent(profileId)}`, {
+      method: 'DELETE',
+      headers: {
+        'Cookie': login.sid,
+        'Origin': 'https://my.nextdns.io',
+        'User-Agent': 'Mozilla/5.0'
+      }
+    });
+    return { ok: res.ok || res.status === 204 };
+  } catch (err) {
+    return { ok: false, error: err.message };
+  }
+}
+
 module.exports = {
   DEFAULT_FLY_IP,
   DOMAINS_TO_REWRITE,
   createNextDnsAccount,
   checkNextDnsQueryUsage,
-  loginNextDnsHelper
+  loginNextDnsHelper,
+  renameNextDnsProfile,
+  deleteNextDnsProfile
 };
