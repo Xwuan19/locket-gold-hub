@@ -1,6 +1,6 @@
 /**
  * @file locket_firebase_request.js
- * Modify Firebase Remote Config Request for Locket (Super VIP Pro Max)
+ * Modify Firebase Remote Config Request for Locket VIP
  * By Xwuan
  */
 

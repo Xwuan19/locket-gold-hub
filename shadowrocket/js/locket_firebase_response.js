@@ -1,6 +1,6 @@
 /**
  * @file locket_firebase_response.js
- * Locket-XVIP - Firebase Remote Config Override Engine (30s Video Real + AI Filters)
+ * Locket VIP - Firebase Remote Config Override Engine (Video 30s + AI Filters & Photobooth)
  * 100% Aligned with NightmarketServer production-verified baseline
  */
 // ============================================================
@@ -65,7 +65,7 @@ try {
 
 // Allow Locket, Firebase SDK, Darwin, CFNetwork or missing UA
 if (!ua || ua.toLowerCase().includes("locket") || ua.includes("Firebase") || ua.includes("CFNetwork") || ua.includes("Darwin")) {
-    obj.Attention = "Locket-XVIP Activated (30s Video Real + AI Filters)!";
+    obj.Attention = "Locket VIP Activated (Video 30s + AI Filters + Photobooth)!";
     obj.entries = obj.entries || {};
 
     // ============================================================
@@ -147,8 +147,8 @@ if (!ua || ua.toLowerCase().includes("locket") || ua.includes("Firebase") || ua.
             title: "Đã Kích Hoạt 💛",
             feature_set: [
                 {
-                    title: "LocketXwuan ✨",
-                    body: "30s Video Real • 4K HD • AI Filters",
+                    title: "Locket VIP ✨",
+                    body: "Quay video 30s • AI & Photobooth • Khung & Caption VIP",
                     imageURL: "https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/assets/locket_gold.jpg"
                 }
             ],
@@ -716,7 +716,7 @@ if (!ua || ua.toLowerCase().includes("locket") || ua.includes("Firebase") || ua.
                 ]
             },
             {
-                section: "🎨 Locket-XVIP Specials",
+                section: "🎨 Locket VIP Specials",
                 items: [
                     { overlay_id: "caption:XVIP", source: "remote", caption: { background: { colors: ["#B8E7FF", "#A8F5D0", "#DCCBFF"] }, max_lines: 1, text: "👑 Locket VIP", text_color: "#183153", type: "static_content" } },
                     { overlay_id: "caption:cu", source: "remote", caption: { background: { colors: ["#FFD6A5", "#FFF1A8", "#FFC4D6"] }, max_lines: 1, text: "Cu 🐎", text_color: "#633B24", type: "static_content" } },

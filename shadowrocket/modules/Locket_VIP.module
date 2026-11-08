@@ -1,5 +1,5 @@
-#!name=Locket-XVIP (Super VIP Pro Max)
-#!desc=Kích hoạt Locket Gold trọn đời + 30s Video Real + AI Filters + Photobooth 4 Ô ghép ảnh + Custom Frames. By Xwuan
+#!name=Locket VIP
+#!desc=Mở khóa Locket Gold trọn đời + Quay video 30s + AI Filters & Photobooth + Khung Widget & Caption tiếng Việt + Chặn QC. By Xwuan
 #!category=Xwuan VIP
 
 [Rule]
@@ -25,13 +25,13 @@ DOMAIN-SUFFIX,ingest.sentry.io,REJECT
 revenuecat = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/js/locket_revenuecat_response.js, requires-body=true, max-size=-1, timeout=60
 deleteHeader = type=http-request, pattern=^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers), script-path=https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/js/locket_revenuecat_request.js, timeout=60
 
-# --- 2. FIREBASE: Mở khóa 30s Video, AI Filters, Photobooth & Chặn QC ---
+# --- 2. FIREBASE: Mở khóa 30s Video, AI Filters & Photobooth, Khung Widget & Caption VIP, Chặn QC ---
 locket_rc = type=http-response, pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects\/locket-4252a\/.+, script-path=https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/js/locket_firebase_response.js, requires-body=true, max-size=-1, timeout=60
 
-# --- 3. PHOTOBOOTH 4 Ô & AI FILTER: Ghép ảnh liên hoàn & chống lỗi bộ lọc ---
+# --- 3. PHOTOBOOTH & AI FILTER: Chống lỗi bộ lọc camera ---
 locket_pb = type=http-request, pattern=^https?:\/\/(us-central1-locket-4252a\.cloudfunctions\.net|api\.locketcamera\.com)\/generateFilteredImage, script-path=https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/js/locket_photobooth.js, requires-body=true, max-size=-1, timeout=60
 
-# --- 4. LOCKET API: Gỡ khóa ảnh mờ, huy hiệu Gold chính chủ, bypass paywall ---
+# --- 4. LOCKET API: Mở khóa huy hiệu Gold chính chủ, bypass paywall ---
 locket_api = type=http-response, pattern=^https?:\/\/api\.locketcamera\.com\/.+, script-path=https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/js/locket_filter_response.js, requires-body=true, max-size=-1, timeout=60
 
 [Host]

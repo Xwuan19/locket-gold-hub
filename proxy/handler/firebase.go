@@ -34,7 +34,7 @@ var firebaseOverrides = map[string]string{
 
 	"paywall_presentation_config": `{"uid":"paywall_testflight","onboarding":false,"after_sent_moment":false,"on_foreground":false,"interval":2592000,"profile_banner":true}`,
 
-	"feature_discovery_popup_config": `{"tag":"LOCKET GOLD VIP","tag_gradient":true,"tag_style":"gold_gradient","title":"Đã Kích Hoạt 💛","feature_set":[{"title":"LocketXwuan ✨","body":"30s Video Real • 4K HD • Photobooth 4 Ô • AI Filters","imageURL":"https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/assets/locket_gold.jpg"}],"primary_button_title":"Bắt Đầu","campaign":"locket_gold_welcome_v3","start_at":"2020-01-01T00:00:00","end_at":"2099-12-31T23:59:59","use_local_time_zone":true}`,
+	"feature_discovery_popup_config": `{"tag":"LOCKET GOLD VIP","tag_gradient":true,"tag_style":"gold_gradient","title":"Đã Kích Hoạt 💛","feature_set":[{"title":"Locket VIP ✨","body":"Quay video 30s • AI & Photobooth • Khung & Caption VIP","imageURL":"https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/assets/locket_gold.jpg"}],"primary_button_title":"Bắt Đầu","campaign":"locket_gold_welcome_v3","start_at":"2020-01-01T00:00:00","end_at":"2099-12-31T23:59:59","use_local_time_zone":true}`,
 
 	"camera": `{"gold_max_duration":30.0,"goldMaxDuration":30.0,"max_duration":30.0,"maxDuration":30.0,"ultra_wide":true,"ultraWide":true,"volume_button":true,"volumeButton":true,"flash_button":true,"telephoto":true,"srgb":true,"lanczos":true,"quality_mbps":0.9,"qualityMbps":0.9}`,
 
