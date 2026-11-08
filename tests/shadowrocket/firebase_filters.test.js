@@ -47,13 +47,13 @@ assert.strictEqual(widgetFrameEvent.uid, "midautumn_2026", "Expected widget fram
 assert.strictEqual(widgetFrameEvent.placement, "below", "Expected widget frame placement to be below");
 assert(widgetFrameEvent.url, "Expected widget frame url to be present");
 
-// Test Native Filter Configuration (Default system filters)
+// Test Photobooth & AI Filter Configuration (RealTrueHieu baseline)
 assert(parsed.entries.camera_filter_config, "Expected camera_filter_config");
+assert(parsed.entries.celebrity_filter_config, "Expected celebrity_filter_config");
 const cfg = JSON.parse(parsed.entries.camera_filter_config);
-assert(cfg.sheet_filters.some(f => f.title.en === "Goofy"), "Expected Goofy filter group");
-assert(cfg.sheet_filters.some(f => f.title.en === "Looks"), "Expected Looks filter group");
-assert(cfg.sheet_filters.some(f => f.title.en === "Celebrate"), "Expected Celebrate filter group");
-assert(cfg.sheet_filters.some(f => f.title.en === "Cute"), "Expected Cute filter group");
+assert(cfg.sheet_filters.some(f => f.id === "group_hot_ai_3d" || (f.title && f.title.vi && f.title.vi.includes("AI 3D"))), "Expected AI 3D filter group");
+assert(cfg.sheet_filters.some(f => f.id === "group_photobooth" || (f.title && f.title.vi && f.title.vi.includes("Photobooth"))), "Expected Photobooth filter group");
+assert(cfg.remote_filters && cfg.remote_filters.length > 0, "Expected remote photobooth filters");
 assert(cfg.picker_filters.length > 0, "Expected picker filters");
 
 // Test 30s Recording & Video Upload with Audio
