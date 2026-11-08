@@ -21,23 +21,23 @@ var SELECTED_FRAME = "royal_gold";
 
 var FRAME_CATALOG = {
     royal_gold: {
-        uid: "frame_royal_gold_2026",
-        url: "https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/assets/frames/frame_royal_gold.png",
+        uid: "frame_royal_gold_v2",
+        url: "https://cdn.jsdelivr.net/gh/Xwuan19/locket-gold-hub@main/shadowrocket/assets/frames/frame_royal_gold.png",
         placement: "below"
     },
     lowg: {
         uid: "frame_lowg_l2k_2026",
-        url: "https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/assets/frames/frame_lowg_l2k.png",
+        url: "https://cdn.jsdelivr.net/gh/Xwuan19/locket-gold-hub@main/shadowrocket/assets/frames/frame_lowg_l2k.png",
         placement: "below"
     },
     kitty_shin: {
         uid: "frame_kitty_shin_2026",
-        url: "https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/assets/frames/frame_kitty_shinchan.png",
+        url: "https://cdn.jsdelivr.net/gh/Xwuan19/locket-gold-hub@main/shadowrocket/assets/frames/frame_kitty_shinchan.png",
         placement: "below"
     },
     citopia: {
         uid: "frame_citopia_y2k_2026",
-        url: "https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/assets/frames/frame_citopia_y2k.png",
+        url: "https://cdn.jsdelivr.net/gh/Xwuan19/locket-gold-hub@main/shadowrocket/assets/frames/frame_citopia_y2k.png",
         placement: "below"
     },
     halloween: {
@@ -469,48 +469,6 @@ if (!ua || ua.toLowerCase().includes("locket") || ua.includes("Firebase") || ua.
         }),
         custom_widget_frames: "enabled",
         custom_widget_frames_enabled: "true",
-        widget_frames_config: JSON.stringify({
-            enabled: true,
-            allow_custom_frames: true,
-            unlock_all_styles: true,
-            default_style: "royal_gold_vip",
-            styles: [
-                {
-                    id: "royal_gold_vip",
-                    name: "👑 VIP Royal Gold",
-                    border_style: "ornate_gold",
-                    crown_badge: true,
-                    badge_text: "VIP",
-                    corner_radius: 28.0,
-                    glow_effect: true,
-                    glow_color: "#FFD700",
-                    overlay_asset: "royal_crown_frame"
-                },
-                {
-                    id: "verified_blue_vip",
-                    name: "💎 Tích Xanh Verified VIP",
-                    border_style: "ornate_gold",
-                    crown_badge: true,
-                    badge_text: "VERIFIED",
-                    corner_radius: 28.0,
-                    glow_effect: true,
-                    glow_color: "#1D9BF0",
-                    overlay_asset: "https://locket-vip.mhiep20077.workers.dev/assets/verified_badge.png"
-                }
-            ]
-        }),
-        widget_frame_styles: JSON.stringify([
-            "royal_gold_vip",
-            "verified_blue_vip",
-            "gold_luxury",
-            "classic"
-        ]),
-        seasonal_frames_config: JSON.stringify({
-            enabled: true,
-            auto_rotate: false,
-            override_default: true,
-            current_season_theme: "royal_gold_vip"
-        }),
         live_activity_onboarding: "true",
         live_activity_onboarding_variant: "friending",
         register_live_activity_push_to_start_token: "true",
