@@ -59,6 +59,11 @@ assert(cfg.picker_filters.length > 0, "Expected picker filters");
 assert(cfg.picker_filters.includes("khung_nh_shin_chan_vi_n_m_nh"), "Expected Shin-chan frame in picker filters");
 assert(cfg.picker_filters.includes("khung_hello_kitty_pastel_ng_t_ng_o"), "Expected Hello Kitty frame in picker filters");
 assert(cfg.picker_filters.includes("photobooth_4cut"), "Expected photobooth_4cut in picker filters");
+assert(cfg.picker_filters.includes("looks_maxxing"), "Expected looks_maxxing in picker filters");
+assert(cfg.picker_filters.includes("influencer"), "Expected influencer in picker filters");
+assert(cfg.picker_filters.includes("disco_lights"), "Expected disco_lights in picker filters");
+assert(cfg.picker_filters.includes("beard"), "Expected beard in picker filters");
+assert(cfg.picker_filters.includes("slimed"), "Expected slimed in picker filters");
 
 // Test 30s Recording & Video Upload with Audio
 assert.strictEqual(parsed.entries.video_sound_enabled, "true", "Expected video_sound_enabled");
