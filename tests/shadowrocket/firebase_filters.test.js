@@ -33,13 +33,13 @@ const upsell = JSON.parse(parsed.entries.upsell_features);
 assert.strictEqual(upsell.custom_widget_frames, true, "Expected custom_widget_frames upsell to be true");
 
 // Test Widget Frames & Event
-assert.strictEqual(parsed.entries.custom_widget_frames_enabled, "true", "Expected custom_widget_frames_enabled to be true");
-assert.strictEqual(parsed.entries.custom_widget_frames, "enabled", "Expected custom_widget_frames to be enabled");
-assert.strictEqual(parsed.entries.ios_widget_frame_event_enabled, "true", "Expected ios_widget_frame_event_enabled to be true");
-assert.strictEqual(parsed.entries.widget_frame_event_enabled, "true", "Expected widget_frame_event_enabled to be true");
+const fg = JSON.parse(parsed.entries.feature_gates);
+assert.strictEqual(fg.custom_widget_frames, "enabled", "Expected custom_widget_frames to be enabled in feature_gates");
+assert.strictEqual(parsed.entries.android_widget_frame_event_enabled, "true", "Expected android_widget_frame_event_enabled to be true");
 assert.strictEqual(parsed.entries.widget_frame_event_max_images, "5", "Expected widget_frame_event_max_images to be 5");
 
 const widgetFrameEvent = JSON.parse(parsed.entries.widget_frame_event);
+assert.strictEqual(widgetFrameEvent.uid, "midautumn_2026", "Expected widget frame uid to be midautumn_2026");
 assert.strictEqual(widgetFrameEvent.placement, "below", "Expected widget frame placement to be below");
 assert(widgetFrameEvent.url, "Expected widget frame url to be present");
 

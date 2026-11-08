@@ -17,32 +17,37 @@
 // 6. "halloween"  : Cute Ghost & Pumpkin (Halloween)
 // 7. "random"     : Tự động đổi ngẫu nhiên mỗi lần mở app
 // ============================================================
-var SELECTED_FRAME = "royal_gold";
+var SELECTED_FRAME = "shin_chan";
 
 var FRAME_CATALOG = {
+    shin_chan: {
+        uid: "midautumn_2026",
+        url: "https://i.ibb.co/1Yt1Dzzy/Shin-chan-1.png",
+        placement: "below"
+    },
     royal_gold: {
-        uid: "frame_royal_gold_v2",
+        uid: "midautumn_2026",
         url: "https://cdn.jsdelivr.net/gh/Xwuan19/locket-gold-hub@main/shadowrocket/assets/frames/frame_royal_gold.png",
         placement: "below"
     },
-    lowg: {
-        uid: "frame_lowg_l2k_2026",
-        url: "https://cdn.jsdelivr.net/gh/Xwuan19/locket-gold-hub@main/shadowrocket/assets/frames/frame_lowg_l2k.png",
-        placement: "below"
-    },
     kitty_shin: {
-        uid: "frame_kitty_shin_2026",
+        uid: "midautumn_2026",
         url: "https://cdn.jsdelivr.net/gh/Xwuan19/locket-gold-hub@main/shadowrocket/assets/frames/frame_kitty_shinchan.png",
         placement: "below"
     },
-    citopia: {
-        uid: "frame_citopia_y2k_2026",
-        url: "https://cdn.jsdelivr.net/gh/Xwuan19/locket-gold-hub@main/shadowrocket/assets/frames/frame_citopia_y2k.png",
+    halloween: {
+        uid: "midautumn_2026",
+        url: "https://i.postimg.cc/HsLkTkmm/locket-halloween-frame-transparent.png",
         placement: "below"
     },
-    halloween: {
-        uid: "frame_halloween_2026",
-        url: "https://i.postimg.cc/fbY7MGdR/hlw.png",
+    lowg: {
+        uid: "midautumn_2026",
+        url: "https://cdn.jsdelivr.net/gh/Xwuan19/locket-gold-hub@main/shadowrocket/assets/frames/frame_lowg_l2k.png",
+        placement: "below"
+    },
+    citopia: {
+        uid: "midautumn_2026",
+        url: "https://cdn.jsdelivr.net/gh/Xwuan19/locket-gold-hub@main/shadowrocket/assets/frames/frame_citopia_y2k.png",
         placement: "below"
     }
 };
@@ -452,23 +457,19 @@ if (!ua || ua.toLowerCase().includes("locket") || ua.includes("Firebase") || ua.
     Object.assign(obj.entries, {
         widget_frame_event_max_images: "5",
         android_widget_frame_event_enabled: "true",
-        ios_widget_frame_event_enabled: "true",
-        widget_frame_event_enabled: "true",
         widget_badge_enabled: "true",
         widget_badge_v2: "true",
         widget_stale_state_enabled: "false",
         widget_last_sent_indicator: "false",
         widget_sync_token_reload_mode: "clearTokenNever",
         widget_frame_event: JSON.stringify({
-            uid: currentFrame.uid,            
+            uid: currentFrame.uid || "midautumn_2026",            
             url: currentFrame.url,
             use_local_time_zone: true,
             placement: currentFrame.placement || "below",
             start_at: "2020-01-01T00:00:00",
             end_at: "2099-12-31T23:59:59"
         }),
-        custom_widget_frames: "enabled",
-        custom_widget_frames_enabled: "true",
         live_activity_onboarding: "true",
         live_activity_onboarding_variant: "friending",
         register_live_activity_push_to_start_token: "true",
