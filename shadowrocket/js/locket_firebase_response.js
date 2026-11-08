@@ -9,44 +9,71 @@
 
 // ============================================================
 // 🎨 BỘ SƯU TẬP WIDGET FRAME VIP (CHỌN KHUNG BẠN THÍCH DƯỚI ĐÂY)
-// 1. "lowg"       : Low G - 'L2K' The Album (Windows 95/98 Retro UI) - MẶC ĐỊNH
-// 2. "kitty_shin" : Hello Kitty & Shin-chan (Cute Pink Retro Gingham)
-// 3. "citopia"    : Citopia Y2K (Metallic Chrome Organic Fluid)
-// 4. "halloween"  : Cute Ghost & Pumpkin (Halloween)
-// 5. "random"     : Tự động đổi ngẫu nhiên mỗi lần mở app
+// 1. "royal_gold" : Khung Hoàng Gia VIP Gold (MẶC ĐỊNH - viền vàng sang trọng trên widget)
+// 2. "daily"      : Tự động đổi khung theo ngày trong tuần (Thứ 2 - CN)
+// 3. "lowg"       : Low G - 'L2K' The Album (Windows 95/98 Retro UI)
+// 4. "kitty_shin" : Hello Kitty & Shin-chan (Cute Pink Retro Gingham)
+// 5. "citopia"    : Citopia Y2K (Metallic Chrome Organic Fluid)
+// 6. "halloween"  : Cute Ghost & Pumpkin (Halloween)
+// 7. "random"     : Tự động đổi ngẫu nhiên mỗi lần mở app
 // ============================================================
-var SELECTED_FRAME = "lowg";
+var SELECTED_FRAME = "royal_gold";
 
 var FRAME_CATALOG = {
+    royal_gold: {
+        uid: "custom_frame_event_2026",
+        url: "https://i.ibb.co/7dXZMyBg/1.png",
+        placement: "below"
+    },
     lowg: {
         uid: "frame_lowg_l2k_2026",
         url: "https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/assets/frames/frame_lowg_l2k.png",
-        placement: "above"
+        placement: "below"
     },
     kitty_shin: {
         uid: "frame_kitty_shin_2026",
         url: "https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/assets/frames/frame_kitty_shinchan.png",
-        placement: "above"
+        placement: "below"
     },
     citopia: {
         uid: "frame_citopia_y2k_2026",
         url: "https://raw.githubusercontent.com/Xwuan19/locket-gold-hub/main/shadowrocket/assets/frames/frame_citopia_y2k.png",
-        placement: "above"
+        placement: "below"
     },
     halloween: {
         uid: "frame_halloween_2026",
         url: "https://i.postimg.cc/fbY7MGdR/hlw.png",
-        placement: "above"
+        placement: "below"
     }
 };
 
+var DAILY_FRAMES = {
+    1: { uid: "frame_mon_galaxy_cat", url: "https://i.ibb.co/84j69JnV/frame-mon-640.png" },
+    2: { uid: "frame_tue_mecha_dragon", url: "https://i.ibb.co/fVQvW41Z/frame-tue-640.png" },
+    3: { uid: "frame_wed_bamboo_rabbit_v2", url: "https://i.ibb.co/Lzv9bQbJ/frame-wed-640.png" },
+    4: { uid: "frame_thu_baby_bear_v2", url: "https://i.ibb.co/8wWQF1R/frame-thu-640.png" },
+    5: { uid: "frame_fri_astro_boy", url: "https://i.ibb.co/VYmyDN1g/frame-fri-640.png" },
+    6: { uid: "frame_sat_cyber_cat", url: "https://i.ibb.co/wFdwxy9w/frame-sat-640.png" },
+    0: { uid: "frame_sun_robot_gamer", url: "https://i.ibb.co/d4vFGDw2/frame-sun-640.png" }
+};
+
 function getActiveFrame() {
+    if (SELECTED_FRAME === "daily") {
+        var nowUtc = new Date();
+        var vnTime = new Date(nowUtc.getTime() + (7 * 60 * 60 * 1000));
+        var dayFrame = DAILY_FRAMES[vnTime.getUTCDay()] || DAILY_FRAMES[1];
+        return {
+            uid: dayFrame.uid + "_" + vnTime.getUTCFullYear() + "_" + (vnTime.getUTCMonth() + 1) + "_" + vnTime.getUTCDate(),
+            url: dayFrame.url,
+            placement: "below"
+        };
+    }
     if (SELECTED_FRAME === "random") {
         var keys = Object.keys(FRAME_CATALOG);
         var randomKey = keys[Math.floor(Math.random() * keys.length)];
         return FRAME_CATALOG[randomKey];
     }
-    return FRAME_CATALOG[SELECTED_FRAME] || FRAME_CATALOG["lowg"];
+    return FRAME_CATALOG[SELECTED_FRAME] || FRAME_CATALOG["royal_gold"];
 }
 
 var currentFrame = getActiveFrame();
@@ -65,8 +92,12 @@ try {
 
 // Allow Locket, Firebase SDK, Darwin, CFNetwork or missing UA
 if (!ua || ua.toLowerCase().includes("locket") || ua.includes("Firebase") || ua.includes("CFNetwork") || ua.includes("Darwin")) {
+    obj.state = "UPDATE";
+    obj.templateVersion = String(Date.now());
     obj.Attention = "Locket VIP Activated (Video 30s + AI Filters + Photobooth)!";
     obj.entries = obj.entries || {};
+    obj.entries.cache_ttl_seconds = "0";
+    obj.entries.client_cache_ttl_sec = "0";
 
     // ============================================================
     // 1. CẤU HÌNH GOLD, FEATURE GATES & PAYWALL
@@ -125,12 +156,12 @@ if (!ua || ua.toLowerCase().includes("locket") || ua.includes("Firebase") || ua.
         face_filter_enabled: "true",
         ai_styles_enabled: "true",
         upsell_features: JSON.stringify({
-            app_icon_picker: true,
-            camera_roll: true,
-            camera_theme: true,
-            locket_views: true,
-            remove_ads: true,
-            custom_widget_frames: true
+            app_icon_picker: false,
+            camera_roll: false,
+            camera_theme: false,
+            locket_views: false,
+            remove_ads: false,
+            custom_widget_frames: false
         }),
         paywall_presentation_config: JSON.stringify({
             uid: "paywall_testflight",
@@ -241,6 +272,20 @@ if (!ua || ua.toLowerCase().includes("locket") || ua.includes("Firebase") || ua.
         camera_filter_config: (function () {
             var workerAsset = "https://locket-vip.mhiep20077.workers.dev/assets";
 
+            var FILTER_PROMPTS = {
+                stk_rose_flower: "Show the person in the photo with the exact same pose and background, but have them with a single rose in their mouth. If no person is present in the input, do not add anything to the output.",
+                stk_spooky_ghost: "Show the person in the photo with the exact same pose, expression, and background, but subtly insert a realistic-looking ghost somewhere in the background. If no person is present, do not add any people to the output.",
+                stk_superhero_cape: "Show the person in the photo with the exact same pose and background, but suit them up like a superhero in a blue and red outfit with a flowing cape while keeping their pose and framing identical.",
+                stk_rain_storm: "Show the person in the photo with the exact same pose, background, and facial expression, but replace the ground with molten lava, glowing magma cracks, and volcanic sparks while keeping them rooted to the spot. If no face is present, do not show any people in the output, only ever show people who were in the original input image.",
+                stk_golden_hour: "Show the person in the photo with the exact same pose, expression, and background, but make the scene look like it was captured during peak golden hour with warm sunlight and long shadows. If no person is present, do not add any people to the output.",
+                stk_fireworks: "Show the person in the photo with the exact same pose and background, but fill the scene with fireworks exploding in the night sky and reflecting colorful light onto the subject. Ensure the person is in the exact same pose and positioning within the frame. If no face is present, do not show any people in the output, only ever show people who were in the original input image.",
+                stk_new_year_2026: "Show the person in the photo with the exact same pose and background, but have them wearing decorative glasses that say Happy New Year 2026. Ensure the person is in the exact same pose and positioning within the frame. If no face is present, do not show any people in the output, only ever show people who were in the original input image.",
+                stk_harry_potter: "Show the person in the photo with the exact same pose and background, but show them as a character from Harry Potter wearing a robe of one of the four houes. Keep the pose and framing identical and do not change the background.",
+                stk_minecraft: "Show the person in the photo with the exact same pose, expression, and background, but make everything in the scene look like it was created from Minecraft-style blocks and show people as Minecraft characters. If no person is present, do not add any people to the output.",
+                stk_fire_flame: "Show the persons in the photo with the exact same pose and background, but with a dramatic theatrical flame effect appearing just in front of the subject's face, as if they are performing a fantasy fire-breathing act, captured with a modern iPhone camera look.\n\nThe flame should appear as a staged visual effect, suspended in front of the mouth area without showing fire originating from inside the body. Keep the effect believable and cinematic, with a bright yellow-white core, orange and red edges, subtle motion blur, and gentle heat distortion in the nearby air.\n\nAdd a soft warm glow on nearby facial features and clothing, consistent with the flame's position, while preserving the original lighting of the scene. Do not show burns, smoke inhalation, injury, pain, damage, or distress. Do not alter the person's face, expression, identity, or pose.\n\nKeep the background, framing, depth of field, and image quality identical to the original, with the flame effect appearing as a safe staged performance element captured in-camera. Do not change the overall compsition of the photo, do not add new people to the photo, only show each person in the photo one time.",
+                stk_ocean_underwater: "Show the person in the photo with the exact same pose, background, and facial expression, but as if them and their surrounding environment was underwater. If no face is present, do not show any people in the output, only ever show people who were in the original input image."
+            };
+
             function buildFilter(id, name, colors, icon, category, overlayUrl) {
                 var imgUrl = overlayUrl || (icon && icon.url) || "";
                 return {
@@ -248,7 +293,7 @@ if (!ua || ua.toLowerCase().includes("locket") || ua.includes("Firebase") || ua.
                     id: id,
                     name: name,
                     category: category || "Filter",
-                    prompt: id,
+                    prompt: FILTER_PROMPTS[id] || id,
                     style: "cutout",
                     type: "normal",
                     filterType: "cutout",
@@ -588,7 +633,7 @@ if (!ua || ua.toLowerCase().includes("locket") || ua.includes("Firebase") || ua.
     // 6. WIDGET, THÔNG BÁO & GIAO DIỆN (JOURNAL / PROFILE)
     // ============================================================
     Object.assign(obj.entries, {
-        widget_frame_event_max_images: "5",
+        widget_frame_event_max_images: "10",
         android_widget_frame_event_enabled: "true",
         widget_badge_enabled: "true",
         widget_badge_v2: "true",
@@ -599,9 +644,53 @@ if (!ua || ua.toLowerCase().includes("locket") || ua.includes("Firebase") || ua.
             uid: currentFrame.uid,            
             url: currentFrame.url,
             use_local_time_zone: true,
-            placement: currentFrame.placement || "above",
+            placement: currentFrame.placement || "below",
             start_at: "2020-01-01T00:00:00",
             end_at: "2099-12-31T23:59:59"
+        }),
+        custom_widget_frames: "enabled",
+        custom_widget_frames_enabled: "true",
+        widget_frames_config: JSON.stringify({
+            enabled: true,
+            allow_custom_frames: true,
+            unlock_all_styles: true,
+            default_style: "royal_gold_vip",
+            styles: [
+                {
+                    id: "royal_gold_vip",
+                    name: "👑 VIP Royal Gold",
+                    border_style: "ornate_gold",
+                    crown_badge: true,
+                    badge_text: "VIP",
+                    corner_radius: 28.0,
+                    glow_effect: true,
+                    glow_color: "#FFD700",
+                    overlay_asset: "royal_crown_frame"
+                },
+                {
+                    id: "verified_blue_vip",
+                    name: "💎 Tích Xanh Verified VIP",
+                    border_style: "ornate_gold",
+                    crown_badge: true,
+                    badge_text: "VERIFIED",
+                    corner_radius: 28.0,
+                    glow_effect: true,
+                    glow_color: "#1D9BF0",
+                    overlay_asset: "https://locket-vip.mhiep20077.workers.dev/assets/verified_badge.png"
+                }
+            ]
+        }),
+        widget_frame_styles: JSON.stringify([
+            "royal_gold_vip",
+            "verified_blue_vip",
+            "gold_luxury",
+            "classic"
+        ]),
+        seasonal_frames_config: JSON.stringify({
+            enabled: true,
+            auto_rotate: false,
+            override_default: true,
+            current_season_theme: "royal_gold_vip"
         }),
         live_activity_onboarding: "true",
         live_activity_onboarding_variant: "friending",

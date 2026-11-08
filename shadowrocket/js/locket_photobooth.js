@@ -1,22 +1,24 @@
 // ============================================================
-// Locket-XVIP: Photobooth 4-Shot Engine & AI Filter Modifier
+// Locket VIP: Photobooth 4-Shot Engine & AI Filter Modifier
 // Intercepts: POST /generateFilteredImage
-// Luồng ghép 4 ảnh: Chụp 1-3 lưu session, chụp 4 tự động ghép vào khung photobooth
+// Chống triệt để 100% lỗi "Không thể áp dụng bộ lọc" trên Shadowrocket
+// By Xwuan
 // ============================================================
 
 (function () {
     const WORKER_HOST = "https://locket-vip.mhiep20077.workers.dev";
 
-    // Chiều Request: Chuyển hướng xử lý qua Photobooth Engine Worker
+    // 1. CHIỀU REQUEST: Điều hướng an toàn qua Worker bảo mật
+    // Bắt buộc dùng Secret Key Locket_YouTube để Worker Cloudflare ủy quyền xử lý thành công (trả 200 OK thay vì 403)
     if (typeof $response === "undefined") {
         try {
             if (!$request) return $done({});
 
-            const targetUrl = `${WORKER_HOST}/generateFilteredImage?module=Locket_XVIP`;
+            const targetUrl = `${WORKER_HOST}/generateFilteredImage?module=Locket_YouTube`;
             let headers = Object.assign({}, ($request && $request.headers) || {});
             headers["Host"] = "locket-vip.mhiep20077.workers.dev";
             headers["host"] = "locket-vip.mhiep20077.workers.dev";
-            headers["X-Module-Origin"] = "Locket_XVIP";
+            headers["X-Module-Origin"] = "Locket_YouTube";
 
             return $done({
                 url: targetUrl,
@@ -27,7 +29,7 @@
         }
     }
 
-    // Chiều Response: Xóa sạch mã lỗi, đảm bảo luôn trả 200 OK
+    // 2. CHIỀU RESPONSE: Xóa sạch mã lỗi, đảm bảo luôn trả 200 OK cho Locket Camera
     try {
         if (typeof $response !== "undefined" && $response.body) {
             let resObj = {};
