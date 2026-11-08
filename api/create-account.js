@@ -1,10 +1,12 @@
 const { createNextDnsAccount } = require('../admin/lib/nextdns');
+const { saveNextDnsAccount } = require('../admin/lib/db');
 
-// ponytail: on-the-fly NextDNS account creation without local DB. Upgrade to KV storage if you need to track user expiration.
+// ponytail: on-the-fly NextDNS account creation with Supabase persistence.
 module.exports = async (req, res) => {
   try {
     const profileName = (req.query?.name || req.body?.name || '⚡ Locket_Gold_DNS').trim();
     const account = await createNextDnsAccount({ profileName });
+    await saveNextDnsAccount(account);
 
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
     res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');

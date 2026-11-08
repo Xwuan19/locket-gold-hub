@@ -1,4 +1,5 @@
 const { checkNextDnsQueryUsage } = require('../admin/lib/nextdns');
+const { updateQueryUsage } = require('../admin/lib/db');
 
 // ponytail: direct analytics query via NextDNS session. Upgrade to Redis caching if check frequency exceeds 60 req/min.
 module.exports = async (req, res) => {
@@ -15,6 +16,9 @@ module.exports = async (req, res) => {
 
   try {
     const result = await checkNextDnsQueryUsage({ email, password, profileId });
+    if (result.ok && result.queries !== undefined && (profileId || result.profileId)) {
+      await updateQueryUsage(profileId || result.profileId, result.queries);
+    }
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
     res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     if (!result.ok) {
