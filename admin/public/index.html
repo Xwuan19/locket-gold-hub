@@ -74,14 +74,14 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255, 251, 241, 0.9);
+      background: rgba(255, 251, 241, 0.92);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--card-border);
       padding: 12px 20px;
     }
     .nav-inner {
-      max-width: 1120px;
+      max-width: 1140px;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -126,7 +126,7 @@
     }
     .nav-links {
       display: flex;
-      gap: 20px;
+      gap: 22px;
       align-items: center;
     }
     .nav-link {
@@ -157,41 +157,50 @@
       transform: translateY(-1px);
     }
 
-    /* Hero Section (Atmospheric Uplocket Visuals) */
+    /* Hero Section */
     .hero-wrap {
       position: relative;
       background: radial-gradient(circle at 50% 20%, rgba(255, 176, 0, 0.22) 0%, rgba(255, 248, 231, 0.8) 50%, var(--bg) 85%);
-      padding: 24px 20px 40px;
+      padding: 24px 20px 48px;
       overflow: hidden;
-      min-height: 520px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
     }
 
-    .hero-collage {
+    .hero-stage {
       position: relative;
       width: 100%;
-      max-width: 680px;
-      height: 400px;
+      max-width: 1200px;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin: 0 auto 12px;
     }
 
-    /* Center 3D Tilted iPhone Phone Shell */
-    .hero-phone {
-      position: absolute;
-      left: 50%;
-      top: 48%;
-      transform: translate(-50%, -50%) rotate(-4deg);
-      width: 250px;
-      height: 330px;
-      background: #fff;
-      border-radius: 36px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.14), 0 4px 14px rgba(0, 0, 0, 0.06);
+    /* Center 3D Tilted iPhone Mockup */
+    .phone-mockup-wrap {
+      position: relative;
+      z-index: 10;
+      width: 260px;
+      height: 350px;
+      transform: rotate(-5deg);
+      transition: transform 0.3s ease;
+    }
+    .phone-mockup-wrap:hover {
+      transform: rotate(-3deg) scale(1.02);
+    }
+    .phone-mockup {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+      border-radius: 40px;
+      border: 7px solid #ece5d6;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.14), 0 6px 18px rgba(0, 0, 0, 0.06);
       overflow: hidden;
-      border: 6px solid #f2ede2;
-      z-index: 5;
     }
     .phone-screen {
       position: relative;
@@ -205,13 +214,13 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 40%, rgba(0,0,0,0.2) 100%);
+      background: linear-gradient(to bottom, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 35%, rgba(0,0,0,0.2) 100%);
     }
     .phone-status {
       position: relative;
       z-index: 2;
       width: 100%;
-      padding: 10px 14px 4px;
+      padding: 12px 14px 4px;
     }
     .phone-status img {
       width: 100%;
@@ -221,18 +230,18 @@
     .phone-widget-area {
       position: relative;
       z-index: 2;
-      padding: 8px 12px;
+      padding: 8px 14px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
     .locket-widget-box {
       width: 100%;
       aspect-ratio: 1;
-      border-radius: 24px;
+      border-radius: 26px;
       overflow: hidden;
       position: relative;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
     }
     .locket-widget-box img.widget-photo {
       width: 100%;
@@ -245,8 +254,8 @@
       bottom: 0;
       left: 0;
       right: 0;
-      padding: 8px 10px;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
+      padding: 8px 12px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, transparent 100%);
       display: flex;
       align-items: center;
       gap: 6px;
@@ -260,9 +269,9 @@
     .widget-pill {
       background: #ffb000;
       color: #1a1200;
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 800;
-      padding: 2px 7px;
+      padding: 3px 8px;
       border-radius: 12px;
     }
     .phone-icons-grid {
@@ -275,87 +284,94 @@
       width: 100%;
       aspect-ratio: 1;
       border-radius: 10px;
-      opacity: 0.85;
+      opacity: 0.88;
       display: block;
     }
 
-    /* Floating QR Card */
-    .hero-qr-card {
+    /* Floating QR Code Card (Desktop) */
+    .qr-floating-card {
       position: absolute;
-      right: 14%;
-      bottom: 8%;
-      width: 145px;
+      right: -85px;
+      bottom: 15px;
+      width: 140px;
       background: #ffffff;
       border-radius: 24px;
       padding: 10px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
-      transform: rotate(6deg);
-      z-index: 10;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+      transform: rotate(5deg);
+      z-index: 15;
       text-decoration: none;
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .hero-qr-card:hover {
-      transform: rotate(3deg) scale(1.04);
+    .qr-floating-card:hover {
+      transform: rotate(2deg) scale(1.04);
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.24);
     }
-    .hero-qr-card img {
+    .qr-floating-card img {
       width: 100%;
       height: auto;
-      border-radius: 16px;
+      border-radius: 18px;
       display: block;
     }
-    .hero-qr-badge {
-      margin-top: 6px;
-      font-size: 11px;
+    .qr-label {
+      margin-top: 8px;
+      font-size: 11.5px;
       font-weight: 800;
       color: #1a1200;
       background: #fff3d6;
-      padding: 3px 8px;
-      border-radius: 8px;
-      text-align: center;
+      padding: 4px 10px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
-    /* Floating Stickers scattered like uplocket.io.vn */
+    /* Floating Decorative Stickers (Desktop View - spread widely) */
     .sticker {
       position: absolute;
-      z-index: 8;
+      z-index: 4;
       pointer-events: none;
       user-select: none;
-      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 6px rgba(0,0,0,0.04));
-      transition: transform 0.3s ease;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.04));
+      transition: transform 0.4s ease;
     }
     .sticker img {
       display: block;
       height: auto;
     }
 
-    .st-hearts { left: 8%; top: 12%; width: 72px; transform: rotate(-8deg); }
-    .st-bff { left: 5%; top: 40%; width: 92px; transform: rotate(-6deg); }
-    .st-heart3d { left: 21%; bottom: 6%; width: 56px; transform: rotate(12deg); }
-    .st-megaphone { left: 16%; top: 68%; width: 62px; transform: rotate(5deg); }
-    .st-float3 { left: 2%; bottom: 1%; width: 106px; border-radius: 18px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.12); pointer-events: auto; }
-    
-    .st-iheart { right: 18%; top: 8%; width: 68px; transform: rotate(8deg); }
-    .st-float2 { right: 4%; top: 14%; width: 92px; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.1); pointer-events: auto; }
-    .st-tile { right: 8%; top: 44%; width: 76px; transform: rotate(14deg); }
-    .st-heartflat { right: 1%; bottom: 20%; width: 64px; transform: rotate(-6deg); }
+    /* Desktop absolute coordinates: placed with generous breathing room */
+    .st-hearts    { left: 14%; top: 10%; width: 85px;  transform: rotate(-8deg); }
+    .st-bff       { left: 9%;  top: 44%; width: 110px; transform: rotate(-5deg); }
+    .st-float3    { left: 5%;  bottom: 6%; width: 130px; border-radius: 22px; overflow: hidden; box-shadow: 0 12px 30px rgba(0,0,0,0.12); pointer-events: auto; }
+    .st-megaphone { left: 19%; bottom: 4%; width: 68px;  transform: rotate(6deg); }
+    .st-heart3d   { left: 24%; top: 14%; width: 62px;  transform: rotate(10deg); }
 
-    /* Hero Text & Slogan below collage */
-    .hero-bottom-text {
+    .st-float2    { right: 12%; top: 10%; width: 120px; border-radius: 20px; overflow: hidden; box-shadow: 0 12px 30px rgba(0,0,0,0.1); pointer-events: auto; }
+    .st-iheart    { right: 26%; top: 14%; width: 80px;  transform: rotate(8deg); }
+    .st-tile      { right: 10%; top: 46%; width: 95px;  transform: rotate(14deg); }
+    .st-heartflat { right: 14%; bottom: 12%; width: 80px; transform: rotate(-6deg); }
+
+    /* Hero Text & Slogan below stage */
+    .hero-footer-content {
       position: relative;
       z-index: 20;
       text-align: center;
-      margin-top: 6px;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .hero-locket-logo {
+    .hero-brand-line {
       display: inline-flex;
       align-items: center;
       gap: 12px;
       margin-bottom: 8px;
     }
-    .hero-logo-box {
+    .hero-brand-icon {
       width: 44px;
       height: 44px;
       border-radius: 12px;
@@ -365,14 +381,14 @@
       justify-content: center;
       box-shadow: 0 4px 14px rgba(255, 176, 0, 0.4);
     }
-    .hero-locket-title {
+    .hero-brand-name {
       font-size: 34px;
       font-weight: 900;
       letter-spacing: -1px;
       color: var(--fg);
     }
-    .hero-caption {
-      font-size: 20px;
+    .hero-slogan {
+      font-size: 21px;
       font-weight: 800;
       color: var(--fg-sub);
       margin-bottom: 18px;
@@ -410,9 +426,9 @@
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: var(--radius-lg);
-      padding: 38px 28px;
+      padding: 42px 28px;
       box-shadow: var(--shadow-md);
-      margin-bottom: 44px;
+      margin-bottom: 48px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -429,15 +445,15 @@
     .badge-verified {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       background: var(--success-light);
       color: #047857;
       border: 1px solid rgba(16, 185, 129, 0.32);
-      padding: 6px 14px;
+      padding: 7px 16px;
       border-radius: var(--radius-full);
       font-weight: 800;
-      font-size: 13px;
-      margin-bottom: 16px;
+      font-size: 13.5px;
+      margin-bottom: 18px;
     }
     .verified-icon {
       display: inline-flex;
@@ -452,17 +468,19 @@
       font-weight: 900;
     }
     .cta-title {
-      font-size: 28px;
+      font-size: 32px;
       font-weight: 900;
-      letter-spacing: -0.6px;
-      margin-bottom: 10px;
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
       color: var(--fg);
+      line-height: 1.25;
+      word-break: break-word;
     }
     .cta-desc {
-      font-size: 15.5px;
+      font-size: 16px;
       color: var(--muted);
-      margin-bottom: 26px;
-      max-width: 600px;
+      margin-bottom: 28px;
+      max-width: 620px;
       margin-left: auto;
       margin-right: auto;
       line-height: 1.6;
@@ -471,15 +489,15 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
       width: 100%;
-      max-width: 440px;
-      min-height: 56px;
-      padding: 16px 28px;
+      max-width: 460px;
+      min-height: 58px;
+      padding: 16px 32px;
       background: linear-gradient(135deg, #ffd000 0%, #ffb000 100%);
       color: #1a1200;
       font-weight: 900;
-      font-size: 18px;
+      font-size: 18.5px;
       border-radius: var(--radius-md);
       border: none;
       cursor: pointer;
@@ -489,7 +507,7 @@
       touch-action: manipulation;
     }
     .btn-main:hover {
-      box-shadow: 0 16px 36px rgba(255, 176, 0, 0.55);
+      box-shadow: 0 16px 38px rgba(255, 176, 0, 0.55);
       transform: translateY(-2px);
       filter: brightness(1.02);
     }
@@ -502,9 +520,9 @@
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 16px;
-      margin-top: 20px;
-      font-size: 13.5px;
+      gap: 18px;
+      margin-top: 24px;
+      font-size: 14px;
       font-weight: 700;
       color: var(--fg-sub);
     }
@@ -514,22 +532,47 @@
       gap: 6px;
     }
 
+    /* Desktop QR card inside install card */
+    .desktop-qr-box {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px dashed rgba(180, 130, 20, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      text-align: left;
+    }
+    .desktop-qr-img {
+      width: 90px;
+      height: 90px;
+      border-radius: 14px;
+      border: 1px solid rgba(180, 130, 20, 0.2);
+      padding: 4px;
+      background: #fff;
+    }
+    .desktop-qr-text {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
     /* Feature Grid */
     .section-header {
       text-align: center;
       margin-bottom: 28px;
     }
     .section-title {
-      font-size: 26px;
+      font-size: 28px;
       font-weight: 900;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.6px;
       color: var(--fg);
       margin-bottom: 8px;
     }
     .section-desc {
-      font-size: 15px;
+      font-size: 15.5px;
       color: var(--muted);
-      max-width: 580px;
+      max-width: 600px;
       margin: 0 auto;
     }
 
@@ -543,7 +586,7 @@
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: var(--radius-md);
-      padding: 24px 22px;
+      padding: 26px 22px;
       box-shadow: var(--shadow-sm);
       transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
     }
@@ -553,9 +596,9 @@
       border-color: var(--card-border-hover);
     }
     .feature-icon-badge {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
       background: var(--primary-light);
       display: flex;
       align-items: center;
@@ -564,7 +607,7 @@
       margin-bottom: 16px;
     }
     .feature-card h3 {
-      font-size: 18px;
+      font-size: 18.5px;
       font-weight: 900;
       margin-bottom: 8px;
       color: var(--fg);
@@ -580,7 +623,7 @@
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: var(--radius-lg);
-      padding: 38px 28px;
+      padding: 40px 28px;
       box-shadow: var(--shadow-sm);
       margin-bottom: 48px;
     }
@@ -588,25 +631,25 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 18px;
-      margin-top: 24px;
+      margin-top: 26px;
     }
     .step-box {
       background: #fffdf9;
       border: 1px solid #ebd9bf;
       border-radius: var(--radius-md);
-      padding: 22px 18px;
+      padding: 24px 20px;
       display: flex;
       flex-direction: column;
     }
     .step-badge {
-      width: 36px;
-      height: 36px;
-      min-width: 36px;
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
       border-radius: 50%;
       background: linear-gradient(135deg, #ffd000, #ffb000);
       color: #1a1200;
       font-weight: 900;
-      font-size: 16px;
+      font-size: 16.5px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -614,13 +657,13 @@
       box-shadow: 0 4px 10px rgba(255, 176, 0, 0.35);
     }
     .step-box h4 {
-      font-size: 16.5px;
+      font-size: 17px;
       font-weight: 900;
       color: var(--fg);
       margin-bottom: 8px;
     }
     .step-box p {
-      font-size: 13.5px;
+      font-size: 14px;
       color: var(--muted);
       line-height: 1.55;
     }
@@ -634,7 +677,7 @@
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: var(--radius-lg);
-      padding: 38px 28px;
+      padding: 40px 28px;
       box-shadow: var(--shadow-sm);
       margin-bottom: 48px;
     }
@@ -656,12 +699,12 @@
     }
     .faq-question {
       width: 100%;
-      min-height: 52px;
+      min-height: 54px;
       padding: 16px 20px;
       background: transparent;
       border: none;
       text-align: left;
-      font-size: 16px;
+      font-size: 16.5px;
       font-weight: 800;
       color: var(--fg);
       cursor: pointer;
@@ -685,13 +728,13 @@
       overflow: hidden;
       transition: max-height 0.3s ease, padding 0.3s ease;
       padding: 0 20px;
-      font-size: 14px;
+      font-size: 14.5px;
       color: var(--muted);
       line-height: 1.65;
     }
     .faq-item.open .faq-answer {
       max-height: 600px;
-      padding: 0 20px 20px;
+      padding: 0 20px 22px;
     }
     .faq-answer p {
       margin-bottom: 10px;
@@ -746,26 +789,54 @@
     /* Footer */
     footer {
       border-top: 1px solid var(--card-border);
-      padding: 28px 20px;
+      padding: 30px 20px;
       background: rgba(255, 251, 241, 0.7);
       text-align: center;
       font-size: 13.5px;
       color: var(--muted);
     }
 
-    /* Responsive */
+    /* Responsive Behavior */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .hero-collage { height: 340px; }
-      .hero-phone { width: 200px; height: 270px; }
-      .hero-qr-card { display: none; }
-      .st-hearts { left: 4%; top: 8%; width: 56px; }
-      .st-bff { left: 2%; top: 38%; width: 72px; }
-      .st-float3 { display: none; }
-      .st-float2 { right: 2%; top: 10%; width: 74px; }
-      .st-tile { right: 3%; top: 45%; width: 62px; }
-      .st-iheart { display: none; }
-      .hero-caption { font-size: 18px; }
+      .hero-wrap { padding: 24px 16px 36px; }
+      .hero-stage { min-height: 330px; margin-bottom: 6px; }
+      .phone-mockup-wrap { width: 220px; height: 300px; transform: rotate(-3deg); }
+      
+      /* HIDE THE QR CODE FLOATER ON MOBILE (user is already on iPhone) */
+      .qr-floating-card { display: none !important; }
+      .desktop-qr-box { display: none !important; }
+
+      /* HIDE ALL HEAVY/OVERLAPPING STICKERS ON MOBILE */
+      .st-bff,
+      .st-heart3d,
+      .st-megaphone,
+      .st-float3,
+      .st-float2,
+      .st-tile,
+      .st-iheart {
+        display: none !important;
+      }
+
+      /* Keep only 2 small corner accent stickers far from the phone */
+      .st-hearts {
+        left: 4%;
+        top: 6%;
+        width: 52px;
+        opacity: 0.85;
+      }
+      .st-heartflat {
+        right: 4%;
+        bottom: 8%;
+        width: 48px;
+        opacity: 0.85;
+      }
+
+      .hero-brand-name { font-size: 28px; }
+      .hero-slogan { font-size: 17.5px; padding: 0 10px; }
+      .cta-card { padding: 32px 18px; }
+      .cta-title { font-size: 26px; }
+      .btn-main { font-size: 17px; min-height: 54px; }
       .mobile-bottom-bar { display: block; }
     }
   </style>
@@ -796,64 +867,66 @@
     </div>
   </header>
 
-  <!-- Hero Section (Atmospheric Visual Collage like uplocket.io.vn) -->
+  <!-- Hero Section -->
   <section class="hero-wrap">
-    <div class="hero-collage">
-      <!-- Floating Stickers & Memory Widgets -->
-      <div class="sticker st-hearts"><img src="images/hearts-duo.webp" alt="Hearts" loading="eager"></div>
-      <div class="sticker st-bff"><img src="images/bff.webp" alt="Best Friends First" loading="eager"></div>
-      <div class="sticker st-heart3d"><img src="images/heart-3d.webp" alt="3D Heart" loading="eager"></div>
-      <div class="sticker st-megaphone"><img src="images/megaphone.webp" alt="Megaphone" loading="eager"></div>
+    <div class="hero-stage">
+      <!-- Floating Decorative Stickers (Desktop spread with wide breathing room) -->
+      <div class="sticker st-hearts"><img src="images/hearts-duo.webp" alt="Hearts"></div>
+      <div class="sticker st-bff"><img src="images/bff.webp" alt="Best Friends First"></div>
+      <div class="sticker st-heart3d"><img src="images/heart-3d.webp" alt="3D Heart"></div>
+      <div class="sticker st-megaphone"><img src="images/megaphone.webp" alt="Megaphone"></div>
 
-      <!-- Friend Photo Widget 3 (Bottom Left) -->
+      <!-- Friend Photo Widget 3 (Bottom Left Desktop) -->
       <div class="sticker st-float3">
         <div style="position:relative; width:100%; aspect-ratio:1;">
           <img src="images/float-3.webp" alt="Friends" style="width:100%; height:100%; object-fit:cover;">
-          <div style="position:absolute; bottom:6px; left:6px; display:flex; align-items:center; gap:4px; background:rgba(0,0,0,0.45); padding:2px 6px; border-radius:12px;">
+          <div style="position:absolute; bottom:6px; left:6px; display:flex; align-items:center; gap:4px; background:rgba(0,0,0,0.5); padding:2px 7px; border-radius:12px;">
             <img src="images/karima.webp" alt="avatar" style="width:16px; height:16px; border-radius:50%;">
-            <span style="color:#fff; font-size:10px; font-weight:800;">miss you!</span>
+            <span style="color:#fff; font-size:10.5px; font-weight:800;">miss you!</span>
           </div>
         </div>
       </div>
 
       <!-- Center 3D Tilted iPhone Phone Shell -->
-      <div class="hero-phone">
-        <div class="phone-screen">
-          <div class="phone-status">
-            <img src="images/status-bar.svg" alt="iOS Status">
-          </div>
-          <div class="phone-widget-area">
-            <div class="locket-widget-box">
-              <img src="images/float-1.webp" alt="Locket Widget Active" class="widget-photo">
-              <div class="locket-widget-footer">
-                <img src="images/laurel.webp" alt="avatar" class="widget-avatar">
-                <span class="widget-pill">Good morning</span>
-              </div>
+      <div class="phone-mockup-wrap">
+        <div class="phone-mockup">
+          <div class="phone-screen">
+            <div class="phone-status">
+              <img src="images/status-bar.svg" alt="iOS Status">
             </div>
-            <div class="phone-icons-grid">
-              <img src="images/icon-1.png" alt="App" class="phone-app-icon">
-              <img src="images/icon-2.png" alt="App" class="phone-app-icon">
-              <img src="images/icon-8.png" alt="App" class="phone-app-icon">
-              <img src="images/icon-4.png" alt="App" class="phone-app-icon">
+            <div class="phone-widget-area">
+              <div class="locket-widget-box">
+                <img src="images/float-1.webp" alt="Locket Widget Active" class="widget-photo">
+                <div class="locket-widget-footer">
+                  <img src="images/laurel.webp" alt="avatar" class="widget-avatar">
+                  <span class="widget-pill">Good morning</span>
+                </div>
+              </div>
+              <div class="phone-icons-grid">
+                <img src="images/icon-1.png" alt="App" class="phone-app-icon">
+                <img src="images/icon-2.png" alt="App" class="phone-app-icon">
+                <img src="images/icon-8.png" alt="App" class="phone-app-icon">
+                <img src="images/icon-4.png" alt="App" class="phone-app-icon">
+              </div>
             </div>
           </div>
         </div>
+
+        <!-- Floating QR Card on desktop only -->
+        <a href="#install" class="qr-floating-card" title="Quét mã QR để cài đặt">
+          <img src="images/qr-hero.svg" alt="Scan to install Xwuan_DNS">
+          <div class="qr-label">📷 Quét cài ngay</div>
+        </a>
       </div>
 
-      <!-- Floating QR Card with camera icon in center -->
-      <a href="#install" class="hero-qr-card" title="Quét mã QR để cài đặt">
-        <img src="images/qr-hero.svg" alt="Scan to install Xwuan_DNS">
-        <div class="hero-qr-badge">📷 Quét cài ngay</div>
-      </a>
-
-      <!-- Right Floating Stickers -->
+      <!-- Right Floating Stickers (Desktop) -->
       <div class="sticker st-iheart"><img src="images/i-heart-locket.webp" alt="I Heart Locket"></div>
       <div class="sticker st-float2">
         <div style="position:relative; width:100%; aspect-ratio:1;">
           <img src="images/float-2.webp" alt="Friend selfie" style="width:100%; height:100%; object-fit:cover;">
-          <div style="position:absolute; bottom:6px; left:6px; display:flex; align-items:center; gap:4px; background:rgba(0,0,0,0.45); padding:2px 6px; border-radius:12px;">
+          <div style="position:absolute; bottom:6px; left:6px; display:flex; align-items:center; gap:4px; background:rgba(0,0,0,0.5); padding:2px 7px; border-radius:12px;">
             <img src="images/preslee.webp" alt="avatar" style="width:16px; height:16px; border-radius:50%;">
-            <span style="color:#fff; font-size:10px; font-weight:800;">hiiiiii</span>
+            <span style="color:#fff; font-size:10.5px; font-weight:800;">hiiiiii</span>
           </div>
         </div>
       </div>
@@ -862,16 +935,16 @@
     </div>
 
     <!-- Hero Title & Slogan -->
-    <div class="hero-bottom-text">
-      <div class="hero-locket-logo">
-        <div class="hero-logo-box">
+    <div class="hero-footer-content">
+      <div class="hero-brand-line">
+        <div class="hero-brand-icon">
           <svg viewBox="0 0 32 32" width="26" height="26" fill="#1a1200">
             <path d="M16 24.3438C16.1817 24.3438 16.4414 24.2227 16.6318 24.1103C21.5042 20.9975 24.5938 17.3747 24.5938 13.6912C24.5938 10.6304 22.4907 8.46875 19.7733 8.46875C18.0857 8.46875 16.7875 9.40257 16 10.8292C15.2298 9.41122 13.9143 8.46875 12.2267 8.46875C9.50925 8.46875 7.40625 10.6304 7.40625 13.6912C7.40625 17.3747 10.4958 20.9975 15.3769 24.1103C15.5586 24.2227 15.8183 24.3438 16 24.3438Z"/>
           </svg>
         </div>
-        <h1 class="hero-locket-title">Locket</h1>
+        <h1 class="hero-brand-name">Locket</h1>
       </div>
-      <p class="hero-caption">Nâng cấp Locket Gold, dùng ngay trên điện thoại</p>
+      <p class="hero-slogan">Nâng cấp Locket Gold, dùng ngay trên điện thoại</p>
       <a href="#install" class="hero-scroll-btn" aria-label="Cuộn xuống cài đặt">
         <svg viewBox="0 0 46 16" width="36" height="13" fill="currentColor">
           <path d="M2.24609 7.22656C0.927734 6.64062 0 5.46875 0 4.00391C0 1.58691 1.78223 0 3.80859 0C4.98047 0 6.4209 0.65918 7.61719 1.2207L22.6562 7.6416L37.7197 1.2207C38.916 0.65918 40.3809 0 41.5039 0C43.5547 0 45.3369 1.58691 45.3369 4.00391C45.3369 5.46875 44.4092 6.64062 43.0908 7.22656L26.9043 14.1846C25.3418 14.8926 24.1455 15.4053 22.6562 15.4053C21.1914 15.4053 19.9951 14.8926 18.4082 14.1846L2.24609 7.22656Z"/>
@@ -903,7 +976,16 @@
         <div class="perk-item"><span style="color:var(--success);">✓</span> Đầy đủ video 30s &amp; AI Filters</div>
       </div>
 
-      <div style="margin-top: 22px; font-size: 13px; color: var(--muted);">
+      <!-- Desktop QR Scan Box -->
+      <div class="desktop-qr-box">
+        <img src="images/qr-hero.svg" alt="Scan QR" class="desktop-qr-img">
+        <div class="desktop-qr-text">
+          <strong>Quét bằng Camera iPhone</strong><br>
+          Mở camera quét mã để tải và cài đặt hồ sơ trực tiếp bằng Safari trên điện thoại.
+        </div>
+      </div>
+
+      <div style="margin-top: 24px; font-size: 13.5px; color: var(--muted);">
         <span>Gặp sự cố khi tải trực tiếp? </span>
         <a href="/api/generate-profile" style="color: var(--primary-dark); font-weight: 800; text-decoration: underline;">
           Tải hồ sơ dự phòng qua API
