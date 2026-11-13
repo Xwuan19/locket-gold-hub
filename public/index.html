@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Xwuan_DNS — Nâng Cấp Locket Gold Miễn Phí • UpLocket Network</title>
-  <meta name="description" content="Nâng cấp Locket Gold 30s hoàn toàn miễn phí: quay video dài 30s, AI filters, photobooth, ảnh riêng tư. Cài đặt DoH Xwuan_DNS 1-click chính chủ đã ký số Apple.">
+  <meta name="description" content="Nâng cấp Locket Gold hoàn toàn miễn phí: quay video dài 15s-30s, AI filters, photobooth, ảnh riêng tư. Kích hoạt trực tiếp qua hồ sơ DoH Xwuan_DNS Apple Signed.">
   <link rel="stylesheet" href="css/3xox2xlqmgsmp.72604.css">
   <link rel="stylesheet" href="css/202soeubg-ydc.72604.css">
   <style>
@@ -46,13 +46,13 @@
       animation: stickerFloatB 8.5s ease-in-out infinite 0.7s;
     }
 
-    /* QR Code pulse & tooltip */
-    .qr-card {
+    /* Elegant QR card */
+    .qr-card-float {
       transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
     }
-    .qr-card:hover {
-      transform: scale(1.05) rotate(16deg) !important;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45) !important;
+    .qr-card-float:hover {
+      transform: scale(1.06) rotate(8deg) !important;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22) !important;
     }
 
     /* Sticky Mobile Bottom Bar */
@@ -77,20 +77,23 @@
       .mobile-bottom-bar {
         display: none !important;
       }
+      #hero-phone-container {
+        height: min(78svh, 760px) !important;
+        width: calc(min(78svh, 760px) * 1400 / 1761) !important;
+      }
+      .hero-qr-wrap {
+        display: block !important;
+        position: absolute !important;
+        right: -36px !important;
+        top: 48% !important;
+        width: 175px !important;
+        transform: rotate(12deg) !important;
+        z-index: 35 !important;
+      }
     }
-
-    /* Custom install card */
-    .custom-install-card {
-      background: #ffffff;
-      border: 2px solid rgba(255, 176, 0, 0.35);
-      border-radius: 36px;
-      box-shadow: 0 20px 60px rgba(255, 176, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.04);
-      padding: 32px 28px;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    @media (min-width: 720px) {
-      .custom-install-card {
-        padding: 48px 44px;
+    @media (max-width: 719px) {
+      .hero-qr-wrap {
+        display: none !important;
       }
     }
   </style>
@@ -99,7 +102,9 @@
   <div class="landing-scope">
     <div class="site-index min-h-screen">
 
-      <!-- Header Navigation -->
+      <!-- ========================================== -->
+      <!-- HEADER NAVIGATION -->
+      <!-- ========================================== -->
       <header class="sticky top-0 z-50 h-0">
         <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[72px] desktop:h-[88px]">
           <div class="absolute inset-0" style="backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:linear-gradient(to bottom, rgb(var(--bg) / 0.96) 0%, rgb(var(--bg) / 0.85) 60%, rgb(var(--bg) / 0) 100%)"></div>
@@ -116,24 +121,23 @@
             </a>
           </div>
 
-          <div class="hidden items-center gap-6 tablet:flex">
-            <a href="#install" class="text-[16px] font-bold text-[rgb(var(--fg)/0.75)] hover:text-[rgb(var(--fg))]">Cài Đặt 1-Click</a>
-            <a href="#shortcuts" class="text-[16px] font-bold text-[rgb(var(--fg)/0.75)] hover:text-[rgb(var(--fg))]">Ưu Điểm VIP</a>
-            <a href="#guide" class="text-[16px] font-bold text-[rgb(var(--fg)/0.75)] hover:text-[rgb(var(--fg))]">Hướng Dẫn iOS</a>
-            <a href="#faq" class="text-[16px] font-bold text-[rgb(var(--fg)/0.75)] hover:text-[rgb(var(--fg))]">Giải Đáp</a>
-            <a href="#install" class="rounded-full bg-[#1A1200] px-5 py-2 text-[15px] font-bold text-[#FFB000] transition-opacity hover:opacity-90">Tải DNS ⚡</a>
+          <div class="hidden items-center gap-7 tablet:flex">
+            <a href="#pricing" class="text-[16px] font-bold text-[rgb(var(--fg)/0.75)] hover:text-[rgb(var(--fg))]">Bảng giá</a>
+            <a href="#guide" class="text-[16px] font-bold text-[rgb(var(--fg)/0.75)] hover:text-[rgb(var(--fg))]">Hướng dẫn iOS</a>
+            <a href="#faq" class="text-[16px] font-bold text-[rgb(var(--fg)/0.75)] hover:text-[rgb(var(--fg))]">Giải đáp</a>
+            <a href="/Xwuan_DNS.mobileconfig" class="rounded-full bg-[#1A1200] px-5 py-2 text-[15px] font-bold text-[#FFB000] transition-opacity hover:opacity-90">Cài DNS ⚡</a>
           </div>
         </nav>
       </header>
 
-      <!-- Hero Section -->
+      <!-- ========================================== -->
+      <!-- HERO SECTION -->
+      <!-- ========================================== -->
       <section style="--logo-h:44px;--phone-svh:62svh;--phone-inner:76%;--fade-a:50%;--fade-b:65%;--stack-top:64px;--shell-h:calc(min(var(--phone-vw), var(--phone-svh)) * 1.2578571428571428);--overlap:calc(var(--shell-h) * 0.35 - 12px);--text-h:240px;--content-h:calc(var(--stack-top) + var(--shell-h) - var(--overlap) + var(--text-h));--hero-min:calc(var(--content-h) + 32px + 0.25 * max(0px, 88svh - var(--content-h)))" id="top" class="relative flex min-h-[var(--hero-min)] flex-col items-center justify-center px-6 tablet:min-h-[100svh]">
         <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 h-[52svh] bg-gradient-to-b from-[rgb(var(--lk-accent)/0.28)] to-transparent"></div>
-        <h1 class="sr-only">Nâng cấp Locket Gold miễn phí với Xwuan_DNS UpLocket</h1>
+        <h1 class="sr-only">Nâng cấp Locket Gold miễn phí với Xwuan_DNS UpLocket Network</h1>
 
-        <!-- ========================================== -->
-        <!-- DESKTOP STICKERS LAYER (Spread across 100% viewport) -->
-        <!-- ========================================== -->
+        <!-- DESKTOP FLOATING STICKERS & MEMORIES -->
         <div aria-hidden="true" class="pointer-events-none absolute inset-0 z-10 tablet:z-0 hidden tablet:block">
           <!-- Float 1: Laurel & Weather -->
           <div class="absolute anim-float-a" style="left:24%;top:29%;">
@@ -179,84 +183,73 @@
           </div>
 
           <!-- Stickers -->
-          <!-- Hearts Duo top-left -->
           <div class="absolute anim-float-a" style="left:13.5%;top:22%;--rot:-6deg;">
             <div style="width:11.7vmin;">
-              <img src="images/hearts-duo.b7ab5.webp" alt="" draggable="false" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.05)) drop-shadow(0 40px 26px rgba(0,0,0,0.03))" class="h-auto w-full select-none">
+              <img src="images/hearts-duo.b7ab5.webp" alt="" draggable="false" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.05))" class="h-auto w-full select-none">
             </div>
           </div>
 
-          <!-- Best Friends First mid-left -->
           <div class="absolute anim-float-b" style="left:11%;top:43%;--rot:-5deg;">
             <div style="width:14.3vmin;">
-              <img src="images/bff.b7ab5.webp" alt="" draggable="false" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.05)) drop-shadow(0 40px 26px rgba(0,0,0,0.03))" class="h-auto w-full select-none">
+              <img src="images/bff.b7ab5.webp" alt="" draggable="false" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.05))" class="h-auto w-full select-none">
             </div>
           </div>
 
-          <!-- 3D Heart near phone left -->
           <div class="absolute anim-float-a" style="left:28%;top:54%;--rot:0deg;">
             <div style="width:9.1vmin;">
-              <img src="images/heart-3d.b7ab5.webp" alt="" draggable="false" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.05)) drop-shadow(0 40px 26px rgba(0,0,0,0.03))" class="h-auto w-full select-none">
+              <img src="images/heart-3d.b7ab5.webp" alt="" draggable="false" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.05))" class="h-auto w-full select-none">
             </div>
           </div>
 
-          <!-- Megaphone bottom-left -->
           <div class="absolute anim-float-b" style="left:23.5%;top:75%;--rot:4deg;">
             <div style="width:10.4vmin;">
-              <img src="images/megaphone.b7ab5.webp" alt="" draggable="false" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.05)) drop-shadow(0 40px 26px rgba(0,0,0,0.03))" class="h-auto w-full select-none">
+              <img src="images/megaphone.b7ab5.webp" alt="" draggable="false" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.05))" class="h-auto w-full select-none">
             </div>
           </div>
 
-          <!-- I Love Locket top-right -->
           <div class="absolute anim-float-a" style="left:74.5%;top:19%;--rot:7deg;">
             <div style="width:10.4vmin;">
-              <img src="images/i-heart-locket.b7ab5.webp" alt="" draggable="false" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.05)) drop-shadow(0 40px 26px rgba(0,0,0,0.03))" class="h-auto w-full select-none">
+              <img src="images/i-heart-locket.b7ab5.webp" alt="" draggable="false" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.05))" class="h-auto w-full select-none">
             </div>
           </div>
 
-          <!-- Gold Pill (desktop only) -->
           <div class="absolute anim-float-b hidden desktop:block" style="left:72.5%;top:35%;--rot:-6deg;">
             <div style="width:10.4vmin;">
-              <img src="images/gold-pill.b7ab5.webp" alt="" draggable="false" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.05)) drop-shadow(0 40px 26px rgba(0,0,0,0.03))" class="h-auto w-full select-none">
+              <img src="images/gold-pill.b7ab5.webp" alt="" draggable="false" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.05))" class="h-auto w-full select-none">
             </div>
           </div>
 
-          <!-- Locket Tile mid-right -->
           <div class="absolute anim-float-a" style="left:83%;top:41%;--rot:14deg;">
             <div style="width:11.7vmin;">
-              <img src="images/locket-tile.b7ab5.webp" alt="" draggable="false" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.05)) drop-shadow(0 40px 26px rgba(0,0,0,0.03))" class="h-auto w-full select-none">
+              <img src="images/locket-tile.b7ab5.webp" alt="" draggable="false" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.05))" class="h-auto w-full select-none">
             </div>
           </div>
 
-          <!-- Heart Flat far-right -->
           <div class="absolute anim-float-b" style="left:95.5%;top:52%;--rot:0deg;">
             <div style="width:10.4vmin;">
-              <img src="images/heart-flat.b7ab5.webp" alt="" draggable="false" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.05)) drop-shadow(0 40px 26px rgba(0,0,0,0.03))" class="h-auto w-full select-none">
+              <img src="images/heart-flat.b7ab5.webp" alt="" draggable="false" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.05))" class="h-auto w-full select-none">
             </div>
           </div>
 
-          <!-- Locket Red bottom-right -->
           <div class="absolute anim-float-a" style="left:90%;top:78%;--rot:-7deg;">
             <div style="width:13vmin;">
-              <img src="images/locket-red.b7ab5.webp" alt="" draggable="false" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.05)) drop-shadow(0 40px 26px rgba(0,0,0,0.03))" class="h-auto w-full select-none">
+              <img src="images/locket-red.b7ab5.webp" alt="" draggable="false" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.05))" class="h-auto w-full select-none">
             </div>
           </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- MOBILE STICKERS LAYER (ONLY 2 stickers framing the phone) -->
-        <!-- ========================================== -->
+        <!-- MOBILE FLOATING STICKERS (ONLY 2, PERFECTLY FRAMING PHONE) -->
         <div aria-hidden="true" class="pointer-events-none absolute inset-0 z-10 tablet:hidden">
           <div class="absolute left-1/2 top-[var(--stack-top)] aspect-[1400/1761] w-[min(var(--phone-vw),var(--phone-svh))] -translate-x-1/2">
             <!-- BFF sticker on left edge of phone -->
-            <div class="absolute anim-float-a" style="left:12%;top:52%;--rot:-6deg;transform:translate(-50%, -50%);">
+            <div class="absolute anim-float-a" style="left:11%;top:50%;--rot:-6deg;transform:translate(-50%, -50%);">
               <div style="width:calc(min(var(--phone-vw), var(--phone-svh)) * 0.17);">
                 <img src="images/bff.b7ab5.webp" alt="" draggable="false" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.08))" class="h-auto w-full select-none">
               </div>
             </div>
 
             <!-- Heart Flat sticker on right edge of phone -->
-            <div class="absolute anim-float-b" style="left:86%;top:39%;--rot:0deg;transform:translate(-50%, -50%);">
+            <div class="absolute anim-float-b" style="left:88%;top:38%;--rot:0deg;transform:translate(-50%, -50%);">
               <div style="width:calc(min(var(--phone-vw), var(--phone-svh)) * 0.13);">
                 <img src="images/heart-flat.b7ab5.webp" alt="" draggable="false" style="filter:drop-shadow(0 6px 12px rgba(0,0,0,0.08))" class="h-auto w-full select-none">
               </div>
@@ -264,53 +257,93 @@
           </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- MAIN PHONE MOCKUP AND HERO TEXT IN ONE PROPER FLEX COLUMN -->
-        <!-- ========================================== -->
+        <!-- MAIN PHONE MOCKUP AND HERO TEXT IN ONE UNIFIED FLEX COLUMN -->
         <div class="pointer-events-none absolute inset-0 z-0 flex flex-col items-center justify-start pt-[var(--stack-top)] tablet:z-20 tablet:justify-center tablet:pt-0">
-          <!-- 1. Centered Phone Mockup -->
-          <div class="tablet:-translate-x-[13%] pointer-events-auto">
-            <div class="relative">
-              <div class="relative aspect-[1400/1761] w-[min(var(--phone-vw),var(--phone-svh))] tablet:h-[min(78svh,760px)] tablet:w-auto tablet:[--fade-a:40%] tablet:[--fade-b:78%]" style="mask-image:linear-gradient(to bottom, black var(--fade-a), transparent var(--fade-b));-webkit-mask-image:linear-gradient(to bottom, black var(--fade-a), transparent var(--fade-b))">
+          <!-- 1. Center Phone Mockup with Real Photo Widget & QR Card -->
+          <div class="pointer-events-auto tablet:-translate-x-[13%]">
+            <div class="relative w-[min(var(--phone-vw),var(--phone-svh))]" style="aspect-ratio: 1400/1761; max-height: 78svh; width: min(min(var(--phone-vw), 420px), calc(78svh * 1400 / 1761));" id="hero-phone-container">
+              <!-- Phone Shell (with gradient mask for bottom fade) -->
+              <div class="relative h-full w-full aspect-[1400/1761] tablet:[--fade-a:40%] tablet:[--fade-b:78%]" style="mask-image:linear-gradient(to bottom, black var(--fade-a), transparent var(--fade-b));-webkit-mask-image:linear-gradient(to bottom, black var(--fade-a), transparent var(--fade-b))">
                 <div class="absolute left-1/2 top-[6%] aspect-[393/852] w-[var(--phone-inner)] origin-top -translate-x-1/2 [container-type:inline-size] tablet:w-[68%] tablet:rotate-[-5deg]">
                   <div class="relative h-full w-full overflow-hidden rounded-[14%_14%_14%_14%/6.5%_6.5%_6.5%_6.5%] shadow-[0_16px_50px_rgba(0,0,0,0.18)]">
                     <img src="images/lock-wallpaper.b55bc.webp" alt="" draggable="false" class="absolute inset-0 h-full w-full select-none object-cover">
                     <div class="absolute inset-0 bg-gradient-to-b from-[rgba(255,255,255,0.55)] via-[rgba(255,255,255,0.28)] to-transparent"></div>
                     <div class="pointer-events-none absolute inset-0 z-10 rounded-[inherit] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.1)]"></div>
+                    
                     <div class="relative flex h-full flex-col pt-[2%]">
+                      <!-- iOS Status Bar -->
                       <img src="images/status-bar.b55bc.svg" alt="" draggable="false" class="h-auto w-full select-none">
-                      <div class="mt-[3%] grid grid-cols-4 gap-[4.5%] px-[7%]">
-                        <div><img src="images/icon-9.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none"><div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div></div>
-                        <div><img src="images/icon-1.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none opacity-50"><div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div></div>
-                        <div><img src="images/icon-2.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none opacity-50"><div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div></div>
-                        <div><img src="images/icon-8.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none opacity-50"><div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div></div>
-                        <div><img src="images/icon-4.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none opacity-50"><div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div></div>
-                        <div><img src="images/icon-5.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none opacity-50"><div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div></div>
-                        <div><img src="images/icon-6.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none opacity-50"><div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div></div>
-                        <div><img src="images/icon-7.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none opacity-50"><div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div></div>
-                        <div><img src="images/icon-3.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none opacity-50"><div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div></div>
-                        <div><img src="images/icon-10.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none opacity-50"><div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div></div>
-                        <div><img src="images/icon-11.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none opacity-50"><div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div></div>
-                        <div><img src="images/icon-12.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none opacity-50"><div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div></div>
+                      
+                      <!-- Home Screen Grid with authentic 2x2 Locket Widget -->
+                      <div class="mt-[4%] px-[6%]">
+                        <!-- Top Row: 2x2 Photo Widget on Left, 4 Icons on Right -->
+                        <div class="grid grid-cols-4 gap-[4.5%]">
+                          <!-- 2x2 Locket Photo Widget -->
+                          <div class="col-span-2 row-span-2 flex flex-col items-center">
+                            <div class="relative aspect-square w-full overflow-hidden rounded-[24%] shadow-[0_8px_24px_rgba(0,0,0,0.18)] ring-1 ring-black/5">
+                              <img src="images/float-1.7df29.webp" alt="Locket Photo" class="h-full w-full object-cover select-none">
+                              <!-- Good morning pill badge with Laurel avatar -->
+                              <div class="absolute bottom-[8%] left-[8%] flex items-center gap-1.5 rounded-full bg-[#FFB000] px-2 py-0.5 text-[11px] font-bold text-[#1A1200] shadow-sm">
+                                <img src="images/laurel.7df29.webp" alt="" class="h-3.5 w-3.5 rounded-full object-cover">
+                                <span class="h-1 w-1 rounded-full bg-[#1A1200]"></span>
+                                <span>Good morning</span>
+                              </div>
+                            </div>
+                            <span class="mt-1 text-[11px] font-bold text-[#1A1200]/70">Locket</span>
+                          </div>
+
+                          <!-- Top Right Icons -->
+                          <div>
+                            <img src="images/icon-9.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none">
+                            <div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div>
+                          </div>
+                          <div>
+                            <img src="images/icon-1.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none">
+                            <div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div>
+                          </div>
+                          <div>
+                            <img src="images/icon-2.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none">
+                            <div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div>
+                          </div>
+                          <div>
+                            <img src="images/icon-8.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none">
+                            <div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div>
+                          </div>
+                        </div>
+
+                        <!-- Bottom Rows: 4 columns of standard iOS icons -->
+                        <div class="mt-[5%] grid grid-cols-4 gap-[4.5%]">
+                          <div><img src="images/icon-4.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none opacity-50"><div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div></div>
+                          <div><img src="images/icon-5.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none opacity-50"><div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div></div>
+                          <div><img src="images/icon-6.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none opacity-50"><div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div></div>
+                          <div><img src="images/icon-7.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none opacity-50"><div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div></div>
+                          <div><img src="images/icon-3.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none opacity-50"><div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div></div>
+                          <div><img src="images/icon-10.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none opacity-50"><div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div></div>
+                          <div><img src="images/icon-11.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none opacity-50"><div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div></div>
+                          <div><img src="images/icon-12.a498c.png" alt="" draggable="false" class="mx-auto aspect-square w-[85%] select-none opacity-50"><div class="mx-auto mt-1.5 h-1 w-2/5 rounded-full bg-[rgba(255,255,255,0.5)]"></div></div>
+                        </div>
                       </div>
+
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Desktop QR Code tilted card -->
-              <div class="pointer-events-auto absolute right-[-10%] top-[48%] hidden w-[38%] tablet:block" style="transform:scale(0.9) rotate(20deg)">
-                <a href="#install" aria-label="Cài đặt Xwuan_DNS" class="qr-card relative z-0 block rounded-[16%] bg-[#323232] p-[8%] shadow-[0_16px_50px_rgba(0,0,0,0.55)]">
-                  <img src="images/qr-hero.b55bc.svg" alt="" draggable="false" class="block h-auto w-full select-none invert">
+              <!-- Desktop QR Code tilted card (Authentic Pure White matching uplocket.io.vn) -->
+              <div class="pointer-events-auto hero-qr-wrap">
+                <a href="/Xwuan_DNS.mobileconfig" aria-label="Quét mã QR cài đặt Xwuan_DNS" class="qr-card-float block select-none" style="background: #ffffff !important; border-radius: 28px; padding: 14px; box-shadow: 0 16px 50px rgba(0, 0, 0, 0.18);">
+                  <img src="images/qr-hero.b55bc.svg" alt="Quét mã QR để cài đặt" class="block h-auto w-full select-none" style="filter: none !important; display: block;">
                 </a>
-                <div class="pointer-events-none absolute left-full top-1/2 z-10 ml-5 w-max origin-left -translate-y-1/2">
-                  <div class="relative flex items-center gap-3 rounded-2xl bg-white px-4 py-2.5 shadow-[0_12px_40px_rgba(0,0,0,0.15)]">
-                    <span class="absolute left-[-6px] top-1/2 h-3.5 w-3.5 -translate-y-1/2 rotate-45 bg-white"></span>
-                    <img src="images/qr-hover.b55bc.webp" alt="" draggable="false" class="block h-auto w-[42px] select-none">
-                    <p class="text-[14px] font-bold leading-snug text-[#3a3121]">Quét bằng iPhone<br><span class="font-normal text-[#7d705c]">Cài trực tiếp hồ sơ DNS</span></p>
+                <!-- Tooltip bubble -->
+                <div class="pointer-events-none absolute left-full top-1/2 ml-3.5 w-max -translate-y-1/2">
+                  <div class="relative flex items-center gap-2.5 px-4 py-2.5 shadow-[0_12px_36px_rgba(0,0,0,0.12)]" style="background: #ffffff !important; border-radius: 18px;">
+                    <span class="absolute left-[-5px] top-1/2 h-2.5 w-2.5 -translate-y-1/2 rotate-45" style="background: #ffffff !important;"></span>
+                    <img src="images/qr-hover.b55bc.webp" alt="" class="h-8 w-8 select-none">
+                    <p class="text-[13px] font-bold leading-tight text-[#3a3121]" style="margin: 0;">Quét bằng iPhone<br><span class="font-normal text-[11px] text-[#7d705c]">Cài trực tiếp qua Safari</span></p>
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -331,12 +364,12 @@
             </p>
 
             <!-- Mobile Button -->
-            <a href="#install" class="pointer-events-auto mt-2 flex items-center gap-2 rounded-full bg-[#FFB000] px-7 py-3 text-[19px] font-bold text-[#1A1200] shadow-md transition-transform active:scale-95 tablet:hidden">
+            <a href="/Xwuan_DNS.mobileconfig" class="pointer-events-auto mt-2 flex items-center gap-2 rounded-full bg-[#FFB000] px-7 py-3 text-[19px] font-bold text-[#1A1200] shadow-md transition-transform active:scale-95 tablet:hidden">
               Cài DNS 💛 Locket
             </a>
 
             <!-- Scroll down indicator -->
-            <a href="#install" aria-label="Cuộn xuống cài đặt" class="mt-1 p-2 text-[rgba(0,0,0,0.38)] hover:text-[rgba(0,0,0,0.6)] animate-bounce pointer-events-auto">
+            <a href="#pricing" aria-label="Cuộn xuống bảng giá" class="mt-1 p-2 text-[rgba(0,0,0,0.38)] hover:text-[rgba(0,0,0,0.6)] animate-bounce pointer-events-auto">
               <svg viewBox="0 0 46 16" class="h-auto w-8" fill="currentColor" aria-hidden="true">
                 <path d="M2.24609 7.22656C0.927734 6.64062 0 5.46875 0 4.00391C0 1.58691 1.78223 0 3.80859 0C4.98047 0 6.4209 0.65918 7.61719 1.2207L22.6562 7.6416L37.7197 1.2207C38.916 0.65918 40.3809 0 41.5039 0C43.5547 0 45.3369 1.58691 45.3369 4.00391C45.3369 5.46875 44.4092 6.64062 43.0908 7.22656L26.9043 14.1846C25.3418 14.8926 24.1455 15.4053 22.6562 15.4053C21.1914 15.4053 19.9951 14.8926 18.4082 14.1846L2.24609 7.22656Z"></path>
               </svg>
@@ -346,94 +379,93 @@
       </section>
 
       <!-- ========================================== -->
-      <!-- 1-CLICK INSTALL SECTION -->
+      <!-- AUTHENTIC PRICING SECTION FROM UPLOCKET -->
       <!-- ========================================== -->
-      <section id="install" class="mx-auto w-full max-w-[960px] px-6 py-12">
-        <div class="custom-install-card text-center">
-          <!-- Apple Signed Badge -->
-          <div class="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-1.5 text-sm font-bold text-emerald-700 border border-emerald-200 mb-6">
-            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-            </svg>
-            <span>Hồ sơ đã ký số Apple • Verified Tích Xanh (Jarrett Samuels)</span>
+      <section id="pricing">
+        <div class="wrap">
+          <div class="sec-head">
+            <p class="kicker">Bảng giá</p>
+            <h2>Chọn gói, nâng cấp ngay</h2>
           </div>
+          <div class="plans">
+            <!-- Plan 1: Dùng thử 3 ngày -->
+            <div class="plan">
+              <span class="badge"><span class="bl">Trial</span><span class="bs">Trial</span></span>
+              <div class="ptop">
+                <img class="pico" src="images/flat_yellow.5e46e.webp" alt="" width="46" height="46">
+                <div>
+                  <div class="pname">Gói dùng thử</div>
+                  <div class="pdesc">Thời hạn 3 ngày</div>
+                </div>
+              </div>
+              <div class="price"><span class="is-free">Miễn phí</span></div>
+              <div class="was"><s>79.000₫</s><span class="save">-100%</span></div>
+              <ul>
+                <li>Bản quyền 3 NGÀY</li>
+                <li>Quay video 30s dài nhất</li>
+                <li>Đầy đủ 7 đặc quyền VIP Locket Gold cao cấp</li>
+                <li>Đăng ảnh/video thư viện, xem ai xem, bạn bè vô hạn</li>
+                <li>Caption dài hơn, không quảng cáo, tùy chỉnh giao diện</li>
+                <li>Filter AI (1 lần/ngày) + PhotoBooth</li>
+                <li>Chống thu hồi DNS &amp; Bảo hành trọn đời</li>
+              </ul>
+              <a href="/Xwuan_DNS.mobileconfig" class="btn btn-cream btn-block">📲 Cài Đặt Xwuan_DNS Ngay</a>
+            </div>
 
-          <h2 class="text-3xl font-black text-[#1A1200] tablet:text-4xl mb-4">
-            Cài Đặt Xwuan_DNS 1-Click
-          </h2>
-          <p class="mx-auto max-w-[680px] text-base text-[rgb(var(--fg)/0.7)] tablet:text-lg mb-8 leading-relaxed">
-            Hệ thống DoH chuyên biệt kích hoạt trọn bộ tính năng Locket Gold: quay video 30s dài nhất,
-            bộ lọc AI và photobooth. Độc lập 100% không phụ thuộc NextDNS, không quảng cáo, tối ưu pin iPhone.
-          </p>
+            <!-- Plan 2: 1 Năm (Hot Card with Gold Glow) -->
+            <div class="plan hot">
+              <span class="shine" aria-hidden="true"></span>
+              <span class="badge"><span class="bl">Ưu đãi lớn</span><span class="bs">Ưu đãi lớn</span></span>
+              <div class="ptop">
+                <img class="pico" src="images/gold_on_black.5e46e.webp" alt="" width="46" height="46">
+                <div>
+                  <div class="pname">Locket Gold 1 Năm</div>
+                  <div class="pdesc">Thời hạn 365 ngày</div>
+                </div>
+              </div>
+              <div class="price">20.000<span class="cur">₫</span></div>
+              <div class="was"><s>399.000₫</s><span class="save">-95%</span><span class="unit">≈ 1.600₫/tháng</span></div>
+              <ul>
+                <li>Bản quyền 1 NĂM</li>
+                <li>Quay video 30s dài nhất</li>
+                <li>Đầy đủ 7 đặc quyền VIP Locket Gold cao cấp</li>
+                <li>Đăng ảnh/video thư viện, xem ai xem, bạn bè vô hạn</li>
+                <li>Caption dài hơn, không quảng cáo, tùy chỉnh giao diện</li>
+                <li>Filter AI (3 lần/ngày) + PhotoBooth</li>
+                <li>Chống thu hồi DNS &amp; Bảo hành trọn đời</li>
+              </ul>
+              <a href="/Xwuan_DNS.mobileconfig" class="btn btn-primary btn-block">📲 Cài Đặt Xwuan_DNS Ngay</a>
+            </div>
 
-          <!-- Main CTA Install Button -->
-          <div class="flex flex-col items-center justify-center gap-4 sm:flex-row mb-6">
-            <a href="/Xwuan_DNS.mobileconfig" class="btn btn-primary inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-full px-8 py-4 text-lg font-black shadow-lg transition-transform hover:scale-105 active:scale-95">
-              <span>📲 Cài Đặt Xwuan_DNS Ngay</span>
-            </a>
-            <a href="/api/generate-profile" class="btn btn-cream inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full px-6 py-4 text-base font-bold transition-opacity hover:opacity-90">
-              <span>🔄 Tải Lại Hồ Sơ Ký Sống</span>
-            </a>
-          </div>
-
-          <p class="text-xs font-semibold text-[rgb(var(--fg)/0.5)]">
-            ⚠️ Lưu ý quan trọng: Vui lòng mở bằng trình duyệt <b>Safari</b> trên iPhone để hệ thống tự động tải hồ sơ cấu hình về máy.
-          </p>
-        </div>
-      </section>
-
-      <!-- ========================================== -->
-      <!-- 4 SHORTCUT FEATURE CARDS -->
-      <!-- ========================================== -->
-      <section id="shortcuts" class="mx-auto grid w-full max-w-[1440px] grid-cols-1 gap-4 px-6 pb-12 pt-4 tablet:grid-cols-2 tablet:pt-8 desktop:grid-cols-4 desktop:px-[60px]">
-        <div class="flex min-h-[260px] flex-col gap-4 rounded-[36px] bg-[rgb(var(--lk-accent)/0.075)] p-7 transition-colors hover:bg-[rgb(var(--lk-accent)/0.12)]">
-          <div class="flex min-h-0 flex-1 items-center justify-center">
-            <div class="relative h-[90px] w-[130px]">
-              <img src="images/help-1.16a5e.webp" alt="" draggable="false" class="absolute left-0 top-[6px] w-[90px] select-none">
-              <img src="images/help-2.16a5e.webp" alt="" draggable="false" class="absolute left-[54px] top-0 z-10 w-[80px] select-none">
+            <!-- Plan 3: Vĩnh viễn (VIP Trọn Đời) -->
+            <div class="plan">
+              <span class="badge"><span class="bl">VIP Trọn Đời</span><span class="bs">VIP Trọn Đời</span></span>
+              <div class="ptop">
+                <img class="pico" src="images/flat_yellow.5e46e.webp" alt="" width="46" height="46">
+                <div>
+                  <div class="pname">Locket Gold Vĩnh Viễn</div>
+                  <div class="pdesc">Dùng trọn đời</div>
+                </div>
+              </div>
+              <div class="price">30.000<span class="cur">₫</span></div>
+              <div class="was"><s>599.000₫</s><span class="save">-95%</span><span class="unit">Trả một lần, dùng mãi</span></div>
+              <ul>
+                <li>Bản quyền VĨNH VIỄN không giới hạn ngày</li>
+                <li>Quay video 30s dài nhất</li>
+                <li>Đầy đủ 7 đặc quyền VIP Locket Gold cao cấp</li>
+                <li>Đăng ảnh/video thư viện, xem ai xem, bạn bè vô hạn</li>
+                <li>Caption dài hơn, không quảng cáo, tùy chỉnh giao diện</li>
+                <li>Filter AI (4 lần/ngày) + PhotoBooth</li>
+                <li>Chống thu hồi DNS &amp; Bảo hành trọn đời</li>
+              </ul>
+              <a href="/Xwuan_DNS.mobileconfig" class="btn btn-cream btn-block">📲 Cài Đặt Xwuan_DNS Ngay</a>
             </div>
           </div>
-          <div class="flex flex-col gap-1.5">
-            <h3 class="text-[19px] font-bold text-[rgb(var(--fg))]">Không tải app thứ 3</h3>
-            <p class="text-[15px] font-semibold text-[rgb(var(--fg)/0.6)]">Kích hoạt trực tiếp qua hệ thống DoH của Apple iOS</p>
-          </div>
-        </div>
 
-        <div class="flex min-h-[260px] flex-col gap-4 rounded-[36px] bg-[rgb(var(--lk-accent)/0.075)] p-7 transition-colors hover:bg-[rgb(var(--lk-accent)/0.12)]">
-          <div class="flex min-h-0 flex-1 items-center justify-center">
-            <div class="relative h-[90px] w-[100px]">
-              <img src="images/parent-2.16a5e.webp" alt="" draggable="false" class="absolute right-0 top-[3px] w-[80px] select-none">
-              <img src="images/parent-1.16a5e.webp" alt="" draggable="false" class="absolute left-0 top-[10px] z-10 w-[50px] select-none">
-            </div>
-          </div>
-          <div class="flex flex-col gap-1.5">
-            <h3 class="text-[19px] font-bold text-[rgb(var(--fg))]">Không đụng tới iCloud</h3>
-            <p class="text-[15px] font-semibold text-[rgb(var(--fg)/0.6)]">Không cần mật khẩu Apple ID, bảo mật dữ liệu tuyệt đối</p>
-          </div>
-        </div>
-
-        <div class="flex min-h-[260px] flex-col gap-4 rounded-[36px] bg-[rgb(var(--lk-accent)/0.075)] p-7 transition-colors hover:bg-[rgb(var(--lk-accent)/0.12)]">
-          <div class="flex min-h-0 flex-1 items-center justify-center">
-            <div class="relative h-[90px] w-[90px]">
-              <img src="images/partner-1.16a5e.webp" alt="" draggable="false" class="absolute left-0 top-0 w-[60px] select-none">
-              <img src="images/partner-2.16a5e.webp" alt="" draggable="false" class="absolute right-0 top-0 z-10 w-[55px] select-none">
-            </div>
-          </div>
-          <div class="flex flex-col gap-1.5">
-            <h3 class="text-[19px] font-bold text-[rgb(var(--fg))]">Quay video 30s & AI</h3>
-            <p class="text-[15px] font-semibold text-[rgb(var(--fg)/0.6)]">Quay video 30 giây dài nhất, AI filters và photobooth</p>
-          </div>
-        </div>
-
-        <div class="flex min-h-[260px] flex-col gap-4 rounded-[36px] bg-[rgb(var(--lk-accent)/0.075)] p-7 transition-colors hover:bg-[rgb(var(--lk-accent)/0.12)]">
-          <div class="flex min-h-0 flex-1 items-center justify-center">
-            <div class="relative h-[90px] w-[90px]">
-              <img src="images/review-star-1.16a5e.webp" alt="" draggable="false" class="absolute left-0 top-0 w-[80px] select-none">
-            </div>
-          </div>
-          <div class="flex flex-col gap-1.5">
-            <h3 class="text-[19px] font-bold text-[rgb(var(--fg))]">Ký số Apple Verified</h3>
-            <p class="text-[15px] font-semibold text-[rgb(var(--fg)/0.6)]">UpLocket Network hỗ trợ DoH ổn định vĩnh viễn</p>
+          <div class="plan-after">
+            <span>Đã có Gold?</span>
+            <a href="/Xwuan_DNS.mobileconfig" class="plan-tool">Cài lại DNS</a>
+            <a class="plan-tool" href="#guide">Hướng dẫn cài đặt iOS</a>
           </div>
         </div>
       </section>
@@ -541,7 +573,7 @@
         </section>
       </section>
 
-      <!-- Footer -->
+      <!-- FOOTER -->
       <footer class="border-t border-[rgba(0,0,0,0.06)] py-10 text-center text-sm font-semibold text-[rgb(var(--fg)/0.45)]">
         <div class="mx-auto max-w-[1200px] px-6 flex flex-col items-center gap-2">
           <div class="flex items-center gap-2 font-bold text-[rgb(var(--fg)/0.7)]">
