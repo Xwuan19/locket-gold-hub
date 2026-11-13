@@ -5,7 +5,15 @@
     {
       "source": "/api/generate-profile",
       "headers": [
-        { "key": "Content-Type", "value": "application/x-apple-aspen-config" }
+        { "key": "Content-Type", "value": "application/x-apple-aspen-config; charset=utf-8" },
+        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.mobileconfig",
+      "headers": [
+        { "key": "Content-Type", "value": "application/x-apple-aspen-config; charset=utf-8" },
+        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
       ]
     }
   ]
