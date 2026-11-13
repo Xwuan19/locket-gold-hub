@@ -3,31 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Xwuan_DNS — Kích Hoạt Locket Gold 30s Trọn Đời</title>
-  <meta name="description" content="Kích hoạt Locket Gold 30s, AI filters, photobooth và tải ảnh miễn phí không cần app thứ 3 qua hồ sơ DoH Xwuan_DNS đã ký số an toàn.">
+  <title>Xwuan_DNS — Nâng Cấp Locket Gold Miễn Phí</title>
+  <meta name="description" content="Nâng cấp Locket Gold 30s hoàn toàn miễn phí: quay video dài 30s, AI filters, photobooth, ảnh riêng tư. Cài đặt DoH Xwuan_DNS 1-click chính chủ đã ký số Apple.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
   <style>
+    @font-face {
+      font-family: 'SF Pro Rounded';
+      src: url('fonts/SF-Pro-Rounded-Bold.a1314.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'SF Pro Rounded';
+      src: url('fonts/SF-Pro-Rounded-Heavy.a1314.woff2') format('woff2');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
     :root {
       --bg: #fffbf1;
+      --bg-hero: #fff8e7;
       --fg: #1a1200;
+      --fg-sub: #453926;
       --card-bg: #ffffff;
-      --card-border: rgba(180, 130, 20, 0.12);
-      --card-border-hover: rgba(245, 166, 35, 0.4);
-      --primary: #f5a623;
-      --primary-dark: #d98200;
+      --card-border: rgba(180, 130, 20, 0.14);
+      --card-border-hover: rgba(255, 176, 0, 0.5);
+      --primary: #ffb000;
+      --primary-dark: #d48200;
       --primary-light: #fff3d6;
-      --accent-gold: #ffb800;
-      --muted: #6b6255;
-      --muted-light: #9c9488;
+      --accent-gold: #ffc132;
+      --muted: #7d705c;
+      --muted-light: #a89d8c;
       --success: #10b981;
       --success-light: #ecfdf5;
-      --danger: #ef4444;
-      --shadow-sm: 0 2px 10px rgba(130, 80, 0, 0.04);
-      --shadow-md: 0 8px 24px rgba(130, 80, 0, 0.08);
-      --shadow-lg: 0 16px 40px rgba(130, 80, 0, 0.12);
-      --shadow-cta: 0 10px 28px rgba(245, 166, 35, 0.42);
+      --shadow-sm: 0 4px 14px rgba(130, 80, 0, 0.05);
+      --shadow-md: 0 10px 30px rgba(130, 80, 0, 0.08);
+      --shadow-lg: 0 20px 50px rgba(130, 80, 0, 0.12);
+      --shadow-cta: 0 12px 32px rgba(255, 176, 0, 0.42);
       --radius-sm: 14px;
       --radius-md: 20px;
       --radius-lg: 28px;
@@ -38,7 +54,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: "Nunito", -apple-system, BlinkMacSystemFont, "SF Pro Rounded", "SF Pro Text", system-ui, sans-serif;
+      font-family: "SF Pro Rounded", "Fredoka", "Nunito", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
 
@@ -50,22 +66,22 @@
       display: flex;
       flex-direction: column;
       overflow-x: hidden;
-      padding-bottom: 96px; /* space for sticky mobile bottom bar */
+      padding-bottom: 96px;
     }
 
-    /* Sticky Navbar */
+    /* Navbar */
     .navbar {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255, 251, 241, 0.88);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(255, 251, 241, 0.9);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--card-border);
       padding: 12px 20px;
     }
     .nav-inner {
-      max-width: 1080px;
+      max-width: 1120px;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -80,43 +96,43 @@
       color: var(--fg);
     }
     .brand-icon {
-      width: 40px;
-      height: 40px;
-      min-width: 40px;
-      background: linear-gradient(135deg, #ffd000, #f5a623);
-      border-radius: 12px;
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      background: linear-gradient(135deg, #ffd000, #ffb000);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
-      box-shadow: 0 4px 12px rgba(245, 166, 35, 0.35);
-    }
-    .brand-info {
-      display: flex;
-      flex-direction: column;
+      box-shadow: 0 4px 12px rgba(255, 176, 0, 0.35);
     }
     .brand-title {
-      font-size: 19px;
+      font-size: 21px;
       font-weight: 900;
-      letter-spacing: -0.3px;
-      line-height: 1.2;
+      letter-spacing: -0.4px;
+      color: var(--fg);
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    .brand-sub {
+    .brand-tag {
       font-size: 11px;
-      font-weight: 700;
-      color: var(--primary-dark);
+      font-weight: 800;
+      background: #1a1200;
+      color: #ffd000;
+      padding: 2px 7px;
+      border-radius: 6px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
     .nav-links {
       display: flex;
-      gap: 18px;
+      gap: 20px;
       align-items: center;
     }
     .nav-link {
       text-decoration: none;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 700;
       transition: color 0.2s;
     }
@@ -127,112 +143,276 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 44px;
       background: var(--fg);
       color: #fff;
-      padding: 0 18px;
+      padding: 9px 18px;
       border-radius: var(--radius-full);
       text-decoration: none;
       font-weight: 800;
-      font-size: 13px;
+      font-size: 13.5px;
       transition: transform 0.15s, opacity 0.2s;
-      white-space: nowrap;
     }
     .nav-cta:hover {
       opacity: 0.92;
       transform: translateY(-1px);
     }
 
+    /* Hero Section (Atmospheric Uplocket Visuals) */
+    .hero-wrap {
+      position: relative;
+      background: radial-gradient(circle at 50% 20%, rgba(255, 176, 0, 0.22) 0%, rgba(255, 248, 231, 0.8) 50%, var(--bg) 85%);
+      padding: 24px 20px 40px;
+      overflow: hidden;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-collage {
+      position: relative;
+      width: 100%;
+      max-width: 680px;
+      height: 400px;
+      margin: 0 auto 12px;
+    }
+
+    /* Center 3D Tilted iPhone Phone Shell */
+    .hero-phone {
+      position: absolute;
+      left: 50%;
+      top: 48%;
+      transform: translate(-50%, -50%) rotate(-4deg);
+      width: 250px;
+      height: 330px;
+      background: #fff;
+      border-radius: 36px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.14), 0 4px 14px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      border: 6px solid #f2ede2;
+      z-index: 5;
+    }
+    .phone-screen {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: url('images/lock-wallpaper.webp') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+    }
+    .phone-screen::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 40%, rgba(0,0,0,0.2) 100%);
+    }
+    .phone-status {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 10px 14px 4px;
+    }
+    .phone-status img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .phone-widget-area {
+      position: relative;
+      z-index: 2;
+      padding: 8px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .locket-widget-box {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    }
+    .locket-widget-box img.widget-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .locket-widget-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 8px 10px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .widget-avatar {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1.5px solid #fff;
+    }
+    .widget-pill {
+      background: #ffb000;
+      color: #1a1200;
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 12px;
+    }
+    .phone-icons-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 4px 6px;
+    }
+    .phone-app-icon {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 10px;
+      opacity: 0.85;
+      display: block;
+    }
+
+    /* Floating QR Card */
+    .hero-qr-card {
+      position: absolute;
+      right: 14%;
+      bottom: 8%;
+      width: 145px;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 10px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+      transform: rotate(6deg);
+      z-index: 10;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s ease;
+    }
+    .hero-qr-card:hover {
+      transform: rotate(3deg) scale(1.04);
+    }
+    .hero-qr-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      display: block;
+    }
+    .hero-qr-badge {
+      margin-top: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #1a1200;
+      background: #fff3d6;
+      padding: 3px 8px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    /* Floating Stickers scattered like uplocket.io.vn */
+    .sticker {
+      position: absolute;
+      z-index: 8;
+      pointer-events: none;
+      user-select: none;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.06)) drop-shadow(0 2px 6px rgba(0,0,0,0.04));
+      transition: transform 0.3s ease;
+    }
+    .sticker img {
+      display: block;
+      height: auto;
+    }
+
+    .st-hearts { left: 8%; top: 12%; width: 72px; transform: rotate(-8deg); }
+    .st-bff { left: 5%; top: 40%; width: 92px; transform: rotate(-6deg); }
+    .st-heart3d { left: 21%; bottom: 6%; width: 56px; transform: rotate(12deg); }
+    .st-megaphone { left: 16%; top: 68%; width: 62px; transform: rotate(5deg); }
+    .st-float3 { left: 2%; bottom: 1%; width: 106px; border-radius: 18px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.12); pointer-events: auto; }
+    
+    .st-iheart { right: 18%; top: 8%; width: 68px; transform: rotate(8deg); }
+    .st-float2 { right: 4%; top: 14%; width: 92px; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.1); pointer-events: auto; }
+    .st-tile { right: 8%; top: 44%; width: 76px; transform: rotate(14deg); }
+    .st-heartflat { right: 1%; bottom: 20%; width: 64px; transform: rotate(-6deg); }
+
+    /* Hero Text & Slogan below collage */
+    .hero-bottom-text {
+      position: relative;
+      z-index: 20;
+      text-align: center;
+      margin-top: 6px;
+    }
+    .hero-locket-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .hero-logo-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ffd000, #ffb000);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(255, 176, 0, 0.4);
+    }
+    .hero-locket-title {
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      color: var(--fg);
+    }
+    .hero-caption {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--fg-sub);
+      margin-bottom: 18px;
+      line-height: 1.35;
+    }
+    .hero-scroll-btn {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 24px;
+      animation: bounce 2s infinite;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 4px;
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(6px); }
+      60% { transform: translateY(3px); }
+    }
+
     /* Main Container */
     .main-wrap {
-      flex: 1;
       max-width: 1080px;
       width: 100%;
       margin: 0 auto;
-      padding: 32px 18px 48px;
+      padding: 0 20px 48px;
     }
 
-    /* Hero Section */
-    .hero {
-      text-align: center;
-      max-width: 760px;
-      margin: 0 auto 36px;
-    }
-    .badge-wrap {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--primary-light);
-      color: var(--primary-dark);
-      border: 1px solid rgba(245, 166, 35, 0.35);
-      padding: 6px 14px;
-      border-radius: var(--radius-full);
-      font-weight: 800;
-      font-size: 12px;
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-    }
-    .badge-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--success-light);
-      color: #065f46;
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 6px 12px;
-      border-radius: var(--radius-full);
-      font-weight: 800;
-      font-size: 12px;
-    }
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--success);
-      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(1.15); }
-    }
-
-    .hero h1 {
-      font-size: 40px;
-      font-weight: 900;
-      letter-spacing: -1px;
-      line-height: 1.22;
-      margin-bottom: 14px;
-      color: #241a07;
-    }
-    .hero h1 span {
-      background: linear-gradient(135deg, #f5a623 0%, #d98200 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero p {
-      font-size: 16px;
-      color: var(--muted);
-      line-height: 1.6;
-      max-width: 640px;
-      margin: 0 auto;
-    }
-
-    /* Primary CTA Card */
+    /* Action Card (Primary 1-Click Install) */
     .cta-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: var(--radius-lg);
-      padding: 36px 28px;
+      padding: 38px 28px;
       box-shadow: var(--shadow-md);
-      margin-bottom: 40px;
+      margin-bottom: 44px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -244,21 +424,48 @@
       left: 0;
       right: 0;
       height: 6px;
-      background: linear-gradient(90deg, #ffd000, #f5a623, #ff7e00);
+      background: linear-gradient(90deg, #ffd000, #ffb000, #ff7e00);
+    }
+    .badge-verified {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--success-light);
+      color: #047857;
+      border: 1px solid rgba(16, 185, 129, 0.32);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-weight: 800;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+    .verified-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--success);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
     }
     .cta-title {
-      font-size: 22px;
+      font-size: 28px;
       font-weight: 900;
-      margin-bottom: 8px;
+      letter-spacing: -0.6px;
+      margin-bottom: 10px;
       color: var(--fg);
     }
     .cta-desc {
-      font-size: 14px;
+      font-size: 15.5px;
       color: var(--muted);
-      margin-bottom: 24px;
-      max-width: 580px;
+      margin-bottom: 26px;
+      max-width: 600px;
       margin-left: auto;
       margin-right: auto;
+      line-height: 1.6;
     }
     .btn-main {
       display: inline-flex;
@@ -267,12 +474,12 @@
       gap: 10px;
       width: 100%;
       max-width: 440px;
-      min-height: 54px;
-      padding: 16px 24px;
-      background: linear-gradient(135deg, #ffd000 0%, #f5a623 100%);
+      min-height: 56px;
+      padding: 16px 28px;
+      background: linear-gradient(135deg, #ffd000 0%, #ffb000 100%);
       color: #1a1200;
       font-weight: 900;
-      font-size: 17px;
+      font-size: 18px;
       border-radius: var(--radius-md);
       border: none;
       cursor: pointer;
@@ -282,70 +489,61 @@
       touch-action: manipulation;
     }
     .btn-main:hover {
-      box-shadow: 0 14px 34px rgba(245, 166, 35, 0.55);
+      box-shadow: 0 16px 36px rgba(255, 176, 0, 0.55);
       transform: translateY(-2px);
-      filter: brightness(1.03);
+      filter: brightness(1.02);
     }
     .btn-main:active {
       transform: scale(0.98);
-      box-shadow: 0 4px 12px rgba(245, 166, 35, 0.35);
+      box-shadow: 0 4px 14px rgba(255, 176, 0, 0.35);
     }
-    .cta-meta {
+    .cta-perks {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
       gap: 16px;
-      margin-top: 16px;
-      font-size: 13px;
+      margin-top: 20px;
+      font-size: 13.5px;
       font-weight: 700;
-      color: var(--muted);
+      color: var(--fg-sub);
     }
-    .meta-item {
+    .perk-item {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-    }
-    .meta-check {
-      color: var(--success);
-      font-size: 15px;
-    }
-
-    /* Fallback / Advanced Direct Download section */
-    .cta-sublinks {
-      margin-top: 20px;
-      padding-top: 18px;
-      border-top: 1px dashed rgba(180, 130, 20, 0.18);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      font-size: 13px;
-    }
-    .sublink {
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: 700;
-      transition: color 0.2s;
-    }
-    .sublink:hover {
-      color: var(--fg);
-      text-decoration: underline;
+      gap: 6px;
     }
 
     /* Feature Grid */
+    .section-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .section-title {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: var(--fg);
+      margin-bottom: 8px;
+    }
+    .section-desc {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin-bottom: 44px;
+      gap: 18px;
+      margin-bottom: 48px;
     }
     .feature-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: var(--radius-md);
-      padding: 24px 20px;
+      padding: 24px 22px;
       box-shadow: var(--shadow-sm);
       transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
     }
@@ -354,7 +552,7 @@
       box-shadow: var(--shadow-md);
       border-color: var(--card-border-hover);
     }
-    .feature-icon {
+    .feature-icon-badge {
       width: 48px;
       height: 48px;
       border-radius: 14px;
@@ -366,41 +564,31 @@
       margin-bottom: 16px;
     }
     .feature-card h3 {
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 900;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       color: var(--fg);
     }
     .feature-card p {
-      font-size: 13.5px;
+      font-size: 14px;
       color: var(--muted);
       line-height: 1.55;
     }
 
-    /* Steps Section */
+    /* 4 Steps Section */
     .steps-section {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: var(--radius-lg);
-      padding: 34px 28px;
+      padding: 38px 28px;
       box-shadow: var(--shadow-sm);
-      margin-bottom: 44px;
-    }
-    .section-title {
-      font-size: 22px;
-      font-weight: 900;
-      margin-bottom: 6px;
-      color: var(--fg);
-    }
-    .section-desc {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 26px;
+      margin-bottom: 48px;
     }
     .steps-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 16px;
+      gap: 18px;
+      margin-top: 24px;
     }
     .step-box {
       background: #fffdf9;
@@ -410,30 +598,26 @@
       display: flex;
       flex-direction: column;
     }
-    .step-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
     .step-badge {
-      width: 34px;
-      height: 34px;
-      min-width: 34px;
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #ffd000, #f5a623);
+      background: linear-gradient(135deg, #ffd000, #ffb000);
       color: #1a1200;
       font-weight: 900;
-      font-size: 15px;
+      font-size: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 3px 8px rgba(245, 166, 35, 0.3);
+      margin-bottom: 14px;
+      box-shadow: 0 4px 10px rgba(255, 176, 0, 0.35);
     }
     .step-box h4 {
-      font-size: 16px;
+      font-size: 16.5px;
       font-weight: 900;
       color: var(--fg);
+      margin-bottom: 8px;
     }
     .step-box p {
       font-size: 13.5px;
@@ -450,15 +634,15 @@
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: var(--radius-lg);
-      padding: 34px 28px;
+      padding: 38px 28px;
       box-shadow: var(--shadow-sm);
-      margin-bottom: 44px;
+      margin-bottom: 48px;
     }
     .faq-list {
       display: flex;
       flex-direction: column;
       gap: 14px;
-      margin-top: 20px;
+      margin-top: 24px;
     }
     .faq-item {
       background: #fffdf9;
@@ -468,16 +652,16 @@
       transition: border-color 0.2s;
     }
     .faq-item:hover {
-      border-color: rgba(245, 166, 35, 0.4);
+      border-color: rgba(255, 176, 0, 0.45);
     }
     .faq-question {
       width: 100%;
-      min-height: 50px;
+      min-height: 52px;
       padding: 16px 20px;
       background: transparent;
       border: none;
       text-align: left;
-      font-size: 15.5px;
+      font-size: 16px;
       font-weight: 800;
       color: var(--fg);
       cursor: pointer;
@@ -507,7 +691,7 @@
     }
     .faq-item.open .faq-answer {
       max-height: 600px;
-      padding: 0 20px 18px;
+      padding: 0 20px 20px;
     }
     .faq-answer p {
       margin-bottom: 10px;
@@ -519,14 +703,6 @@
       color: var(--fg);
       font-weight: 800;
     }
-    .faq-highlight-box {
-      background: #fff8e8;
-      border-left: 3px solid var(--primary);
-      padding: 10px 14px;
-      border-radius: 8px;
-      margin: 10px 0;
-      font-size: 13px;
-    }
 
     /* Sticky Mobile Bottom Bar */
     .mobile-bottom-bar {
@@ -536,38 +712,35 @@
       left: 0;
       right: 0;
       z-index: 999;
-      background: rgba(255, 251, 241, 0.94);
+      background: rgba(255, 251, 241, 0.95);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border-top: 1px solid rgba(180, 130, 20, 0.16);
-      padding: 10px 16px;
+      border-top: 1px solid rgba(180, 130, 20, 0.18);
+      padding: 12px 16px;
       padding-bottom: max(12px, env(safe-area-inset-bottom));
-      box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
     }
     .mobile-bottom-inner {
       max-width: 440px;
       margin: 0 auto;
       display: flex;
+      gap: 10px;
       align-items: center;
-      gap: 12px;
     }
-    .mobile-btn {
+    .mobile-bottom-btn {
       flex: 1;
-      min-height: 50px;
-      display: flex;
+      min-height: 52px;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      background: linear-gradient(135deg, #ffd000 0%, #f5a623 100%);
+      background: linear-gradient(135deg, #ffd000 0%, #ffb000 100%);
       color: #1a1200;
       font-weight: 900;
-      font-size: 16px;
-      border-radius: var(--radius-sm);
+      font-size: 16.5px;
+      border-radius: var(--radius-md);
       text-decoration: none;
-      box-shadow: 0 4px 16px rgba(245, 166, 35, 0.38);
-    }
-    .mobile-btn:active {
-      transform: scale(0.97);
+      box-shadow: 0 6px 18px rgba(255, 176, 0, 0.45);
     }
 
     /* Footer */
@@ -576,41 +749,24 @@
       padding: 28px 20px;
       background: rgba(255, 251, 241, 0.7);
       text-align: center;
-      font-size: 13px;
+      font-size: 13.5px;
       color: var(--muted);
     }
 
-    /* Responsive Adjustments */
+    /* Responsive */
     @media (max-width: 768px) {
-      .mobile-bottom-bar {
-        display: block;
-      }
-      .hero h1 {
-        font-size: 30px;
-        letter-spacing: -0.6px;
-      }
-      .hero p {
-        font-size: 15px;
-      }
-      .cta-card {
-        padding: 28px 18px;
-      }
-      .steps-section, .faq-section {
-        padding: 26px 18px;
-      }
-      .nav-links .nav-link {
-        display: none;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .hero h1 {
-        font-size: 26px;
-      }
-      .btn-main {
-        font-size: 15.5px;
-        min-height: 50px;
-      }
+      .nav-links { display: none; }
+      .hero-collage { height: 340px; }
+      .hero-phone { width: 200px; height: 270px; }
+      .hero-qr-card { display: none; }
+      .st-hearts { left: 4%; top: 8%; width: 56px; }
+      .st-bff { left: 2%; top: 38%; width: 72px; }
+      .st-float3 { display: none; }
+      .st-float2 { right: 2%; top: 10%; width: 74px; }
+      .st-tile { right: 3%; top: 45%; width: 62px; }
+      .st-iheart { display: none; }
+      .hero-caption { font-size: 18px; }
+      .mobile-bottom-bar { display: block; }
     }
   </style>
 </head>
@@ -620,184 +776,249 @@
   <header class="navbar">
     <div class="nav-inner">
       <a href="/" class="brand">
-        <div class="brand-icon">⚡</div>
-        <div class="brand-info">
-          <span class="brand-title">Xwuan_DNS</span>
-          <span class="brand-sub">UpLocket Network</span>
+        <div class="brand-icon">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="#1a1200">
+            <path d="M16 24.3438C16.1817 24.3438 16.4414 24.2227 16.6318 24.1103C21.5042 20.9975 24.5938 17.3747 24.5938 13.6912C24.5938 10.6304 22.4907 8.46875 19.7733 8.46875C18.0857 8.46875 16.7875 9.40257 16 10.8292C15.2298 9.41122 13.9143 8.46875 12.2267 8.46875C9.50925 8.46875 7.40625 10.6304 7.40625 13.6912C7.40625 17.3747 10.4958 20.9975 15.3769 24.1103C15.5586 24.2227 15.8183 24.3438 16 24.3438Z"/>
+          </svg>
+        </div>
+        <div class="brand-title">
+          <span>Xwuan_DNS</span>
+          <span class="brand-tag">Gold</span>
         </div>
       </a>
       <div class="nav-links">
-        <a href="#features" class="nav-link">Ưu điểm</a>
-        <a href="#install" class="nav-link">Hướng dẫn</a>
-        <a href="#faq" class="nav-link">Hỏi đáp</a>
-        <a href="/Xwuan_DNS.mobileconfig" class="nav-cta">📲 Cài Đặt Ngay</a>
+        <a href="#install" class="nav-link">Cài đặt 1-Click</a>
+        <a href="#features" class="nav-link">Ưu điểm VIP</a>
+        <a href="#guide" class="nav-link">Hướng dẫn iOS</a>
+        <a href="#faq" class="nav-link">Giải đáp</a>
+        <a href="#install" class="nav-cta">Tải DNS ⚡</a>
       </div>
     </div>
   </header>
 
-  <div class="main-wrap">
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="badge-wrap">
-        <div class="badge">⚡ MÁY CHỦ DNS ĐỘC QUYỀN XWUAN_DNS</div>
-        <div class="badge-status">
-          <span class="status-dot"></span>
-          <span>Hồ Sơ Đã Ký Số (Signed Profile)</span>
+  <!-- Hero Section (Atmospheric Visual Collage like uplocket.io.vn) -->
+  <section class="hero-wrap">
+    <div class="hero-collage">
+      <!-- Floating Stickers & Memory Widgets -->
+      <div class="sticker st-hearts"><img src="images/hearts-duo.webp" alt="Hearts" loading="eager"></div>
+      <div class="sticker st-bff"><img src="images/bff.webp" alt="Best Friends First" loading="eager"></div>
+      <div class="sticker st-heart3d"><img src="images/heart-3d.webp" alt="3D Heart" loading="eager"></div>
+      <div class="sticker st-megaphone"><img src="images/megaphone.webp" alt="Megaphone" loading="eager"></div>
+
+      <!-- Friend Photo Widget 3 (Bottom Left) -->
+      <div class="sticker st-float3">
+        <div style="position:relative; width:100%; aspect-ratio:1;">
+          <img src="images/float-3.webp" alt="Friends" style="width:100%; height:100%; object-fit:cover;">
+          <div style="position:absolute; bottom:6px; left:6px; display:flex; align-items:center; gap:4px; background:rgba(0,0,0,0.45); padding:2px 6px; border-radius:12px;">
+            <img src="images/karima.webp" alt="avatar" style="width:16px; height:16px; border-radius:50%;">
+            <span style="color:#fff; font-size:10px; font-weight:800;">miss you!</span>
+          </div>
         </div>
       </div>
-      <h1>Kích hoạt <span>Locket Gold 30s</span> Trọn Đời</h1>
-      <p>Cài đặt trực tiếp 1 chạm trên iPhone Safari. Không cần tạo tài khoản NextDNS, không hao pin, bảo mật Apple Native tuyệt đối.</p>
-    </section>
 
-    <!-- Main Direct Install CTA Card -->
-    <section class="cta-card">
-      <h2 class="cta-title">Cài Đặt Nhanh 1-Click</h2>
-      <p class="cta-desc">Hồ sơ DNS-over-HTTPS chính thức đã được tích hợp sẵn máy chủ giải mã UpLocket và chứng chỉ bảo mật.</p>
+      <!-- Center 3D Tilted iPhone Phone Shell -->
+      <div class="hero-phone">
+        <div class="phone-screen">
+          <div class="phone-status">
+            <img src="images/status-bar.svg" alt="iOS Status">
+          </div>
+          <div class="phone-widget-area">
+            <div class="locket-widget-box">
+              <img src="images/float-1.webp" alt="Locket Widget Active" class="widget-photo">
+              <div class="locket-widget-footer">
+                <img src="images/laurel.webp" alt="avatar" class="widget-avatar">
+                <span class="widget-pill">Good morning</span>
+              </div>
+            </div>
+            <div class="phone-icons-grid">
+              <img src="images/icon-1.png" alt="App" class="phone-app-icon">
+              <img src="images/icon-2.png" alt="App" class="phone-app-icon">
+              <img src="images/icon-8.png" alt="App" class="phone-app-icon">
+              <img src="images/icon-4.png" alt="App" class="phone-app-icon">
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <a href="/Xwuan_DNS.mobileconfig" class="btn-main" id="btnInstallMain">
-        📲 Cài Đặt Xwuan_DNS Ngay
+      <!-- Floating QR Card with camera icon in center -->
+      <a href="#install" class="hero-qr-card" title="Quét mã QR để cài đặt">
+        <img src="images/qr-hero.svg" alt="Scan to install Xwuan_DNS">
+        <div class="hero-qr-badge">📷 Quét cài ngay</div>
       </a>
 
-      <div class="cta-meta">
-        <span class="meta-item"><span class="meta-check">✓</span> Hồ sơ đã ký số an toàn</span>
-        <span class="meta-item"><span class="meta-check">✓</span> Không cần mật khẩu / email</span>
-        <span class="meta-item"><span class="meta-check">✓</span> Dùng cho mọi phiên bản iOS</span>
+      <!-- Right Floating Stickers -->
+      <div class="sticker st-iheart"><img src="images/i-heart-locket.webp" alt="I Heart Locket"></div>
+      <div class="sticker st-float2">
+        <div style="position:relative; width:100%; aspect-ratio:1;">
+          <img src="images/float-2.webp" alt="Friend selfie" style="width:100%; height:100%; object-fit:cover;">
+          <div style="position:absolute; bottom:6px; left:6px; display:flex; align-items:center; gap:4px; background:rgba(0,0,0,0.45); padding:2px 6px; border-radius:12px;">
+            <img src="images/preslee.webp" alt="avatar" style="width:16px; height:16px; border-radius:50%;">
+            <span style="color:#fff; font-size:10px; font-weight:800;">hiiiiii</span>
+          </div>
+        </div>
+      </div>
+      <div class="sticker st-tile"><img src="images/locket-tile.webp" alt="Locket Tile"></div>
+      <div class="sticker st-heartflat"><img src="images/heart-flat.webp" alt="Heart Flat"></div>
+    </div>
+
+    <!-- Hero Title & Slogan -->
+    <div class="hero-bottom-text">
+      <div class="hero-locket-logo">
+        <div class="hero-logo-box">
+          <svg viewBox="0 0 32 32" width="26" height="26" fill="#1a1200">
+            <path d="M16 24.3438C16.1817 24.3438 16.4414 24.2227 16.6318 24.1103C21.5042 20.9975 24.5938 17.3747 24.5938 13.6912C24.5938 10.6304 22.4907 8.46875 19.7733 8.46875C18.0857 8.46875 16.7875 9.40257 16 10.8292C15.2298 9.41122 13.9143 8.46875 12.2267 8.46875C9.50925 8.46875 7.40625 10.6304 7.40625 13.6912C7.40625 17.3747 10.4958 20.9975 15.3769 24.1103C15.5586 24.2227 15.8183 24.3438 16 24.3438Z"/>
+          </svg>
+        </div>
+        <h1 class="hero-locket-title">Locket</h1>
+      </div>
+      <p class="hero-caption">Nâng cấp Locket Gold, dùng ngay trên điện thoại</p>
+      <a href="#install" class="hero-scroll-btn" aria-label="Cuộn xuống cài đặt">
+        <svg viewBox="0 0 46 16" width="36" height="13" fill="currentColor">
+          <path d="M2.24609 7.22656C0.927734 6.64062 0 5.46875 0 4.00391C0 1.58691 1.78223 0 3.80859 0C4.98047 0 6.4209 0.65918 7.61719 1.2207L22.6562 7.6416L37.7197 1.2207C38.916 0.65918 40.3809 0 41.5039 0C43.5547 0 45.3369 1.58691 45.3369 4.00391C45.3369 5.46875 44.4092 6.64062 43.0908 7.22656L26.9043 14.1846C25.3418 14.8926 24.1455 15.4053 22.6562 15.4053C21.1914 15.4053 19.9951 14.8926 18.4082 14.1846L2.24609 7.22656Z"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <div class="main-wrap">
+    <!-- Primary 1-Click Install CTA Card -->
+    <section id="install" class="cta-card">
+      <div class="badge-verified">
+        <span class="verified-icon">✓</span>
+        <span>Hồ sơ đã ký số Apple • Verified Tích Xanh</span>
+      </div>
+      <h2 class="cta-title">Cài Đặt Xwuan_DNS 1-Click</h2>
+      <p class="cta-desc">
+        Hệ thống DoH chuyên biệt kích hoạt trọn bộ tính năng <strong>Locket Gold</strong>: video 30s dài nhất, AI filters và photobooth. Không cần app VPN, không hao pin, bảo mật 100%.
+      </p>
+
+      <a id="downloadBtn" href="/Xwuan_DNS.mobileconfig" class="btn-main" onclick="trackInstall()">
+        <span>📲 Cài Đặt Xwuan_DNS Ngay</span>
+      </a>
+
+      <div class="cta-perks">
+        <div class="perk-item"><span style="color:var(--success);">✓</span> Không cài app thứ 3</div>
+        <div class="perk-item"><span style="color:var(--success);">✓</span> Không can thiệp iCloud</div>
+        <div class="perk-item"><span style="color:var(--success);">✓</span> Không lo bị thu hồi (Revoke)</div>
+        <div class="perk-item"><span style="color:var(--success);">✓</span> Đầy đủ video 30s &amp; AI Filters</div>
       </div>
 
-      <div class="cta-sublinks">
-        <span style="color: var(--muted-light);">Tuỳ chọn:</span>
-        <a href="/api/generate-profile" class="sublink" download="Xwuan_DNS.mobileconfig">📥 Tải qua API</a>
-        <span style="color: #e0d4c2;">•</span>
-        <a href="/api/generate-profile?xml=true" class="sublink">📄 Tải dạng XML gốc</a>
-        <span style="color: #e0d4c2;">•</span>
-        <a href="#install" class="sublink">📖 Xem 4 bước cài đặt</a>
+      <div style="margin-top: 22px; font-size: 13px; color: var(--muted);">
+        <span>Gặp sự cố khi tải trực tiếp? </span>
+        <a href="/api/generate-profile" style="color: var(--primary-dark); font-weight: 800; text-decoration: underline;">
+          Tải hồ sơ dự phòng qua API
+        </a>
       </div>
     </section>
 
-    <!-- Feature Highlights -->
-    <section id="features" class="feature-grid">
-      <div class="feature-card">
-        <div class="feature-icon">⚡</div>
-        <h3>Không Cần NextDNS</h3>
-        <p>Bỏ qua hoàn toàn các bước đăng ký tài khoản NextDNS phức tạp. Máy chủ DoH UpLocket chuyên dụng vận hành tự động 24/7.</p>
+    <!-- Features Section -->
+    <section id="features">
+      <div class="section-header">
+        <h2 class="section-title">Đặc Quyền Locket Gold</h2>
+        <p class="section-desc">Mở khoá đầy đủ trải nghiệm cao cấp nhất của Locket ngay sau khi cài DNS</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">🛡️</div>
-        <h3>Hồ Sơ Ký Số Chính Thức</h3>
-        <p>File mobileconfig được ký số chuẩn Apple, tránh cảnh báo chưa xác minh và đảm bảo tính toàn vẹn cấu hình.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔋</div>
-        <h3>Không Hao Pin &amp; Zero VPN</h3>
-        <p>Sử dụng cơ chế phân giải tên miền gốc iOS (Apple Native DoH), chỉ định tuyến đúng máy chủ Locket mà không ảnh hưởng mạng khác.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">✨</div>
-        <h3>Mở Khóa Toàn Diện 100%</h3>
-        <p>Quay video dài 30 giây gấp 3 lần bình thường, trải nghiệm trọn bộ AI Filters nghệ thuật và tải ảnh trực tiếp từ camera roll.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon-badge">📹</div>
+          <h3>Quay Video 30 Giây</h3>
+          <p>Tận hưởng thời lượng quay video dài gấp 10 lần bản miễn phí (15s - 30s) và đăng khoảnh khắc trọn vẹn lên widget.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-badge">✨</div>
+          <h3>Bộ Lọc AI &amp; Màu Phim</h3>
+          <p>Mở khoá toàn bộ hiệu ứng biến hình AI, bộ lọc màu retro vintage độc quyền giúp ảnh widget nổi bật.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-badge">📸</div>
+          <h3>Photobooth 4 Khung Hình</h3>
+          <p>Chụp ảnh photobooth 4-cut cùng bạn bè theo phong cách Hàn Quốc cực xịn xò ngay trong app.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-badge">🛡️</div>
+          <h3>Độc Lập &amp; Không Hao Pin</h3>
+          <p>Chạy trực tiếp qua cơ chế DNS gốc của Apple iOS, không bật tiến trình VPN chạy ngầm gây hao pin hoặc chậm mạng.</p>
+        </div>
       </div>
     </section>
 
-    <!-- 4-Step iOS Safari Guide -->
-    <section id="install" class="steps-section">
-      <h2 class="section-title">Chỉ 4 Bước Cài Đặt Trên iPhone</h2>
-      <p class="section-desc">Mở trang này trên Safari và thực hiện theo trình tự đơn giản bên dưới:</p>
-      
+    <!-- 4-Step iOS Installation Guide -->
+    <section id="guide" class="steps-section">
+      <div class="section-header">
+        <h2 class="section-title">4 Bước Cài Đặt Trên iPhone</h2>
+        <p class="section-desc">Mở trang này bằng trình duyệt Safari và làm theo 4 bước bên dưới:</p>
+      </div>
+
       <div class="steps-grid">
         <div class="step-box">
-          <div class="step-header">
-            <div class="step-badge">1</div>
-            <h4>Tải về bằng Safari</h4>
-          </div>
-          <p>Mở trang web bằng <strong>Safari</strong>, bấm nút <strong>"📲 Cài Đặt Xwuan_DNS Ngay"</strong> và chọn <strong>Cho phép</strong> khi hiện hộp thoại tải về hồ sơ.</p>
+          <div class="step-badge">1</div>
+          <h4>Tải về bằng Safari</h4>
+          <p>Bấm nút <strong>📲 Cài Đặt Xwuan_DNS Ngay</strong> ở trên bằng trình duyệt <strong>Safari</strong>, chọn <strong>Cho phép</strong> khi thấy hộp thoại tải về hồ sơ cấu hình.</p>
         </div>
-
         <div class="step-box">
-          <div class="step-header">
-            <div class="step-badge">2</div>
-            <h4>Cài đặt hồ sơ</h4>
-          </div>
-          <p>Mở <strong>Cài đặt (Settings)</strong> &gt; nhấn vào mục <strong>"Đã tải về hồ sơ"</strong> (ngay dưới tên iCloud) &gt; bấm <strong>Cài đặt</strong> ở góc trên bên phải &gt; nhập passcode máy.</p>
+          <div class="step-badge">2</div>
+          <h4>Cài đặt trong Settings</h4>
+          <p>Mở ứng dụng <strong>Cài đặt (Settings)</strong> trên iPhone &gt; bấm vào dòng <strong>Đã tải về hồ sơ</strong> &gt; nhấn <strong>Cài đặt</strong> ở góc trên bên phải.</p>
         </div>
-
         <div class="step-box">
-          <div class="step-header">
-            <div class="step-badge">3</div>
-            <h4>Bật tin cậy Root CA</h4>
-          </div>
-          <p>Vào <strong>Cài đặt</strong> &gt; <strong>Cài đặt chung</strong> &gt; <strong>Giới thiệu</strong> &gt; <strong>Cài đặt tin cậy chứng nhận</strong> &gt; Gạt <strong>BẬT</strong> công tắc tin cậy cho <strong>UpLocket Custom Root CA</strong>.</p>
+          <div class="step-badge">3</div>
+          <h4>Bật tin cậy Root CA</h4>
+          <p>Vào <strong>Cài đặt chung</strong> &gt; <strong>Giới thiệu</strong> &gt; cuộn xuống dưới cùng chọn <strong>Cài đặt tin cậy chứng nhận</strong> &gt; bật công tắc cho <strong>UpLocket Custom Root CA</strong>.</p>
         </div>
-
         <div class="step-box">
-          <div class="step-header">
-            <div class="step-badge">4</div>
-            <h4>Mở Locket hưởng Gold</h4>
-          </div>
-          <p>Vuốt đóng hoàn toàn ứng dụng Locket (xoá đa nhiệm) rồi mở lại. Bạn đã có thể <strong>quay video 30 giây</strong> và sử dụng toàn bộ tính năng Gold!</p>
+          <div class="step-badge">4</div>
+          <h4>Mở app Locket</h4>
+          <p>Vuốt đóng đa nhiệm app Locket rồi mở lại. Bạn đã có thể <strong>quay video 30 giây</strong> và sử dụng mọi tính năng Gold thoải mái!</p>
         </div>
       </div>
     </section>
 
     <!-- FAQ Section -->
     <section id="faq" class="faq-section">
-      <h2 class="section-title">Câu Hỏi Thường Gặp (FAQ)</h2>
-      <p class="section-desc">Giải đáp các thắc mắc về cơ chế hoạt động và cách sử dụng Xwuan_DNS:</p>
+      <div class="section-header">
+        <h2 class="section-title">Câu Hỏi Thường Gặp</h2>
+        <p class="section-desc">Giải đáp thắc mắc về cơ chế hoạt động và quyền lợi tài khoản</p>
+      </div>
 
       <div class="faq-list">
-        <!-- FAQ 1 -->
-        <div class="faq-item open">
+        <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
-            <span>1. Các tính năng Locket Gold nào được kích hoạt?</span>
+            <span>Các tính năng Gold nào hoạt động sau khi cài đặt?</span>
             <span class="faq-arrow">▼</span>
           </button>
           <div class="faq-answer">
-            <p><strong>100% các tính năng cao cấp của Locket Gold đều hoạt động đầy đủ:</strong></p>
-            <p>• <strong>Quay video 30 giây:</strong> Thời lượng quay video dài gấp 3 lần so với 10s mặc định của tài khoản miễn phí.</p>
-            <p>• <strong>Bộ lọc AI &amp; Khung ảnh Photobooth:</strong> Truy cập tất cả các filter nghệ thuật, frame chủ đề độc quyền.</p>
-            <p>• <strong>Đăng ảnh/video từ thư viện máy:</strong> Chọn ảnh và video có sẵn trong Album để gửi lên widget bạn bè bất cứ lúc nào.</p>
-            <div class="faq-highlight-box">
-              💡 <em>Tất cả tính năng này được kích hoạt ngay khi bạn hoàn thành Bước 3 (Bật tin cậy chứng chỉ UpLocket Root CA) và khởi động lại app.</em>
-            </div>
+            <p>Toàn bộ tính năng cao cấp của gói Locket Gold đều hoạt động <strong>100%</strong>: <strong>Quay video 30 giây</strong>, <strong>Bộ lọc AI</strong>, chụp photobooth 4-cut, đăng tải video HD không giới hạn do máy chủ UpLocket hỗ trợ.</p>
           </div>
         </div>
 
-        <!-- FAQ 2 -->
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
-            <span>2. Tại sao huy hiệu Gold trên trang cá nhân liên kết với tài khoản mua?</span>
+            <span>Tại sao máy dùng được tính năng Gold nhưng chưa hiện huy hiệu Gold trên avatar?</span>
             <span class="faq-arrow">▼</span>
           </button>
           <div class="faq-answer">
-            <p><strong>Đây là cơ chế hoạt động bình thường của giải pháp DoH / TLS Proxy:</strong></p>
-            <p>Để mở khóa đầy đủ tính năng Gold cho app, hồ sơ DNS sẽ chuyển tiếp yêu cầu xác thực bản quyền của Locket về máy chủ ủy quyền đã kích hoạt bản quyền Gold chính chủ. Do đó, huy hiệu Gold trên màn hình Profile hiển thị định danh của tài khoản bản quyền gốc.</p>
-            <div class="faq-highlight-box">
-              ✅ <strong>Điều này hoàn toàn không ảnh hưởng:</strong> Bạn bè của bạn vẫn nhìn thấy tài khoản chính chủ của bạn, tin nhắn, bạn bè và ảnh widget gửi đi đều thuộc tài khoản của bạn 100%. Các tính năng quay 30s, AI filter và upload hoạt động trọn vẹn trên máy bạn.
-            </div>
+            <p>Hệ thống DNS can thiệp mở khóa gói bản quyền (entitlement) từ RevenueCat cho thiết bị, giúp bạn sử dụng toàn bộ tính năng quay 30s, AI filter bình thường.</p>
+            <p>Về việc chưa hiện huy hiệu Gold (icon vàng hiển thị cạnh avatar trong trang cá nhân): đây là nhận diện gắn với tài khoản chính chủ đã đăng ký trên máy chủ. Việc chưa hiện huy hiệu này <strong>hoàn toàn không ảnh hưởng</strong> đến bất kỳ tính năng sử dụng nào của Locket Gold.</p>
           </div>
         </div>
 
-        <!-- FAQ 3 -->
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
-            <span>3. Xwuan_DNS có an toàn và có làm chậm mạng không?</span>
+            <span>Cài DNS này có làm chậm mạng hay ảnh hưởng ứng dụng khác không?</span>
             <span class="faq-arrow">▼</span>
           </button>
           <div class="faq-answer">
-            <p><strong>Rất an toàn và tốc độ mạng không hề bị ảnh hưởng:</strong></p>
-            <p>• Hồ sơ DNS của chúng tôi cấu hình danh sách <code>SupplementalMatchDomains</code> nghiêm ngặt. Nghĩa là chỉ các tên miền liên quan đến xác thực Locket mới đi qua máy chủ giải mã, còn lại toàn bộ lưu lượng mạng (Facebook, TikTok, Youtube, ứng dụng ngân hàng, v.v.) vẫn đi trực tiếp qua Wifi / 4G của bạn.</p>
-            <p>• Không phải VPN, không chạy dịch vụ nền, không tiêu tốn thêm một phần trăm pin nào của iPhone.</p>
+            <p><strong>Không hề ảnh hưởng.</strong> Hồ sơ sử dụng cơ chế <code>SupplementalMatchDomains</code> của Apple, chỉ định tuyến riêng các kết nối liên quan đến Locket qua máy chủ DoH, tất cả lưu lượng mạng của Facebook, TikTok, Safari,... vẫn đi trực tiếp qua mạng bình thường của bạn.</p>
           </div>
         </div>
 
-        <!-- FAQ 4 -->
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
-            <span>4. Nếu tôi không muốn dùng nữa thì gỡ bỏ như thế nào?</span>
+            <span>Làm cách nào để gỡ bỏ hồ sơ nếu không muốn dùng nữa?</span>
             <span class="faq-arrow">▼</span>
           </button>
           <div class="faq-answer">
-            <p>Bạn có thể gỡ bỏ hoàn toàn bất kỳ lúc nào chỉ trong 10 giây:</p>
-            <p>Vào <strong>Cài đặt</strong> trên iPhone &gt; <strong>Cài đặt chung</strong> &gt; <strong>Quản lý VPN &amp; Thiết bị</strong> &gt; chọn hồ sơ <strong>Xwuan_DNS</strong> (hoặc Xwuan1) &gt; nhấn <strong>Xoá hồ sơ</strong>. Thiết bị sẽ lập tức trở lại cấu hình mạng mặc định ban đầu.</p>
+            <p>Bạn chỉ cần vào <strong>Cài đặt &gt; Cài đặt chung &gt; Quản lý VPN &amp; Thiết bị</strong>, chọn hồ sơ <strong>Xwuan1</strong> (hoặc Xwuan_DNS) và bấm <strong>Xóa hồ sơ</strong>. Thiết bị sẽ trở về trạng thái mặc định ngay lập tức.</p>
           </div>
         </div>
       </div>
@@ -805,26 +1026,40 @@
   </div>
 
   <!-- Sticky Mobile Bottom Bar -->
-  <aside class="mobile-bottom-bar" aria-label="Cài đặt nhanh">
+  <div class="mobile-bottom-bar">
     <div class="mobile-bottom-inner">
-      <a href="/Xwuan_DNS.mobileconfig" class="mobile-btn">
-        <span>📲 Cài Đặt Xwuan_DNS Ngay</span>
+      <a href="/Xwuan_DNS.mobileconfig" class="mobile-bottom-btn" onclick="trackInstall()">
+        <span>⚡ Cài Xwuan_DNS (1-Click)</span>
       </a>
     </div>
-  </aside>
+  </div>
 
   <!-- Footer -->
   <footer>
     <div style="max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px;">
-      <div><strong>Xwuan_DNS</strong> — Nền tảng DoH chuyên dụng cho Locket iOS</div>
-      <div style="font-size: 12px; color: var(--muted-light);">© 2026 UpLocket Network &amp; Xwuan. Độc lập, an toàn và tối ưu cho iPhone.</div>
+      <div><strong>Xwuan_DNS Hub</strong> — Nền tảng DoH kích hoạt Locket Gold cao cấp</div>
+      <div style="font-size: 12px; color: var(--muted-light);">© 2026 Xwuan. Nền tảng DNS độc lập bảo vệ quyền riêng tư &amp; tối ưu hoá trải nghiệm iOS.</div>
     </div>
   </footer>
 
   <script>
     function toggleFaq(btn) {
-      const item = btn.closest('.faq-item');
-      item.classList.toggle('open');
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+      if (!isOpen) {
+        item.classList.add('open');
+      }
+    }
+
+    function trackInstall() {
+      const btn = document.getElementById('downloadBtn');
+      if (btn) {
+        btn.style.filter = 'brightness(0.95)';
+        setTimeout(() => {
+          btn.style.filter = '';
+        }, 300);
+      }
     }
   </script>
 </body>
